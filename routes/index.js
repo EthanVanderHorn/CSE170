@@ -14,10 +14,11 @@ exports.view = function(req, res){
   		'image': 'lorempixel.city.1.jpeg',
   		'id': 'project2'
   		},
+      /*
   		{'name': 'Prototyping',
   		'image': 'lorempixel.technics.1.jpeg',
   		'id': 'project3'
-  		},
+  		},*/
   	]
   });
 };
