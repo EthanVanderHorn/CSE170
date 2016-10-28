@@ -16,37 +16,27 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->        
-  </head>
+    </head>
 
-  <body>
-  	<div class="container-fluid" >
+    <body>
+     <div class="container-fluid" >
 
-  		<nav class="navbar navbar-default navbar-fixed-top">
-  			<div id="navbar" class="container-fluid">
-  				<div class="navbar-header">
-  					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-  						<span class="sr-only">Toggle navigation</span>
-  						<span class="icon-bar"></span>
-  						<span class="icon-bar"></span>
-  						<span class="icon-bar"></span>
-  					</button>
-  					<p class="navbar-text white-on-green-text" >COGS 120</p>
-  				</div>
-
-  				<!-- Collect the nav links, forms, and other content for toggling -->
-  				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  					<ul class="nav navbar-nav navbar-right">
-  						<p class="white-on-green-text navbar-text">jac_bon</p>
-  						<a id="settings-button" href="settings/" class="btn btn-lg"> <!--class used to have btn-info-->
-  							<span class="glyphicon glyphicon-cog"></span>
-  						</a>
-  					</ul>
-  				</div>
-
-  			</div>
-  		</nav>
-  		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-  		<!-- p means paragraph -->
+      <nav class="navbar navbar-default navbar-fixed-top">
+       <div id="navbar" class="container-fluid">
+        <div class="navbar-header">
+         <p class="navbar-text white-on-green-text" >COGS 120</p>
+       </div>
+       <!-- Collect the nav links, forms, and other content for toggling -->
+       <ul class="nav navbar-nav navbar-right">
+        <p class="white-on-green-text navbar-text">jac_bon</p>
+        <a id="settings-button" href="settings/" class="btn btn-lg"> <!--class used to have btn-info-->
+         <span class="glyphicon glyphicon-cog"></span>
+       </a>
+     </ul>
+   </div>
+ </nav>
+ <!-- h1 through h6 are headers. The higher the number, the smaller the header -->
+ <!-- p means paragraph -->
   		<!--
   		<div class="jumbotron">
   			<h1>Michael Bernstein</h1>
@@ -62,13 +52,13 @@
   			</li>
   			{{/each}}
   		</ol>
-		-->
+    -->
 
 
-  		<h4>Posts</h4>
-  		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
-  		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
-  		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
+    <h4>Posts</h4>
+    <!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
+    <!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
+    <!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
   		<!--
   		{{#each projects}}
   		<div class="project" id="{{id}}">
@@ -84,48 +74,48 @@
           <img  src="../images/NewPost.png">
         </a>
       </div>
-  		<div id="groups-button" class="panel-group">
-  			<div class="panel panel-default">
-  				<div id="groups-heading" class="panel-heading">
-  					<h4 id="groups-title" class="panel-title">
-  						<a class="white-on-green-text" data-toggle="collapse" href="#collapse1">Groups</a>
-  					</h4>
-  				</div>
-  				<div id="collapse1" class="panel-collapse collapse">
-  					<ul class="list-group">
-  						<li class="list-group-item">Cogs 120</li>
-  						<li class="list-group-item">Dance Team</li>
-  					</ul>
-  					<button id="new-group-button" type="button" class="btn btn-lg" autocomplete="off">Create/Join New Group</button>
-  				</div>
-  			</div>
-  		</div>
+      <div id="groups-button" class="panel-group">
+       <div class="panel panel-default">
+        <div id="groups-heading" class="panel-heading">
+         <h4 id="groups-title" class="panel-title">
+          <a class="white-on-green-text" data-toggle="collapse" href="#collapse1">Groups</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+       <ul class="list-group">
+        <li class="list-group-item">Cogs 120</li>
+        <li class="list-group-item">Dance Team</li>
+      </ul>
+      <button id="new-group-button" type="button" class="btn btn-lg" autocomplete="off">Create/Join New Group</button>
+    </div>
+  </div>
+</div>
 
-  		<div id="messages-button" class="panel-group">
-  			<div class="panel panel-default">
-  				<div id="messages-heading" class="panel-heading">
-  					<h4 id="messages-title" class="panel-title">
-  						<a data-toggle="collapse" class="white-on-green-text" href="#collapse2">Messages</a>
-  					</h4>
-  				</div>
-  				<div id="collapse2" class="panel-collapse collapse">
-  					<br>
-  					<br>
-  					<br>
-  					<br>
-  					<form id="send-bar" class="navbar-form navbar-left">
-  						<div class="form-group">
-  							<input type="text" class="form-control" placeholder="Type message here">
-  						</div>
-  						<button type="submit" class="btn btn-default">Send</button>
-  					</form>
-  				</div>
-  			</div>
-  		</div>
+<div id="messages-button" class="panel-group">
+ <div class="panel panel-default">
+  <div id="messages-heading" class="panel-heading">
+   <h4 id="messages-title" class="panel-title">
+    <a data-toggle="collapse" class="white-on-green-text" href="#collapse2">Messages</a>
+  </h4>
+</div>
+<div id="collapse2" class="panel-collapse collapse">
+ <br>
+ <br>
+ <br>
+ <br>
+ <form id="send-bar" class="navbar-form navbar-left">
+  <div class="form-group">
+   <input type="text" class="form-control" placeholder="Type message here">
+ </div>
+ <button type="submit" class="btn btn-default">Send</button>
+</form>
+</div>
+</div>
+</div>
 
-  	</div>
+</div>
 
-  	<script src="https://code.jquery.com/jquery.js"></script>
-  	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  </body>
-  </html>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
