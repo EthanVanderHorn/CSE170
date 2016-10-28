@@ -145,19 +145,22 @@
 
 #groups-title{
      font-size: 45px;
+     padding-bottom: 20px;
+     padding-left: 70px;
 }
 
 #groups-button {
      font-size: 45px;
-     width: 288px;
+     width: 344px;
      border-color: #7ba78e;
      position: fixed; 
      bottom: 0px; 
      left: 0px; 
+     margin-bottom: 0px;
 }
 
-#groups-button p {
-     color: #403f3f;
+#groups-button a {
+     color: #ffffff;
 }
 
 #messages-heading {
@@ -167,6 +170,8 @@
 
 #messages-title{
      font-size: 45px;
+     padding-bottom: 20px;
+     padding-left: 50px;
 }
 
 #messages-button {
@@ -176,10 +181,11 @@
      position: fixed; 
      bottom: 0px; 
      right: 0px; 
+     margin-bottom: 0px;
 }
 
-#messages-button p {
-     color: #403f3f;
+#messages-button a {
+     color: #ffffff;
 }
 
 #send-bar {
@@ -240,5 +246,32 @@ body { padding-top: 50px; }
 #navbar{
     background: #9ad1b2 !important;
 }
+
+#navbar p{
+     color: #ffffff !important;
+}
+/*outlines the text in slightly darker green to make it easier to read white on green.*/
+.white-on-green-text{
+    text-shadow:
+    -1px -1px 0 #73bf93,
+    1px -1px 0 #73bf93,
+    -1px 1px 0 #73bf93,
+    1px 1px 0 #73bf93; 
+}
+
+.grey-on-white-text{
+     text-shadow:
+    -1px -1px 0 #cccccc,
+    1px -1px 0 #cccccc,
+    -1px 1px 0 #cccccc,
+    1px 1px 0 #cccccc; 
+}
+
+.navbar-text{
+     font-size: 20px !important;
+     font-weight: bolder;
+     color: #d9d9d9;
+}
+
 
 
