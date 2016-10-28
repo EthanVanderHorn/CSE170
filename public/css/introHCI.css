@@ -34,8 +34,6 @@
      text-align: center;
 }
 
-
-
 #nav-bar-title {
      text-align: center !important;
 }
@@ -190,17 +188,41 @@
 }
 
 #new-post-button {
-     padding: 20px 50px;
+/*../images/lorempixel.jumbotron.jpeg*/
+     width: 200px;
      font-size: 30px;
-     background-color: #9ad1b2;
-     border-color: #7ba78e;
+     float: none;
      position: fixed; 
      top: 100px; 
      right: 45px; 
 }
 
+#new-post-button {
+     width: 200px;
+     font-size: 30px;
+     float: none;
+     position: fixed; 
+     top: 100px; 
+     right: 45px; 
+}
+
+#new-post-button a{
+     width: 220px;
+}
+
+#new-post-button img{ 
+     width: 200px;
+     height: 200px;
+     padding-left: 0px;
+}
+
+
 #new-post-button p {
-     color: #403f3f;
+     font-size: 40px;
+     padding-left: 10px;
+
+     font-weight: bolder;
+     color: #d9d9d9;
 }
 
 #settings-button {
