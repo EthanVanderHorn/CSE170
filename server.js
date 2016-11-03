@@ -40,7 +40,7 @@ app.use(express.static(__dirname + '/public'));
 // SEND USERS TO FRONTEND ------------
 // has to be registered after API ROUTES
 app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+	res.sendFile(path.join(__dirname + '/public/app/views/splash.html'));
 });
 
 // START THE SERVER
