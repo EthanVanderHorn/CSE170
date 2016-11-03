@@ -92,6 +92,29 @@ body {
 	margin-right: 350px;
 }
 
+/* POSTS */
+.card {
+	border-radius: 5px;
+	border-color: #2AEB3E;
+	border-width: thin;
+	border-style:solid;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	padding: 1em 2em;
+	margin: 3em;
+}
+
+#make-post-bar {
+	margin:3em;
+}
+
+#post-btn {
+	margin: 1em;
+	background-color: #1abc9c;
+	color: white;
+	position:relative;
+	right: -51em;
+}
+
 /* SIDEBAR */
 
 #sidebar-wrapper {

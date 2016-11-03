@@ -83,6 +83,22 @@
 
       <div id="main-content">
         <!-- MAIN CONTENT GOES HERE -->
+          <div id="bulletin-header">
+            
+          </div>
+            <div id="make-post-bar">
+              <h3> Bulletin </h3>
+            <p id="date"></p>
+              <input type="text" class="form-control" placeholder="What's up?">
+              <button onClick="post" id="post-btn" type="button" class="btn">Post</button>
+
+            </div>
+        
+            <div class="card card-block">
+              <h4>Welcome</h4>
+              <p>Welcome to the Green app! Let's get started. You can make posts, change groups, and mark posts as urgent.</p>
+            </div>
+     
       </div>
 
     </div>
@@ -139,6 +155,12 @@
     };
   } 
   </script>
+
+  <script>
+    document.getElementById("date").innerHTML = Date();
+  </script>
+
+  <script src="/assets/js/post.js"></script>
 
 </body>
 
