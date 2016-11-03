@@ -1,7 +1,8 @@
 {
 	"groups": [
 	{
-		"TeamName": "Cogs120",
+		"TeamURL" : "cogs120",
+		"TeamName": "Cogs 120",
 		"TeamDescription": "Group to collaborate for our cogs 120 project.",
 		"Members": [
 		{"membername": "Connie Guan"},
@@ -18,7 +19,8 @@
 		]
 	},
 	{
-		"TeamName": "Sleepless_Collective",
+		"TeamURL" : "sleepless_collective",
+		"TeamName": "Sleepless Collective",
 		"TeamDescription": "This is a group to plan dance events!",
 		"Members": [
 		{"membername": "Jacqueline Bontigao"},

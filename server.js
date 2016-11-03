@@ -72,14 +72,14 @@ app.get('/user/:username/', function(req, res){
 			return console.log(err);
 		}
 		obj = JSON.parse(data);
-		res.redirect("/user/" + username + "/" + obj.groups[0].TeamName);
+		res.redirect("/user/" + username + "/" + obj.groups[0].TeamURL);
 	});
 	//location.href = "/user/" + username + "/cogs120";
 });
 
 app.get('/user/:username/:group', function(req, res){
 	var username = req.params.username;
-	var group = req.params.group;
+	var group = (req.params.group).toLowerCase();
 	var obj;
 	var groupData;
 	fs = require('fs')
@@ -90,7 +90,7 @@ app.get('/user/:username/:group', function(req, res){
 		obj = JSON.parse(data);
 		for (var i = obj.groups.length - 1; i >= 0; i--) {
 			currentElement = obj.groups[i];
-			if(currentElement.TeamName ==  group){
+			if(currentElement.TeamURL ==  group){
 				groupData = currentElement;
 				break;
 			}
@@ -102,11 +102,6 @@ app.get('/user/:username/:group', function(req, res){
 app.get('/user/:username/account-settings', function(req, res){
 	var username = req.params.username;
 	res.render('settings', {'UserName': username});
-});
-
-app.post('/addGroup', function(req, res) {
-	var groupData = req.params.groupData;
-	console.log(groupData);
 });
 
 // START THE SERVER

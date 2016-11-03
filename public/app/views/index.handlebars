@@ -46,7 +46,7 @@
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   {{#each groups}}
-                  <li><a href="/user/{{ ../UserName }}/{{ this.TeamName }}"> {{ this.TeamName }} </a></li>
+                  <li><a href="/user/{{ ../UserName }}/{{ this.TeamURL }}"> {{ this.TeamName }} </a></li>
                   {{/each}}
                 </ul>
               </div>
@@ -129,6 +129,7 @@
     var groupDescription = document.getElementById('group-description').value;
     var newGroup =  
     {
+      "TeamURL": groupName.toLowerCase().replace(/ /g,"_");
       "TeamName": groupName,
       "TeamDescription": groupDescription,
       "Members": [
