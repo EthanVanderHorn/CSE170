@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE GREEN APP</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE GREEN APP</title>
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
 
 </head>
 
@@ -35,8 +35,8 @@
         <!-- Navbar options -->
         <div class="collapse navbar-collapse" id="navbar-settings">
           <ul class="nav navbar-nav navbar-right">
-            <li id="hidden-navbar-option"><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{ Member.Name }}</p></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+            <li id="hidden-navbar-option"><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{ UserName }}</p></li>
+            <li><a href="/"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
           </ul>
         </div>
       </div>
@@ -48,16 +48,16 @@
   <div id="site-wrapper">
 
     <div id="site-canvas">
-    
+
       <div id="sidebar-wrapper">
-        <h1 id="team-name">{{ Team Name }} </h1>
-        <p id="team-description">{{ Team description }}</p>
+        <h1 id="team-name">{{ TeamName }} </h1>
+        <p id="team-description">{{ TeamDescription }}</p>
         <h1 id="team-members">Team Members</h1>
         <ul class="sidebar-nav">
-          <li>{{ Member #1 }} </li>
-          <li>{{ Member #2 }} </li>
-          <li>{{ Member #3 }} </li>
-          <li>{{ Member #4 }} </li>
+          <li>{{ Member1 }} </li>
+          <li>{{ Member2 }} </li>
+          <li>{{ Member3 }} </li>
+          <li>{{ Member4 }} </li>
         </ul>
       </div>
 
@@ -68,15 +68,15 @@
     </div>
   </div>
 
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/sidemenu.js"></script>
-  <script type="application/javascript" src="assets/js/fastclick.js"></script>
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/assets/js/sidemenu.js"></script>
+  <script type="application/javascript" src="/assets/js/fastclick.js"></script>
 
   <script>
-    window.addEventListener('load', function() {
-      new FastClick(document.body);
-    }, false);
+  window.addEventListener('load', function() {
+    new FastClick(document.body);
+  }, false);
   </script>
 
 </body>
