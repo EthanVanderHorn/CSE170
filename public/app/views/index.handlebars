@@ -36,7 +36,12 @@
         <!-- Navbar options -->
         <div class="collapse navbar-collapse" id="navbar-settings">
           <ul class="nav navbar-nav navbar-right">
-            <li id="hidden-navbar-option"><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{ UserName }}</p></li>
+            <li id="hidden-navbar-option">
+              <a href="/user/{{ UserName }}/account-settings" >
+                  <span class="glyphicon glyphicon-user"></span>
+                  {{ UserName }}
+              </a>
+            </li>
             <li><a href="/"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
           </ul>
         </div>

@@ -75,6 +75,11 @@ app.get('/user/:username', function(req, res){
 		'Member4': 'Ethan Vander Horn'});
 });
 
+app.get('/user/:username/account-settings', function(req, res){
+    var username = req.params.username;
+    res.render('settings', {'UserName': username});
+});
+
 // START THE SERVER
 // ====================================
 app.listen(config.port);
