@@ -1,25 +1,16 @@
 {
-  "name": "IntroHCI",
-  "version": "0.0.1",
-  "author": "Intro HCI Staff",
-
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/IntroHCI/lab4"
-  },
-  "license": "MIT",
-
-  "private": true,
-  "scripts": {
-    "start": "node app.js"
-  },
+  "name": "group-manager",
+  "main": "server.js",
   "dependencies": {
-    "express": "3.x",
-    "express3-handlebars": "*",
-    "mongodb": "*",
-    "mongoose": "*"
-  },
-  "engines": {
-    "node": "0.10.x"
-  }  
+    "bcrypt-nodejs": "latest",
+    "body-parser": "~1.15.1",
+    "connect-flash": "latest",
+    "cookie-parser": "~1.0.0",
+    "express": "~4.13.4",
+    "express-session": "1.0.0",
+    "jsonwebtoken": "^6.2.0",
+    "method-override": "~1.0.0",
+    "mongoose": "~4.4.17",
+    "morgan": "~1.7.0"
+  }
 }
