@@ -97,7 +97,7 @@ app.get('/user/:username/:group', function(req, res){
 		};
 		console.log(groupData);
 
-		res.render('index', {"groupData": groupData, "UserName": username});
+		res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
 	});
 });
 

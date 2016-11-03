@@ -37,9 +37,23 @@
         <div class="collapse navbar-collapse" id="navbar-settings">
           <ul class="nav navbar-nav navbar-right">
             <li>
+              
+            </li>
+            <li>
+             <div class="dropdown">
+              <button id="groups-dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Groups
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  {{#each groups}}
+                    <li><a href="/user/{{ ../UserName }}/{{ this.TeamName }}"> {{ this.TeamName }} </a></li>
+                  {{/each}}
+                </ul>
+              </div>
+            </li>
+            <li>
               <a href="/user/{{ UserName }}/account-settings" >
-                  <span class="glyphicon glyphicon-user"></span>
-                  {{ UserName }}
+                <span class="glyphicon glyphicon-user"></span>
+                {{ UserName }}
               </a>
             </li>
             <li><a href="/"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
@@ -61,7 +75,7 @@
         <h2 id="team-members">Team Members</h2>
         <ul class="sidebar-nav">
           {{#each groupData.Members}}
-            <li>{{ this.membername }}</li>
+          <li>{{ this.membername }}</li>
           {{/each}}
         </ul>
       </div>
