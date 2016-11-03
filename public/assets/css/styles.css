@@ -1,9 +1,14 @@
 /* GENERAL */
-body, html{
+/*body, html{
   overflow-x: hidden;
 	height: 100%;
 	margin: 0;
 	padding: 0;
+}*/
+
+body {
+	overflow-x: hidden;
+	margin-top: 50px;
 }
 
 /* TOP NAV BAR */
@@ -123,7 +128,7 @@ body, html{
 }
 
 /* FOR TESTING PURPOSES ONLY */
-#splash-wrapper {
+/*#splash-wrapper {
 	background: url('../splash-bg.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -240,7 +245,7 @@ body, html{
 .centering {
 	float: none;
 	margin: 0 auto;
-}
+}*/
 
 
 /* MEDIA QUERIES */
