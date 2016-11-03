@@ -104,6 +104,11 @@ app.get('/user/:username/account-settings', function(req, res){
 	res.render('settings', {'UserName': username});
 });
 
+app.post('/addGroup', function(req, res) {
+	var groupData = req.params.groupData;
+	console.log(groupData);
+});
+
 // START THE SERVER
 // ====================================
 app.listen(config.port);

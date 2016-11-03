@@ -36,7 +36,7 @@ body {
 	padding-bottom: 3px;
 }
 
-#navbar #groups-dropdown {
+#navbar button {
 	background: rgba(0, 0, 0, 0);
 	background-color: transparent;
 	text-transform: uppercase;
