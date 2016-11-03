@@ -10,12 +10,12 @@ var mongoose   = require('mongoose');
 var config 	   = require('./config');
 var path 	   = require('path');
 var http	   = require('http');
-var handlebars = require('express-handlebars')
+var handlebars = require('express-handlebars');
+
 
 // Example route
 // var user = require('./routes/user');
 
-var app = express();
 
 // APP CONFIGURATION ==================
 // ====================================
@@ -63,21 +63,47 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/splash.html'));
 });
 
-app.get('/user/:username', function(req, res){
+app.get('/user/:username/', function(req, res){
 	var username = req.params.username;
-	res.render('index', {
-		'UserName': username, 
-		'TeamName': 'Cogs 120', 
-		'TeamDescription': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
-		'Member1': 'Connie Guan', 
-		'Member2': 'Jacqui Bontigao', 
-		'Member3': 'Miguel Vargas', 
-		'Member4': 'Ethan Vander Horn'});
+	var obj;
+	fs = require('fs')
+	fs.readFile('./mock-data/groups.json', 'utf8', function (err,data) {
+		if (err) {
+			return console.log(err);
+		}
+		obj = JSON.parse(data);
+		res.redirect("/user/" + username + "/" + obj.groups[0].TeamName);
+	});
+	//location.href = "/user/" + username + "/cogs120";
+});
+
+app.get('/user/:username/:group', function(req, res){
+	var username = req.params.username;
+	var group = req.params.group;
+	var obj;
+	var groupData;
+	fs = require('fs')
+	fs.readFile('./mock-data/groups.json', 'utf8', function (err,data) {
+		if (err) {
+			return console.log(err);
+		}
+		obj = JSON.parse(data);
+		for (var i = obj.groups.length - 1; i >= 0; i--) {
+			currentElement = obj.groups[i];
+			if(currentElement.TeamName ==  group){
+				groupData = currentElement;
+				break;
+			}
+		};
+		console.log(groupData);
+
+		res.render('index', {"groupData": groupData, "UserName": username});
+	});
 });
 
 app.get('/user/:username/account-settings', function(req, res){
-    var username = req.params.username;
-    res.render('settings', {'UserName': username});
+	var username = req.params.username;
+	res.render('settings', {'UserName': username});
 });
 
 // START THE SERVER

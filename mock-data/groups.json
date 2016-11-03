@@ -1,0 +1,38 @@
+{
+	"groups": [
+	{
+		"TeamName": "Cogs120",
+		"TeamDescription": "Group to collaborate for our cogs 120 project.",
+		"Members": [
+		{"membername": "Connie Guan"},
+		{"membername": "Jacqui Bontigao"},
+		{"membername": "Ethan Vander Horn"},
+		{"membername": "Jacqueline Bontigao"}
+		],
+		"Posts": [
+		{
+			"author": "Jacqui Bontigao",
+			"title": "A5 is Due Tonight",
+			"body" : "Seriously though we haven't even started"
+		}
+		]
+	},
+	{
+		"TeamName": "Sleepless_Collective",
+		"TeamDescription": "This is a group to plan dance events!",
+		"Members": [
+		{"membername": "Jacqueline Bontigao"},
+		{"membername": "Franny de Leon"},
+		{"membername": "Dom Nguyen"},
+		{"membername": "Sheng Poon"}
+		],
+		"Posts": [
+		{
+			"author": "Jacqui Bontigao",
+			"title": "Practice on Thursday!",
+			"body" : "Don't forget that we have practice this Thursday!"
+		}
+		]
+	}
+	]
+}
