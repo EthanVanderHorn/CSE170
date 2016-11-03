@@ -1,0 +1,141 @@
+body, html{
+  overflow-x: hidden;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#splash-wrapper {
+	background: url('../splash-bg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#splash-navbar {
+	background: rgba(0, 0, 0, 0);
+	background-color: transparent;
+	box-shadow: none;
+	text-transform: uppercase;
+	border: none;
+}
+
+#splash-navbar-brand {
+	color: #fff;
+	font-family: 'Lato', sans-serif;
+	text-transform: uppercase;
+	font-size: 40px;
+	font-weight: 400;
+	letter-spacing: 3px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+#splash-navbar-options {
+	color: #fff;
+	font-family: 'Lato', sans-serif;
+	text-transform: uppercase;
+	font-weight: 300;
+	margin-top: 18px;
+	margin-bottom: 18px;
+}
+
+#splash-main-content {
+	color: #fff;
+	font-family: 'Lato', sans-serif;
+}
+
+#splash-main-content h1 {
+	font-size: 48px;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	margin-bottom: 35px;
+}
+
+#splash-main-content h2 {
+	font-size: 24px;
+	font-weight: 300;
+	letter-spacing: 1px;
+	font-style: italic;
+	margin-bottom: 35px;
+}
+
+#splash-navbar-logo {
+	padding: 5px;
+	margin-top: 10px;
+}
+
+#splash-navbar-form input {
+	text-transform: uppercase;
+	font-style: italic;
+	font-size: 12px;
+	letter-spacing: 2px;
+	margin-right: 10px;
+}
+
+#splash-login-btn {
+	background: rgba(0,0,0,0);
+	border: 1px solid rgba(26, 188, 156,1.0);
+	color: rgba(26, 188, 156,1.0);
+	text-transform: uppercase;
+}
+
+#splash-login-btn:hover {
+	background: rgba(26, 188, 156,1.0);
+	color: #fff;
+}
+
+#splash-signup-btn {
+	background: rgba(26, 188, 156,1.0);
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 20px;
+	border-radius: 0;
+}
+
+#splash-signup-btn:hover {
+	background: rgba(22, 160, 133,1.0);
+}
+
+.navbar-logo {
+	height: 100%;
+	width: auto;
+}
+
+.container-fluid {
+	height: 100%;
+	display: table;
+	width: 100%;
+	padding: 0;
+	background: rgba(0,0,0,0.5);
+}
+
+.row-fluid {
+	height: 100%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.centering {
+	float: none;
+	margin: 0 auto;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width:768px) {
+
+	#splash-navbar{
+		padding-left: 20px;
+	}
+
+	#splash-navbar-form, #splash-login-btn, #splash-navbar-options {
+		display: none;
+		border: none;
+	}
+
+
+}
