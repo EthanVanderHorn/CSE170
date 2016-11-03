@@ -80,11 +80,21 @@ body {
   	background:#eee;
 }
 
-#sidebar-wrapper h1 {
+#sidebar-wrapper h2 {
   position: relative;
   padding-left: 15px;
   color:#666;
   font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#sidebar-wrapper h1 {
+  position: relative;
+  padding-left: 15px;
+  color:#666;
+  font-size: 25px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -97,6 +107,16 @@ body {
   font-size:14px;
   font-weight:300;
   margin-bottom:30px;
+}
+
+#team-name {
+	font-size: 25px; 
+}
+
+#group-logo {
+	width: 30px;
+	height: 30px;
+	margin-top: 0px;
 }
 
 .sidebar-nav {
@@ -119,6 +139,7 @@ body {
   display:block;
   text-decoration:none;
 }
+
 
 /* FOR TESTING PURPOSES ONLY */
 

@@ -68,7 +68,7 @@ app.get('/user/:username', function(req, res){
 	res.render('index', {
 		'UserName': username, 
 		'TeamName': 'Cogs 120', 
-		'TeamDescription': 'dis the team description yo', 
+		'TeamDescription': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
 		'Member1': 'Connie Guan', 
 		'Member2': 'Jacqui Bontigao', 
 		'Member3': 'Miguel Vargas', 
