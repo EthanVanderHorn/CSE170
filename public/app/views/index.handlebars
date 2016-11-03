@@ -37,7 +37,8 @@
         <div class="collapse navbar-collapse" id="navbar-settings">
           <ul class="nav navbar-nav navbar-right">
             <li>
-              
+              <!-- Trigger the modal with a button -->
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#new-group">Add New Group</button>
             </li>
             <li>
              <div class="dropdown">
@@ -45,7 +46,7 @@
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   {{#each groups}}
-                    <li><a href="/user/{{ ../UserName }}/{{ this.TeamName }}"> {{ this.TeamName }} </a></li>
+                  <li><a href="/user/{{ ../UserName }}/{{ this.TeamName }}"> {{ this.TeamName }} </a></li>
                   {{/each}}
                 </ul>
               </div>
@@ -85,6 +86,32 @@
       </div>
 
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="new-group" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">New Group</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <ul>
+                  <li class="col-xs-2" ><input id="group-name" type="text" class="form-control" placeholder="Group Name"></li>
+                  <li><textarea id="group-description" class="form-control" rows="3" placeholder="Description" required></textarea></li>
+                </ul>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button onClick="addGroup('{{ UserName }}')" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script src="/assets/js/jquery.min.js"></script>
@@ -96,6 +123,20 @@
   window.addEventListener('load', function() {
     new FastClick(document.body);
   }, false);
+  
+  function addGroup(UserName){
+    var groupName = document.getElementById('group-name').value;
+    var groupDescription = document.getElementById('group-description').value;
+    var newGroup =  
+    {
+      "TeamName": groupName,
+      "TeamDescription": groupDescription,
+      "Members": [
+      {"membername": UserName}
+      ],
+      "Posts": []
+    };
+  } 
   </script>
 
 </body>

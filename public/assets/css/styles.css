@@ -14,6 +14,10 @@ body {
 	color: #ecf0f1;
 }
 
+#new-group li {
+	list-style: none;
+}
+
 #navbar a, #navbar p {
 	color: #ecf0f1;
 	text-transform: uppercase;
