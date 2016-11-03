@@ -88,14 +88,15 @@ body {
 }
 
 #main-content {
-	margin-left: 250px;
+	margin-left: 350px;
+	margin-right: 350px;
 }
 
 /* SIDEBAR */
 
 #sidebar-wrapper {
 	position: fixed;
-	width: 250px;
+	width: 350px;
 	height: 100%;
 	padding: 10px;
   	background:#eee;
