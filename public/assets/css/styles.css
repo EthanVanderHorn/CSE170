@@ -104,7 +104,7 @@ body {
 }
 
 #make-post-bar {
-	margin:3em;
+	margin-left: 3em;
 }
 
 #post-btn {
@@ -112,7 +112,7 @@ body {
 	background-color: #1abc9c;
 	color: white;
 	position:relative;
-	right: -51em;
+	left: 51em;
 }
 
 /* SIDEBAR */
