@@ -149,6 +149,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 } 
+<<<<<<< HEAD
 
 #sidebar-wrapper h1 {
   position: relative;
@@ -159,6 +160,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+=======
+>>>>>>> 7c77f40db200f6f1d99c144fb2d971f6fa505b67
 
 #sidebar-wrapper p {
   position:relative;
