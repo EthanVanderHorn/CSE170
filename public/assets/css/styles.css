@@ -88,8 +88,9 @@ body {
 }
 
 #main-content {
-	margin-left: 350px;
+	margin-left:  350px;
 	margin-right: 350px;
+
 }
 
 /* POSTS */
@@ -101,18 +102,30 @@ body {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	padding: 1em 2em;
 	margin: 3em;
+	width: 120%;
 }
 
 #make-post-bar {
 	margin-left: 3em;
+	width:120%;
+}
+
+#urgent-btn {
+	font-size: 12;
+	float:right;
+
 }
 
 #post-btn {
 	margin: 1em;
+	position:relative;
 	background-color: #1abc9c;
 	color: white;
 	position:relative;
-	left: 51em;
+	display: inline;
+
+
+	/*right: -51em;*/
 }
 
 /* SIDEBAR */
