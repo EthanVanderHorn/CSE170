@@ -83,20 +83,18 @@
 
       <div id="main-content">
         <!-- MAIN CONTENT GOES HERE -->
-          <div id="bulletin-header">
-            
-          </div>
             <div id="make-post-bar">
               <h3> Bulletin </h3>
             <p id="date"></p>
-              <input type="text" class="form-control" placeholder="What's up?">
-              <button onClick="post" id="post-btn" type="button" class="btn">Post</button>
+              <input type="text" id="post-text" class="form-control" placeholder="What's up?">
+              <button onClick="addPost('{{ UserName }}')" id="post-btn" type="button" class="btn">Post</button>
 
             </div>
-        
-            <div class="card card-block">
-              <h4>Welcome</h4>
-              <p>Welcome to the Green app! Let's get started. You can make posts, change groups, and mark posts as urgent.</p>
+            <div id="card-stack">
+                <div class="card">
+                  <h4>Welcome</h4>
+                  <p>Welcome to the Green app! Let's get started. You can make posts, change groups, and mark posts as urgent.</p>
+                </div>
             </div>
      
       </div>
@@ -154,11 +152,25 @@
       "Posts": []
     };
   } 
+  </script>
 
-  function addPost(){
+  <script>
+      function addPost(UserName){
+          //var cardDiv = document.createElement('div');
+          //cardDiv.className = 'card';
+          //var title = document.createElement('h5');
+          //var name = document.createTextNode(UserName);
+          //title.appendChild(name);
+          var post = document.createElement('p');
+          var postText = document.getElementById('post-text').value;
+          post.append(postText);
+         
+          //cardDiv.appendChild(title);
+          //cardDiv.appendChild(post);
+          var welcome = $("#card-stack");
+          welcome.prepend(post);
+}
 
-    
-  }
   </script>
 
   <script>
