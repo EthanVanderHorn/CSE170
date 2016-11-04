@@ -88,10 +88,10 @@ body {
 }
 
 #main-content {
-	margin-left:  350px;
-	margin-right: 350px;
+	margin-left:  250px;
+/*	margin-right: 250px;*/
 	padding-top: .5em;
-
+	max-width: 768px;
 
 }
 
@@ -104,12 +104,11 @@ body {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	padding: 1em 2em;
 	margin: 3em;
-	width: 120%;
 }
 
 #make-post-bar {
-	margin-left: 3em;
-	width:120%;
+	padding-left: 3em;
+	padding-right: 3em;
 }
 
 #urgent-btn {
@@ -125,16 +124,13 @@ body {
 	color: white;
 	position:relative;
 	display: inline;
-
-
-	/*right: -51em;*/
 }
 
 /* SIDEBAR */
 
 #sidebar-wrapper {
 	position: fixed;
-	width: 350px;
+	width: 250px;
 	height: 100%;
 	padding: 10px;
   	background:#eee;
@@ -149,7 +145,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 } 
-<<<<<<< HEAD
 
 #sidebar-wrapper h1 {
   position: relative;
@@ -160,8 +155,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-=======
->>>>>>> 7c77f40db200f6f1d99c144fb2d971f6fa505b67
 
 #sidebar-wrapper p {
   position:relative;
@@ -174,6 +167,7 @@ body {
 
 #team-name {
 	font-size: 25px; 
+	color: #879096;
 }
 
 #group-logo {
@@ -241,7 +235,8 @@ body {
 	}
 
 	#main-content {
-		margin-left: 0px;
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 	#sidebar-wrapper {

@@ -23,13 +23,6 @@ var handlebars = require('express-handlebars');
 app.set('views', path.join(__dirname, 'public/app/views'));
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
-//app.use(express.favicon());
-//app.use(express.logger('dev'));
-//app.use(express.json());
-//app.use(express.urlencoded());
-//app.use(express.methodOverride());
-//app.use(express.cookieParser('Intro HCI secret key'));
-//app.use(express.session());
 
 
 // use body parser so we can grab information from POST requests
