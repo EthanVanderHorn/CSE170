@@ -233,6 +233,13 @@ body {
   text-decoration:none;
 }
 
+#share-btn {
+	background-color:#1abc9c;
+	color: white;
+	margin-left:50px;
+	margin-top: -20px;
+}
+
 
 /* FOR TESTING PURPOSES ONLY */
 
