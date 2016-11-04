@@ -73,6 +73,7 @@
       <div id="sidebar-wrapper">
         <h1 id="team-name">{{ groupData.TeamName }} </h1>
         <p id="team-description">{{ groupData.TeamDescription }}</p>
+        <button onClick="share()" id="share-btn" type="button" class="btn">Share Group</button>
         <h2 id="team-members">Team Members</h2>
         <ul class="sidebar-nav">
           {{#each groupData.Members}}
