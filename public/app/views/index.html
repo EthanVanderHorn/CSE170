@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE GREEN APP</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+  <!--  Navbar -->
+  <div id="navbar-wrapper">
+    <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!-- Sidebar button -->
+          <button id="navbar-button-sidemenu" type="button" class="toggle-nav navbar-toggle" data-toggle="collapse">
+            <span class="glyphicon glyphicon-list"></span>
+          </button>
+
+          <!-- Settings button -->
+          <button id="navbar-button-settings" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-settings">
+            <span class="glyphicon glyphicon-option-vertical"></span>
+          </button>
+
+          <!-- App Name -->
+          <p id="navbar-brand" class="navbar-text">Green</p>
+        </div>
+
+        <!-- Navbar options -->
+        <div class="collapse navbar-collapse" id="navbar-settings">
+          <ul class="nav navbar-nav navbar-right">
+            <li id="hidden-navbar-option"><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{ Member.Name }}</p></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  </div>
+  <!--  Navbar end-->
+
+  <div id="site-wrapper">
+
+    <div id="site-canvas">
+    
+      <div id="sidebar-wrapper">
+        <h1 id="team-name">{{ Team Name }} </h1>
+        <p id="team-description">{{ Team description }}</p>
+        <h1 id="team-members">Team Members</h1>
+        <ul class="sidebar-nav">
+          <li>{{ Member #1 }} </li>
+          <li>{{ Member #2 }} </li>
+          <li>{{ Member #3 }} </li>
+          <li>{{ Member #4 }} </li>
+        </ul>
+      </div>
+
+      <div id="main-content">
+        <!-- MAIN CONTENT GOES HERE -->
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/sidemenu.js"></script>
+  <script type="application/javascript" src="assets/js/fastclick.js"></script>
+
+  <script>
+    window.addEventListener('load', function() {
+      new FastClick(document.body);
+    }, false);
+  </script>
+
+</body>
+
+</html>
