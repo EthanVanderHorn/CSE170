@@ -89,10 +89,10 @@
           <p id="date"></p>
           <input type="text" id="post-text" class="form-control" placeholder="What's up?">
           <button onClick="addPost('{{ UserName }}')" id="post-btn" type="button" class="btn">Post</button>
-          <div id="urgent-btn">
+          <div id="check-box">
 
-            <input id="urgent-check" type="checkbox"> Pin? Group members will receive special notification
-
+            <input id="pin-check" type="checkbox"> Pin? 
+            <input id="urgent-check" type="checkbox"> Urgent? Group members will receive special notification.
           </div>
 
         </div>
@@ -186,7 +186,7 @@
     if (postText.length <= 0){ return;}
 
     var card = document.createElement('div');
-    if($('#urgent-check').is(":checked")) {
+    if($('#pin-check').is(":checked")) {
         card.className += 'pin-card';
     }
     else {
@@ -196,7 +196,7 @@
     card.append(title);
     card.append(post);
 
-    var cardStack = ($('#urgent-check').is(":checked")) ? $("#pin-stack") : $("#card-stack");
+    var cardStack = ($('#pin-check').is(":checked")) ? $("#pin-stack") : $("#card-stack");
     cardStack.prepend(card);
   }
   </script>
