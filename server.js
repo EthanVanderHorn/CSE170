@@ -61,7 +61,6 @@ app.use(express.static(__dirname + '/public'));
 // has to be registered after API ROUTES
 app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/splash.html'));
-});
 
 app.get('/user/:username/', function(req, res){
 	var username = req.params.username;
