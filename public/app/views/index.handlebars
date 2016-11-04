@@ -83,18 +83,19 @@
 
       <div id="main-content">
         <!-- MAIN CONTENT GOES HERE -->
-            <div id="make-post-bar">
-              <h3> Bulletin </h3>
-            <p id="date"></p>
-              <input type="text" id="post-text" class="form-control" placeholder="What's up?">
-              <button onClick="addPost('{{ UserName }}')" id="post-btn" type="button" class="btn">Post</button>
-              <div id="urgent-btn">
-               
-                    <input type="checkbox" id="urgent"> Urgent? Group members will receive special notification
 
-              </div>
+        <div id="make-post-bar">
+          <h3> Bulletin </h3>
+          <p id="date"></p>
+          <input type="text" id="post-text" class="form-control" placeholder="What's up?">
+          <button onClick="addPost('{{ UserName }}')" id="post-btn" type="button" class="btn">Post</button>
+          <div id="urgent-btn">
 
-            </div>
+            <input id="urgent-check" type="checkbox"> Pin? Group members will receive special notification
+
+          </div>
+
+        </div>
             <div id="pin-stack">
                 {{#each groupData.Pinned}}
                 <div class="pin-card">
@@ -111,7 +112,6 @@
                 </div>
                 {{/each}}
             </div>
-     
       </div>
 
     </div>
@@ -152,13 +152,15 @@
   window.addEventListener('load', function() {
     new FastClick(document.body);
   }, false);
-  
+  </script>
+
+  <script>
   function addGroup(UserName){
     var groupName = document.getElementById('group-name').value;
     var groupDescription = document.getElementById('group-description').value;
     var newGroup =  
     {
-      "TeamURL": groupName.toLowerCase().replace(/ /g,"_");
+      "TeamURL": groupName.toLowerCase().replace(/ /g,"_"),
       "TeamName": groupName,
       "TeamDescription": groupDescription,
       "Members": [
@@ -170,31 +172,37 @@
   </script>
 
   <script>
-      function addPost(UserName){
-          var cardDiv = document.createElement('div');
-          if($("#urgent").is(':checked')) {
-              cardDiv.className = 'pin-card';
-          }
-          else {
-              cardDiv.className = 'card';
-          }
-          var title = document.createElement('h5');
-          var name = document.createTextNode(UserName);
-          title.appendChild(name);
-          var post = document.createElement('p');
-          var postText = document.getElementById('post-text').value;
-          post.append(postText);
-         
-          cardDiv.appendChild(title);
-          cardDiv.append(post);
-          var welcome = $("#card-stack");
-          welcome.prepend(cardDiv);
-}
+  function addPost(UserName){
 
+    //var username = UserName;
+    var title = document.createElement('h5');
+    var titleText = UserName;//document.getElementById('title-text').value;
+    title.append(titleText);
+
+    var post = document.createElement('p');
+    var postText = document.getElementById('post-text').value;
+    post.append(postText);
+
+    if (postText.length <= 0){ return;}
+
+    var card = document.createElement('div');
+    if($('#urgent-check').is(":checked")) {
+        card.className += 'pin-card';
+    }
+    else {
+        card.className +='card';
+    }
+    
+    card.append(title);
+    card.append(post);
+
+    var cardStack = ($('#urgent-check').is(":checked")) ? $("#pin-stack") : $("#card-stack");
+    cardStack.prepend(card);
+  }
   </script>
 
   <script>
-    document.getElementById("date").innerHTML = Date();
+  document.getElementById("date").innerHTML = Date();
   </script>
 
   <script src="/assets/js/post.js"></script>

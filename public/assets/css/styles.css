@@ -88,10 +88,10 @@ body {
 }
 
 #main-content {
-	margin-left:  350px;
-	margin-right: 350px;
+	margin-left:  250px;
+/*	margin-right: 250px;*/
 	padding-top: .5em;
-
+	max-width: 768px;
 
 }
 
@@ -115,12 +115,11 @@ body {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	padding: 1em 2em;
 	margin: 3em;
-	width: 120%;
 }
 
 #make-post-bar {
-	margin-left: 3em;
-	width:120%;
+	padding-left: 3em;
+	padding-right: 3em;
 }
 
 #urgent-btn {
@@ -143,7 +142,7 @@ body {
 
 #sidebar-wrapper {
 	position: fixed;
-	width: 350px;
+	width: 250px;
 	height: 100%;
 	padding: 10px;
   	background:#eee;
@@ -157,7 +156,7 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
+} 
 
 #sidebar-wrapper h1 {
   position: relative;
@@ -180,6 +179,7 @@ body {
 
 #team-name {
 	font-size: 25px; 
+	color: #879096;
 }
 
 #group-logo {
@@ -247,7 +247,8 @@ body {
 	}
 
 	#main-content {
-		margin-left: 0px;
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 	#sidebar-wrapper {
