@@ -21,19 +21,28 @@ body {
 	margin: 0px;
 }
 
+.glyphicon-pushpin { 
+	margin-right: 10px;
+}
+
 #new-group li h4 {
 	color: #666;
 	font-weight: 300;
 }
 
-.modal-body {
-	background:#eee;
+h4.modal-title {
+	color: #ecf0f1;
 }
 
-.modal-body a {
-	background:#eee;
+.close {
+	color: rgba(255, 255, 255, 255;)
 }
 
+.modal-header {
+	background: #16a085;
+}
+
+.modal-body,
 .modal-footer {
 	background:#eee;
 }

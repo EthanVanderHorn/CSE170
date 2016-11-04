@@ -10,11 +10,31 @@
 		{"membername": "Ethan Vander Horn"},
 		{"membername": "Jacqueline Bontigao"}
 		],
+		"Pinned": [
+		{
+			"author": "Miguel Vargas",
+			"title": "Practice on Thursday!",
+			"body" : "Link to google doc for convenience: https://drive.google.com/drive/folders/0B6N7VlbbnDg5fnRuV"
+		}
+
+
+		],
+
 		"Posts": [
 		{
 			"author": "Jacqui Bontigao",
 			"title": "A5 is Due Tonight",
 			"body" : "Seriously though we haven't even started"
+		},
+		{
+			"author": "Connie Guan",
+			"title": "A5 is Due Tonight",
+			"body" : "Somebody review my User Story, I added it to the drive."
+		},
+		{
+			"author": "Ethan Vander Horn",
+			"title": "A5 is Due Tonight",
+			"body" : "Hey guys I created a Green group so that we can have an easy way to plan for group assignments."
 		}
 		]
 	},
@@ -26,7 +46,9 @@
 		{"membername": "Jacqueline Bontigao"},
 		{"membername": "Franny de Leon"},
 		{"membername": "Dom Nguyen"},
-		{"membername": "Sheng Poon"}
+		{"membername": "Sheng Poon"},
+		{"membername": "Jomar Batac"},
+		{"membername": "Desiree Santos"}
 		],
 		"Pinned": [
 		{
@@ -40,7 +62,7 @@
 		{
 			"author": "Sheng Poon",
 			"title": "Guest Instructor",
-			"body" : "I'm going to see if I can get a guest instructor for next week."
+			"body" : "I'm going to see if I can get a guest chreographer from another team. I am talking to people from cookies and 220."
 		}
 		]
 	}
