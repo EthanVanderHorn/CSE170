@@ -90,7 +90,7 @@
               <button onClick="addPost('{{ UserName }}')" id="post-btn" type="button" class="btn">Post</button>
               <div id="urgent-btn">
                
-                    <input type="checkbox"> Urgent? Group members will receive special notification
+                    <input type="checkbox" id="urgent"> Urgent? Group members will receive special notification
 
               </div>
 
@@ -172,7 +172,12 @@
   <script>
       function addPost(UserName){
           var cardDiv = document.createElement('div');
-          cardDiv.className = 'card';
+          if($("#urgent").is(':checked')) {
+              cardDiv.className = 'pin-card';
+          }
+          else {
+              cardDiv.className = 'card';
+          }
           var title = document.createElement('h5');
           var name = document.createTextNode(UserName);
           title.appendChild(name);
