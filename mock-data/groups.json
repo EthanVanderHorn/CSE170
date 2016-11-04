@@ -10,7 +10,12 @@
 		{"membername": "Ethan Vander Horn"},
 		{"membername": "Jacqueline Bontigao"}
 		],
-		"Pinned": [
+		"Pinned": [		
+		{
+			"author": "Jacqui Bontigao",
+			"title": "A5 is Due Tonight",
+			"body" : "Lets bring all of our Story Boards to tomorrows meeting. We can review them, make edits if needed, and then work on the Paper Prototypes together. Fill out this strawpull to figure out what time we can meet: http://www.strawpoll.me/"
+		},
 		{
 			"author": "Miguel Vargas",
 			"title": "Practice on Thursday!",
@@ -21,15 +26,11 @@
 		],
 
 		"Posts": [
-		{
-			"author": "Jacqui Bontigao",
-			"title": "A5 is Due Tonight",
-			"body" : "Seriously though we haven't even started"
-		},
+
 		{
 			"author": "Connie Guan",
 			"title": "A5 is Due Tonight",
-			"body" : "Somebody review my User Story, I added it to the drive."
+			"body" : "Somebody review my Story Board, I added it to the drive."
 		},
 		{
 			"author": "Ethan Vander Horn",
@@ -63,6 +64,23 @@
 			"author": "Sheng Poon",
 			"title": "Guest Instructor",
 			"body" : "I'm going to see if I can get a guest chreographer from another team. I am talking to people from cookies and 220."
+		},
+		{
+			"author": "Dom Nguyen",
+			"title": "Guest Instructor",
+			"body" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet nibh at augue tristique tincidunt. Nam elit ipsum, varius id velit ut, ultrices placerat nibh. Pellentesque fermentum quam leo, et cursus felis blandit in. Vestibulum laoreet ac metus ut interdum. Quisque vitae ligula egestas ligula cursus imperdiet. Mauris vitae finibus diam. Mauris at eros nibh. Curabitur faucibus pharetra turpis, ac feugiat dolor ultricies quis. Donec at elementum nisl. "
+		},
+
+		{
+			"author": "Franny de Leon",
+			"title": "Guest Instructor",
+			"body" : "Sed non nisi ac lacus ultricies pretium in ut purus. Fusce vulputate ut nisi non pellentesque. Sed in risus urna. Aliquam porta, tortor sed imperdiet laoreet, mi ex bibendum augue, lobortis bibendum magna nunc et arcu. In hac habitasse platea dictumst."
+		},
+
+		{
+			"author": "Jacquelie Bontigao",
+			"title": "Guest Instructor",
+			"body" : "Vivamus in ligula lorem. Integer ultricies gravida odio, sit amet tincidunt elit sodales ac. Duis nec orci pellentesque, semper urna id, suscipit justo. Praesent vel sem lacus. Maecenas lacinia gravida risus vitae maximus. Nunc suscipit turpis mi, sed imperdiet purus mattis eget."
 		}
 		]
 	}
