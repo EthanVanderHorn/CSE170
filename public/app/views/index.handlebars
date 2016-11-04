@@ -73,7 +73,11 @@
       <div id="sidebar-wrapper">
         <h1 id="team-name">{{ groupData.TeamName }} </h1>
         <p id="team-description">{{ groupData.TeamDescription }}</p>
-        <button onClick="share()" id="share-btn" type="button" class="btn">Share Group</button>
+        <button id="share-btn" type="button" class="btn" data-toggle="modal" data-target="#share">Share Group </button>
+
+
+
+</button>
         <h2 id="team-members">Team Members</h2>
         <ul class="sidebar-nav">
           {{#each groupData.Members}}
@@ -138,6 +142,25 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             <button onClick="addGroup('{{ UserName }}')" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+            <!-- Share button modal -->
+    <div class="modal fade" id="share" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Share Group </h4>
+          </div>
+          <div class="link-share">
+                <p> Link Sharing! </p>
+                <p> http://cse170thebears.herokuapp.com/ </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
         </div>
       </div>
