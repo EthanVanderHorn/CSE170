@@ -97,8 +97,8 @@
             </div>
             <div id="pin-stack">
                 {{#each groupData.Pinned}}
-                <div class="card">
-                    <h4>{{ this.title }}</h4>
+                <div class="pin-card">
+                    <h4>{{ this.author }}</h4>
                     <p>{{ this.body }}</p>
                 </div>
                 {{/each}}
@@ -106,7 +106,7 @@
             <div id="card-stack">
                 {{#each groupData.Posts}}
                 <div class="card">
-                    <h4>{{ this.title }}</h4>
+                    <h4>{{ this.author }}</h4>
                     <p>{{ this.body }}</p>
                 </div>
                 {{/each}}

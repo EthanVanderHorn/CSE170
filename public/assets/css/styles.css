@@ -100,7 +100,18 @@ body {
 	border-radius: 5px;
 	border-color: #2AEB3E;
 	border-width: thin;
-	border-style:solid;
+	border-style: solid;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	padding: 1em 2em;
+	margin: 3em;
+	width: 120%;
+}
+
+.pin-card {
+	border-radius: 5px;
+	border-style: double;
+	border-color: #2AEB3E;
+	border-width: thick;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	padding: 1em 2em;
 	margin: 3em;
@@ -125,10 +136,8 @@ body {
 	color: white;
 	position:relative;
 	display: inline;
-
-
-	/*right: -51em;*/
 }
+
 
 /* SIDEBAR */
 
