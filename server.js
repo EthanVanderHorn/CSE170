@@ -59,9 +59,9 @@ app.use(express.static(__dirname + '/public'));
 // MAIN CATCHALL ROUTE --------------- 
 // SEND USERS TO FRONTEND ------------
 // has to be registered after API ROUTES
-<<<<<<< HEAD
 app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/splash.html'));
+});
 
 app.get('/user/:username/', function(req, res){
 	var username = req.params.username;
@@ -102,10 +102,6 @@ app.get('/user/:username/:group', function(req, res){
 app.get('/user/:username/account-settings', function(req, res){
 	var username = req.params.username;
 	res.render('settings', {'UserName': username});
-=======
-app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
->>>>>>> 7c77f40db200f6f1d99c144fb2d971f6fa505b67
 });
 
 // START THE SERVER
