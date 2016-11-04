@@ -15,7 +15,26 @@ body {
 }
 
 #new-group li {
+	float: none;
 	list-style: none;
+	padding: 0px;
+}
+
+#new-group li h4 {
+	color: #666;
+	font-weight: 300;
+}
+
+.modal-body {
+	background:#eee;
+}
+
+.modal-body a {
+	background:#eee;
+}
+
+.modal-footer {
+	background:#eee;
 }
 
 #navbar a, #navbar p {
