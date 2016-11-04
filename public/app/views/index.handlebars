@@ -104,6 +104,7 @@
                 {{/each}}
             </div>
             <div id="card-stack">
+                <!-- New Cards go here -->
                 {{#each groupData.Posts}}
                 <div class="card">
                     <h4>{{ this.title }}</h4>
@@ -171,19 +172,24 @@
 
   <script>
       function addPost(UserName){
-          //var cardDiv = document.createElement('div');
-          //cardDiv.className = 'card';
-          //var title = document.createElement('h5');
-          //var name = document.createTextNode(UserName);
-          //title.appendChild(name);
+          //var username = UserName;
+          var title = document.createElement('h4');
+          var titleText = UserName;//document.getElementById('title-text').value;
+          title.append(titleText);
+
           var post = document.createElement('p');
           var postText = document.getElementById('post-text').value;
           post.append(postText);
-         
-          //cardDiv.appendChild(title);
-          //cardDiv.appendChild(post);
-          var welcome = $("#card-stack");
-          welcome.prepend(post);
+
+          if (postText.length <= 0) return;
+
+          var card = document.createElement('div');
+          card.className += 'card';
+          card.append(title);
+          card.append(post);
+
+          var cardStack = $("#card-stack");
+          cardStack.prepend(card);
 }
 
   </script>
