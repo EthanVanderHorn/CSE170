@@ -97,8 +97,10 @@
             </div>
             <div id="card-stack">
                 <div class="card">
-                  <h4>Welcome</h4>
-                  <p>Welcome to the Green app! Let's get started. You can make posts, change groups, and mark posts as urgent.</p>
+                  {{#each groupData.Posts}}
+                    <h4>{{ this.title }}</h4>
+                    <p>{{ this.body }}</p>
+                  {{/each}}
                 </div>
             </div>
      
