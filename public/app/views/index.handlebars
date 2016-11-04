@@ -95,14 +95,14 @@
               </div>
 
             </div>
+            {{#each groupData.Posts}}
             <div id="card-stack">
                 <div class="card">
-                  {{#each groupData.Posts}}
                     <h4>{{ this.title }}</h4>
                     <p>{{ this.body }}</p>
-                  {{/each}}
                 </div>
             </div>
+            {{/each}}
      
       </div>
 
