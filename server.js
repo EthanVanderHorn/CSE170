@@ -94,7 +94,12 @@ app.get('/user/:username/:group', function(req, res){
 
 app.get('/user/:username/account-settings', function(req, res){
 	var username = req.params.username;
+	console.log("settings");
 	res.render('settings', {'UserName': username});
+});
+
+app.get('/getStarted', function(req, res){
+	res.render('sign_up');
 });
 
 // START THE SERVER
