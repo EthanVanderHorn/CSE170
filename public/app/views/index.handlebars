@@ -98,7 +98,7 @@
             <div id="card-stack">
                 <div class="card">
                   <h4>Welcome</h4>
-                  <p>Welcome to the Green app! Let's get started. You can make posts, change groups, and mark posts as urgent.</p>
+                  <p>Welcome to the Green app! Let's get started. You can make posts, change groups, and mark posts as urgent. When you mark your post as urgent your group members will receive a special notification that they need to pay attention to your post. </p>
                 </div>
             </div>
      
@@ -161,19 +161,19 @@
 
   <script>
       function addPost(UserName){
-          //var cardDiv = document.createElement('div');
-          //cardDiv.className = 'card';
-          //var title = document.createElement('h5');
-          //var name = document.createTextNode(UserName);
-          //title.appendChild(name);
+          var cardDiv = document.createElement('div');
+          cardDiv.className = 'card';
+          var title = document.createElement('h5');
+          var name = document.createTextNode(UserName);
+          title.appendChild(name);
           var post = document.createElement('p');
           var postText = document.getElementById('post-text').value;
           post.append(postText);
          
-          //cardDiv.appendChild(title);
-          //cardDiv.appendChild(post);
+          cardDiv.appendChild(title);
+          cardDiv.append(post);
           var welcome = $("#card-stack");
-          welcome.prepend(post);
+          welcome.prepend(cardDiv);
 }
 
   </script>
