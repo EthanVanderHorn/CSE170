@@ -96,8 +96,8 @@
           <button onClick="addPost('{{ UserName }}')" id="post-btn" type="button" class="btn">Post</button>
           <div id="check-box">
 
-            <input id="pin-check" type="checkbox"> Pin? 
-            <input id="urgent-check" type="checkbox"> Urgent? Group members will receive special notification.
+            <input id="pin-check" data-toggle="tooltip" title="Pin a post to sticky it to the top" type="checkbox"> Pin? 
+            <input id="urgent-check" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates" type="checkbox"> Urgent? Group members will receive special notification.
           </div>
 
         </div>
@@ -194,6 +194,13 @@
     };
   } 
   </script>
+
+  <script>
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
 
   <script>
   function addPost(UserName){
