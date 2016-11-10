@@ -104,6 +104,7 @@
                 {{#each groupData.Pinned}}
                 <div class="pin-card">
                     <h4>{{ this.author }}</h4>
+                    <p id="date"> {{this.date}} </p>
                     <p>{{ this.body }}</p>
                 </div>
                 {{/each}}
@@ -210,6 +211,10 @@
     var titleText = UserName;//document.getElementById('title-text').value;
     title.append(titleText);
 
+    var date = document.createElement('p');
+    dateText = Date();
+    date.append(dateText);
+
     var post = document.createElement('p');
     var postText = document.getElementById('post-text').value;
     post.append(postText);
@@ -225,6 +230,7 @@
     }
     
     card.append(title);
+    card.append(date);
     card.append(post);
 
     var cardStack = ($('#pin-check').is(":checked")) ? $("#pin-stack") : $("#card-stack");
