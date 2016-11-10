@@ -249,14 +249,38 @@ h4.modal-title {
 	margin-left:50px;
 	margin-top: -20px;
 }
-
+	
 .link-share {
 	text-align: center;
 }
 
+
+/* NEW ACCOUNT PAGE */
+#new-account-wrapper {
+	position: fixed;
+	width: 400px;
+	height: 100%;
+	padding: 10px;
+	margin-left: 700px;
+	margin-right: 700px;
+}
+
+#new-account-content h4 {
+	text-align: center;
+	font-size: 35px; 
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+#new-account-content label {
+	text-align: left;
+	margin-top: 15px;
+}
+
+#new-account-content input {
+}
+
 /* FOR TESTING PURPOSES ONLY */
-
-
 
 /* MEDIA QUERIES */
 

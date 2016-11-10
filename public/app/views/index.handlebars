@@ -74,10 +74,6 @@
         <h1 id="team-name">{{ groupData.TeamName }} </h1>
         <p id="team-description">{{ groupData.TeamDescription }}</p>
         <button id="share-btn" type="button" class="btn" data-toggle="modal" data-target="#share">Share Group </button>
-
-
-
-</button>
         <h2 id="team-members">Team Members</h2>
         <ul class="sidebar-nav">
           {{#each groupData.Members}}
@@ -205,7 +201,7 @@
     title.append(titleText);
 
     var post = document.createElement('p');
-    var postText = document.getElementById('post-text').value;
+    var postText = document.getElementById('post-text').value.replace(/\r?\n/g,'<br/>');
     post.append(postText);
 
     if (postText.length <= 0){ return;}
