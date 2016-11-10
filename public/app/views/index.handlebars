@@ -88,8 +88,8 @@
         <div id="make-post-bar">
           <h3> Bulletin </h3>
           <p id="date"></p>
-          <textarea id="post-text" class="form-control" rows="3" placeholder="What's up?" required></textarea>
-          <button onClick="addPost('{{ UserName }}')" id="post-btn" type="button" class="btn">Post</button>
+          <textarea id="post-text" class="form-control" rows="3" placeholder="What's up?" required ></textarea>
+          <button onClick="addPost('{{ UserName }}'); clearForm()" id="post-btn" type="button" class="btn">Post</button>
           <div id="check-box">
             <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
             <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
@@ -235,7 +235,11 @@
   </script>
 
   <script>
-  document.getElementById("date").innerHTML = Date();
+    function clearForm() 
+    {
+        document.getElementById("post-text").value = "";
+
+    }
   </script>
 
   <script src="/assets/js/post.js"></script>
