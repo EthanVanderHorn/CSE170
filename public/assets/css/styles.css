@@ -15,7 +15,36 @@ body {
 }
 
 #new-group li {
+	float: none;
 	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.glyphicon-pushpin { 
+	margin-right: 10px;
+}
+
+#new-group li h4 {
+	color: #666;
+	font-weight: 300;
+}
+
+h4.modal-title {
+	color: #ecf0f1;
+}
+
+.close {
+	color: rgba(255, 255, 255, 255;)
+}
+
+.modal-header {
+	background: #16a085;
+}
+
+.modal-body,
+.modal-footer {
+	background:#eee;
 }
 
 #navbar a, #navbar p {

@@ -92,12 +92,11 @@
         <div id="make-post-bar">
           <h3> Bulletin </h3>
           <p id="date"></p>
-          <input type="text" id="post-text" class="form-control" placeholder="What's up?">
+          <textarea id="post-text" class="form-control" rows="3" placeholder="What's up?" required></textarea>
           <button onClick="addPost('{{ UserName }}')" id="post-btn" type="button" class="btn">Post</button>
           <div id="check-box">
-
-            <input id="pin-check" data-toggle="tooltip" title="Pin a post to sticky it to the top" type="checkbox"> Pin? 
-            <input id="urgent-check" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates" type="checkbox"> Urgent? Group members will receive special notification.
+            <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
+            <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
           </div>
 
         </div>
@@ -132,8 +131,9 @@
             <form>
               <div class="form-group">
                 <ul>
+                  <li><h4>Name your group:</h4></li>
                   <li class="col-xs-2" ><input id="group-name" type="text" class="form-control" placeholder="Group Name"></li>
-                  <li><textarea id="group-description" class="form-control" rows="3" placeholder="Description" required></textarea></li>
+                  <li><h4>Describe your group:</h4><textarea id="group-description" class="form-control" rows="3" placeholder="Description" required></textarea></li>
                 </ul>
               </div>
             </form>
@@ -155,8 +155,8 @@
             <h4 class="modal-title"> Share Group </h4>
           </div>
           <div class="link-share">
-                <p> Link Sharing! </p>
-                <p> http://cse170thebears.herokuapp.com/ </p>
+                <h4> Link Sharing! </h4>
+                <p> https://thebears-turnin.herokuapp.com/ </p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
