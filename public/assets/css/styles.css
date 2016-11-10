@@ -277,7 +277,13 @@ h4.modal-title {
 	margin-top: 15px;
 }
 
-#new-account-content input {
+#new-account-content button {
+	position:relative;
+	background-color: #1abc9c;
+	color: white;
+	margin-top: 20px;
+	margin-left: 145px;
+	margin-right: 130px;
 }
 
 /* FOR TESTING PURPOSES ONLY */
