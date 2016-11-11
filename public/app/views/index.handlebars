@@ -223,6 +223,7 @@
       type: "POST",
       dataType: "json",
     });
+    location.reload();
   } 
 
   $(document).ready(function(){
@@ -231,8 +232,8 @@
 
 
   function addPost(UserName, TeamName){
-
     var postText = document.getElementById('post-text').value;
+    if (!postText) return;
     var teamName = TeamName;
     var newPost = {
       "author": UserName,
@@ -253,6 +254,7 @@
       type: "POST",
       dataType: "json",
     });
+    location.reload();
   }
 
   function clearForm() 
