@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACCOUNT</title>
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div id="navbar-wrapper">
+    <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!-- Sidebar button -->
+          <button id="navbar-button-sidemenu" type="button" class="toggle-nav navbar-toggle" data-toggle="collapse">
+            <span class="glyphicon glyphicon-list"></span>
+          </button>
+
+          <!-- App Name -->
+          <p id="navbar-brand" class="navbar-text"><img id="group-logo" class="navbar-logo" src="/assets/logo.png" >Green</p>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div id="new-account-wrapper">
+    <div id="new-account-content">
+        <!--
+        <a href="/user/username">forward!</a>
+        -->
+        <h4>Let's Get Started!</h4>
+
+          <form action="api/users" method="POST">
+            <div class="form-group">
+              <label>First Name*</label>
+              <input type="text" class="form-control" name="first">
+
+              <label>Last Name*</label>
+              <input type="text" class="form-control" name="last">
+
+              <label for="exampleInputEmail1">Email address*</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+              <small id="emailHelp" class="form-text text-muted">Your email will never be shared to anyone else.</small>
+              <br>
+              <label>Password*</label>
+              <input type="password" class="form-control" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted">Password length must be at least 8.</small>
+              <br>
+              <label>Confirm Password*</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+
+            <button type="submit" class="btn-lg"> Sign Up</button>
+
+          </form>
+          
+    </div>
+  </div>
+
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/sidemenu.js"></script>
+    <script type="application/javascript" src="/assets/js/fastclick.js"></script>
+  </body>
+
+  </html>
+
