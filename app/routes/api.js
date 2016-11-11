@@ -81,8 +81,8 @@ module.exports = function(app, express) {
 			var user = new User();
 
 			// set the user's info (comes from the request)
-			user.name.first = req.body.first;
-			user.name.last = req.body.last;
+			user.name = req.body.name;
+			user.username = req.body.username;
 			user.email = req.body.email;
 			user.password = req.body.password;
 
@@ -97,7 +97,8 @@ module.exports = function(app, express) {
 						return res.send(err);
 				}
 
-				res.json({ success: true, message: 'New user created!' });
+				// res.json({ success: true, message: 'New user created!' });
+				res.redirect("/user/" + user.username );
 			});
 		});
 
