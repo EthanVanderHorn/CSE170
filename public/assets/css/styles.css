@@ -128,7 +128,7 @@ h4.modal-title {
 
 /* POSTS */
 .card {
-	border-radius: 5px;
+	border-radius: 40px;
 	/*border-color: #2AEB3E;*/
 	/*border-color: #1abc9c;*/
 	border-color: #dbdbdb;
@@ -142,7 +142,7 @@ h4.modal-title {
 }
 
 .pin-card {
-	border-radius: 5px;
+	border-radius: 40px;
 	border-style: solid;
 	/*border-color: #2AEB3E;*/
 	border-color: #1abc9c;
@@ -260,29 +260,23 @@ h4.modal-title {
 
 
 /* NEW ACCOUNT PAGE */
-#new-account-wrapper,
-#settings-wrapper {
-
+#new-account-wrapper {
 	position: fixed;
+	width: 400px;
+	height: 100%;
 	padding: 10px;
-	margin-left: 33%;
-	margin-right: 50%;
+	margin-left: 700px;
+	margin-right: 700px;
 }
 
-.pw-form {
-	margin: 10px;
-}
-
-#new-account-content h4,
-#settings-content h4 {
+#new-account-content h4 {
 	text-align: center;
 	font-size: 35px; 
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
 
-#new-account-content label,
-#settings-content label {
+#new-account-content label {
 	text-align: left;
 	margin-top: 15px;
 }
@@ -294,7 +288,6 @@ h4.modal-title {
 	margin-top: 20px;
 	margin-left: 145px;
 	margin-right: 130px;
-	width: 125px;
 }
 
 /* FOR TESTING PURPOSES ONLY */

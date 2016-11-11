@@ -11,58 +11,58 @@ module.exports = function(app, express) {
 	var apiRouter = express.Router();
 
 	// route to authenticate a user w/ POST
-	apiRouter.post('/authenticate', function(req, res) {
+	// apiRouter.post('/authenticate', function(req, res) {
 
-		// find the user
-		// select the name email and password explicitly
-		User.findOne({
-			email: req.body.email
-		}).select('name.first name.last email password').exec(function(err, user) {
+	// 	// find the user
+	// 	// select the name email and password explicitly
+	// 	User.findOne({
+	// 		email: req.body.email
+	// 	}).select('name.first name.last email password').exec(function(err, user) {
 
-			if (err)
-				throw err;
+	// 		if (err)
+	// 			throw err;
 
-			// no user with that email was found
-			if (!user) {
-				res.json({
-					success: false,
-					message: 'Authentication failed. User not found.'
-				});
-			}
-			else if (user) {
+	// 		// no user with that email was found
+	// 		if (!user) {
+	// 			res.json({
+	// 				success: false,
+	// 				message: 'Authentication failed. User not found.'
+	// 			});
+	// 		}
+	// 		else if (user) {
 
-				// check if password matches
-				var validPassword = user.comparePassword(req.body.password);
+	// 			// check if password matches
+	// 			var validPassword = user.comparePassword(req.body.password);
 
-				if(!validPassword) {
-					res.json({
-						success: false,
-						message: 'Authentication failed. Wrong password.'
-					});
-				}
-				else {
+	// 			if(!validPassword) {
+	// 				res.json({
+	// 					success: false,
+	// 					message: 'Authentication failed. Wrong password.'
+	// 				});
+	// 			}
+	// 			else {
 
-					// if user is found and password is right
-					// create a token
-					var token = jwt.sign({
-						name: user.name.first + user.name.last,
-						email: user.email
-					}, superSecret, {
-						expiresIn: '24h'	// expires in 24 hours
-					});
+	// 				// if user is found and password is right
+	// 				// create a token
+	// 				var token = jwt.sign({
+	// 					name: user.name.first + user.name.last,
+	// 					email: user.email
+	// 				}, superSecret, {
+	// 					expiresIn: '24h'	// expires in 24 hours
+	// 				});
 
-					// return the information including token as JSON
-					res.json({
-						success: true,
-						message: 'Enjoy your token!',
-						token: token
-					});
-				}
+	// 				// return the information including token as JSON
+	// 				res.json({
+	// 					success: true,
+	// 					message: 'Enjoy your token!',
+	// 					token: token
+	// 				});
+	// 			}
 
-			}
+	// 		}
 
-		});
-	});
+	// 	});
+	// });
 
 	// test route to make sure everything is working 
 	// accessed at GET http://localhost:8080/api
@@ -70,7 +70,7 @@ module.exports = function(app, express) {
 		res.json({ message: 'hooray! welcome to our api!' });	
 	});
 
-	// on routes that end in /users
+	// on routes that end in /user
 	// ----------------------------------------
 	apiRouter.route('/users')
 		
@@ -99,7 +99,7 @@ module.exports = function(app, express) {
 
 				res.json({ success: true, message: 'New user created!' });
 			});
-		})
+		});
 
 	// api endpoint to get user information
 	apiRouter.get('/me', function(req, res) {
@@ -107,4 +107,4 @@ module.exports = function(app, express) {
 	});
 
 	return apiRouter;
-}
+};
