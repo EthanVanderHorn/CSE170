@@ -203,9 +203,7 @@
   window.addEventListener('load', function() {
     new FastClick(document.body);
   }, false);
-  </script>
 
-  <script>
   function addGroup(UserName){
     var groupName = document.getElementById('group-name').value;
     var groupDescription = document.getElementById('group-description').value;
@@ -219,18 +217,67 @@
       ],
       "Posts": []
     };
+    $.ajax({
+      url: "/changeJson",
+      data: newGroup,
+      type: "POST",
+      dataType: "json",
+    });
   } 
-  </script>
 
-  <script>
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
   });
-  </script>
 
 
-  <script>
   function addPost(UserName){
+
+
+
+    //var username = UserName;
+    var title = document.createElement('h5');
+    var titleText = UserName;//document.getElementById('title-text').value;
+    title.append(titleText);
+
+    var date = document.createElement('p');
+    dateText = Date();
+    date.append(dateText);
+    date.className += 'date';
+
+    var post = document.createElement('p');
+    post.style["white-space"] = "pre";
+    var postText = document.getElementById('post-text').value;
+    post.append(postText);
+
+    if (postText.length <= 0){ return;}
+
+    var card = document.createElement('div');
+    if($('#pin-check').is(":checked")) {
+      card.className += 'pin-card';
+    }
+    else {
+      card.className +='card';
+    }
+
+
+    card.append(title);
+    card.append(date);
+    card.append(post);
+
+    var cardStack = ($('#pin-check').is(":checked")) ? $("#pin-stack") : $("#card-stack");
+    cardStack.prepend(card);
+
+
+
+    $.ajax({
+      url: "/changeJson",
+      data: newPost,
+      type: "POST",
+      dataType: "json",
+    });
+  }
+
+  function editPost(UserName){
 
     //var username = UserName;
     var title = document.createElement('h5');
@@ -264,9 +311,7 @@
     var cardStack = ($('#pin-check').is(":checked")) ? $("#pin-stack") : $("#card-stack");
     cardStack.prepend(card);
   }
-  </script>
 
-  <script>
   function clearForm() 
   {
     document.getElementById("post-text").value = "";

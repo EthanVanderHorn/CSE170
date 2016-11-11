@@ -130,7 +130,7 @@ h4.modal-title {
 
 /* POSTS */
 .card {
-	border-radius: 40px;
+	border-radius: 5px;
 	/*border-color: #2AEB3E;*/
 	/*border-color: #1abc9c;*/
 	border-color: #dbdbdb;
@@ -144,7 +144,7 @@ h4.modal-title {
 }
 
 .pin-card {
-	border-radius: 40px;
+	border-radius: 5px;
 	border-style: solid;
 	/*border-color: #2AEB3E;*/
 	border-color: #1abc9c;

@@ -91,18 +91,15 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/splash.html'));
 });
 
+var obj;
+
 app.get('/user/:username/', function(req, res){
 	var username = req.params.username;
-	var obj;
-	fs = require('fs')
-	fs.readFile('./mock-data/groups.json', 'utf8', function (err,data) {
-		if (err) {
-			return console.log(err);
-		}
-		obj = JSON.parse(data);
-		res.redirect("/user/" + username + "/" + obj.groups[0].TeamURL);
-	});
-	//location.href = "/user/" + username + "/cogs120";
+	if(obj == undefined){
+		fs = require('fs');
+		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
+	}
+	res.redirect("/user/" + username + "/" + obj.groups[0].TeamURL);
 });
 
 app.get('/user/:username/account-settings', function(req, res){
@@ -114,26 +111,29 @@ app.get('/user/:username/account-settings', function(req, res){
 app.get('/user/:username/:group', function(req, res){
 	var username = req.params.username;
 	var group = (req.params.group).toLowerCase();
-	var obj;
 	var groupData;
-	fs = require('fs')
-	fs.readFile('./mock-data/groups.json', 'utf8', function (err,data) {
-		if (err) {
-			return console.log(err);
+	if(obj == undefined){
+		fs = require('fs');
+		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
+	}
+	for (var i = obj.groups.length - 1; i >= 0; i--) {
+		currentElement = obj.groups[i];
+		if(currentElement.TeamURL ==  group){
+			groupData = currentElement;
+			break;
 		}
-		obj = JSON.parse(data);
-		for (var i = obj.groups.length - 1; i >= 0; i--) {
-			currentElement = obj.groups[i];
-			if(currentElement.TeamURL ==  group){
-				groupData = currentElement;
-				break;
-			}
-		};
-		res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
-	});
+	};
+	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
 });
 
+app.post("/changeJson", function(req, res){
+	obj.groups.push(req.body);
+	console.log(req.body);
+});
 
+app.post("/newPost", function(req, res){
+
+});
 
 app.get('/getStarted', function(req, res){
 	res.render('sign_up');
