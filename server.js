@@ -101,11 +101,6 @@ app.get('/getStarted', function(req, res){
 	res.render('sign_up');
 });
 
-app.get('/settings/:username', function(req, res){
-	var username = req.params.username;
-	console.log("settings");
-	res.render('settings', {'UserName': username});
-});
 
 // START THE SERVER
 // ====================================
