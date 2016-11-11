@@ -66,12 +66,35 @@
     </div>
     <!--  Navbar end-->
 
-    <a href="/user/{{ UserName }}">Back</a>
+    <div id="settings-wrapper">
+      <div id="settings-content">
+        <!--
+        <a href="/user/username">forward!</a>
+      -->
+      <h4>Account Settings</h4>
+      <form>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="{{ UserName }}">
+
+          <label>Change email</label>
+          <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="{{ Email }}">
+
+          <label>Change Password</label>
+          <input type="password" class="pw-form form-control" aria-describedby="emailHelp" placeholder="Old Password">
+          <input type="password" class="pw-form form-control" aria-describedby="emailHelp" placeholder="New Password">
+          <input type="password" class="pw-form form-control" aria-describedby="emailHelp" placeholder="Confirm New Password">
+        </div>
+      </form>
+      <button type="button" class="btn-lg" data-toggle="modal" data-target="#share">Cancel</button>
+      <button type="button" class="btn-lg" data-toggle="modal" data-target="#share">Confirm</button>
+    </div>
   </div>
-  <script src="/assets/js/jquery.min.js"></script>
-  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/assets/js/sidemenu.js"></script>
-  <script type="application/javascript" src="/assets/js/fastclick.js"></script>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/js/sidemenu.js"></script>
+<script type="application/javascript" src="/assets/js/fastclick.js"></script>
 </body>
 
 </html>
