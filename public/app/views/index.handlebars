@@ -96,23 +96,50 @@
           </div>
 
         </div>
-            <div id="pin-stack">
-                {{#each groupData.Pinned}}
-                <div class="pin-card">
-                    <h4>{{ this.author }}</h4>
-                    <p id="date"> {{this.date}} </p>
-                    <p>{{ this.body }}</p>
-                </div>
-                {{/each}}
+        <div id="pin-stack">
+          {{#each groupData.Pinned}}
+          <div class="pin-card">
+            <div style="display: block;">
+              <span>{{ this.author }}</span>
+
+              <div class="dropdown post-options" style="display:inline; float: right;">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <span class="glyphicon glyphicon-option-vertical"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Edit Post</a></li>
+                  <li><a href="#">Delete Post</a></li>
+                </ul>
+              </div>
             </div>
-            <div id="card-stack">
-                {{#each groupData.Posts}}
-                <div class="card">
-                    <h4>{{ this.author }}</h4>
-                    <p>{{ this.body }}</p>
-                </div>
-                {{/each}}
+
+            <p id="date"> {{this.date}} </p>
+            <p>{{ this.body }}</p>
+          </div>
+          {{/each}}
+        </div>
+        <div id="card-stack">
+          {{#each groupData.Posts}}
+          <div class="card">
+            <div style="display: block;">
+              <span>{{ this.author }}</span>
+
+              <div class="dropdown post-options" style="display:inline; float: right;">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <span class="glyphicon glyphicon-option-vertical"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Edit Post</a></li>
+                  <li><a href="#">Delete Post</a></li>
+                </ul>
+              </div>
             </div>
+
+            <p id="date"> {{this.date}} </p>
+            <p>{{ this.body }}</p>
+          </div>
+          {{/each}}
+        </div>
       </div>
 
     </div>
@@ -143,7 +170,7 @@
       </div>
     </div>
 
-            <!-- Share button modal -->
+    <!-- Share button modal -->
     <div class="modal fade" id="share" role="dialog">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -152,8 +179,8 @@
             <h4 class="modal-title"> Share Group </h4>
           </div>
           <div class="link-share">
-                <h4> Link Sharing! </h4>
-                <p> https://thebears-turnin.herokuapp.com/ </p>
+            <h4> Link Sharing! </h4>
+            <p> https://thebears-turnin.herokuapp.com/ </p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -193,9 +220,9 @@
   </script>
 
   <script>
-    $(document).ready(function(){
+  $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
-    });
+  });
   </script>
 
 
@@ -220,10 +247,10 @@
 
     var card = document.createElement('div');
     if($('#pin-check').is(":checked")) {
-        card.className += 'pin-card';
+      card.className += 'pin-card';
     }
     else {
-        card.className +='card';
+      card.className +='card';
     }
     
     card.append(title);
@@ -236,11 +263,11 @@
   </script>
 
   <script>
-    function clearForm() 
-    {
-        document.getElementById("post-text").value = "";
+  function clearForm() 
+  {
+    document.getElementById("post-text").value = "";
 
-    }
+  }
   </script>
 
   <script src="/assets/js/post.js"></script>
