@@ -29,31 +29,32 @@
 
   <div id="new-account-wrapper">
     <div id="new-account-content">
-        <!--
-        <a href="/user/username">forward!</a>
-        -->
         <h4>Let's Get Started!</h4>
-          <form>
-            <div class="form-group">
-              <label>Full Name*</label>
-              <input type="email" class="form-control" aria-describedby="emailHelp">
 
-              <label>User Name*</label>
-              <input type="email" class="form-control" aria-describedby="emailHelp">
+          <form action="api/users" method="POST">
+            <div class="form-group">
+              <label>First Name*</label>
+              <input type="text" class="form-control" name="first">
+
+              <label>Last Name*</label>
+              <input type="text" class="form-control" name="last">
 
               <label for="exampleInputEmail1">Email address*</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="email" class="form-control" id="exampleInputEmail1" name="email">
               <small id="emailHelp" class="form-text text-muted">Your email will never be shared to anyone else.</small>
               <br>
               <label>Password*</label>
-              <input type="email" class="form-control" aria-describedby="emailHelp">
+              <input type="password" class="form-control" aria-describedby="emailHelp">
               <small id="emailHelp" class="form-text text-muted">Password length must be at least 8.</small>
               <br>
               <label>Confirm Password*</label>
-              <input type="email" class="form-control" aria-describedby="emailHelp">
+              <input type="password" class="form-control" name="password">
             </div>
+
+            <button type="submit" class="btn-lg"> Sign Up</button>
+
           </form>
-          <button type="button" class="btn-lg" data-toggle="modal" data-target="#share">Sign Up</button>
+          
     </div>
   </div>
 
