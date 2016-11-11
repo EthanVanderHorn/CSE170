@@ -275,23 +275,29 @@ h4.modal-title {
 
 
 /* NEW ACCOUNT PAGE */
-#new-account-wrapper {
+#new-account-wrapper,
+#settings-wrapper {
 	position: fixed;
 	width: 400px;
 	height: 100%;
 	padding: 10px;
-	margin-left: 700px;
-	margin-right: 700px;
+	margin-left: 35%;
 }
 
-#new-account-content h4 {
+.pw-form{
+	margin: 10px;
+}
+
+#new-account-content h4,
+#settings-content h4 {
 	text-align: center;
 	font-size: 35px; 
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
 
-#new-account-content label {
+#new-account-content label,
+#settings-content label {
 	text-align: left;
 	margin-top: 15px;
 }
@@ -299,10 +305,11 @@ h4.modal-title {
 #new-account-content button {
 	position:relative;
 	background-color: #1abc9c;
+	border: none;
 	color: white;
 	margin-top: 20px;
-	margin-left: 145px;
-	margin-right: 130px;
+	margin-left: 125px;
+	width: 125px;
 }
 
 /* FOR TESTING PURPOSES ONLY */
