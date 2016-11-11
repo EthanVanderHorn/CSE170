@@ -141,7 +141,10 @@ app.post("/newPost", function(req, res){
 		currentElement = obj.groups[i];
 		console.log(currentElement);
 		if(currentElement.TeamName ==  groupName){
-			currentElement.Posts.push(postData);
+			if(postData.pinned == "no")
+				currentElement.Pinned.unshift(postData);
+			else
+				currentElement.Posts.unshift(postData);
 			console.log(currentElement);
 			break;
 		}

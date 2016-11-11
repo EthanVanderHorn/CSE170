@@ -90,7 +90,7 @@
           <h3> Bulletin </h3>
           <p id="date"></p>
           <textarea id="post-text" class="form-control" rows="3" placeholder="What's up?" required ></textarea>
-          <button onClick="addPost('{{ UserName }}'); clearForm()" id="post-btn" type="button" class="btn">Post</button>
+          <button onClick="addPost('{{ UserName }}', '{{ groupData.TeamName }}'); clearForm()" id="post-btn" type="button" class="btn">Post</button>
           <div id="check-box">
             <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
             <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
@@ -230,15 +230,15 @@
   });
 
 
-  function addPost(UserName){
+  function addPost(UserName, TeamName){
 
     var postText = document.getElementById('post-text').value;
-    var teamName = $("team-name").text();
-
+    var teamName = TeamName;
     var newPost = {
       "author": UserName,
       "title": "Practice on Thursday!",
       "body" : postText,
+      "pinned" : ($('#pin-check').is(":checked"))?"no":"on",
     };
     console.log(teamName);
     var postData = {
