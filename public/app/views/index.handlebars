@@ -72,7 +72,7 @@
     <div id="site-canvas">
 
       <div id="sidebar-wrapper">
-        <h1 id="team-name">{{ groupData.TeamName }} </h1>
+        <h1 id="team-name">{{ groupData.TeamName }}</h1>
         <p id="team-description">{{ groupData.TeamDescription }}</p>
         <button id="share-btn" type="button" class="btn" data-toggle="modal" data-target="#share">Share Group</button>
         <h2 id="team-members">Team Members</h2>
@@ -232,46 +232,24 @@
 
   function addPost(UserName){
 
-
-
-    //var username = UserName;
-    var title = document.createElement('h5');
-    var titleText = UserName;//document.getElementById('title-text').value;
-    title.append(titleText);
-
-    var date = document.createElement('p');
-    dateText = Date();
-    date.append(dateText);
-    date.className += 'date';
-
-    var post = document.createElement('p');
-    post.style["white-space"] = "pre";
     var postText = document.getElementById('post-text').value;
-    post.append(postText);
+    var teamName = $("team-name").text();
 
-    if (postText.length <= 0){ return;}
-
-    var card = document.createElement('div');
-    if($('#pin-check').is(":checked")) {
-      card.className += 'pin-card';
+    var newPost = {
+      "author": UserName,
+      "title": "Practice on Thursday!",
+      "body" : postText,
+    };
+    console.log(teamName);
+    var postData = {
+      "post" : newPost,
+      "group": teamName,
     }
-    else {
-      card.className +='card';
-    }
-
-
-    card.append(title);
-    card.append(date);
-    card.append(post);
-
-    var cardStack = ($('#pin-check').is(":checked")) ? $("#pin-stack") : $("#card-stack");
-    cardStack.prepend(card);
-
 
 
     $.ajax({
-      url: "/changeJson",
-      data: newPost,
+      url: "/newPost",
+      data: postData,
       type: "POST",
       dataType: "json",
     });

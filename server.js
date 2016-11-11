@@ -132,6 +132,20 @@ app.post("/changeJson", function(req, res){
 });
 
 app.post("/newPost", function(req, res){
+	var groupName = req.body.group;
+	var postData = req.body.post;
+	console.log(req.body);
+	console.log(req.body.group);
+
+	for (var i = obj.groups.length - 1; i >= 0; i--) {
+		currentElement = obj.groups[i];
+		console.log(currentElement);
+		if(currentElement.TeamName ==  groupName){
+			currentElement.Posts.push(postData);
+			console.log(currentElement);
+			break;
+		}
+	};
 
 });
 
