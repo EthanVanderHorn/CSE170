@@ -67,7 +67,12 @@ app.get('/user/:username/', function(req, res){
 		obj = JSON.parse(data);
 		res.redirect("/user/" + username + "/" + obj.groups[0].TeamURL);
 	});
-	//location.href = "/user/" + username + "/cogs120";
+	});
+
+app.get('/user/:username/account-settings', function(req, res){
+	var username = req.params.username;
+	console.log("settings");
+	res.render('settings', {'UserName': username});
 });
 
 app.get('/user/:username/:group', function(req, res){
@@ -92,14 +97,14 @@ app.get('/user/:username/:group', function(req, res){
 	});
 });
 
-app.get('/user/:username/account-settings', function(req, res){
+app.get('/getStarted', function(req, res){
+	res.render('sign_up');
+});
+
+app.get('/settings/:username', function(req, res){
 	var username = req.params.username;
 	console.log("settings");
 	res.render('settings', {'UserName': username});
-});
-
-app.get('/getStarted', function(req, res){
-	res.render('sign_up');
 });
 
 // START THE SERVER

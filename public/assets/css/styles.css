@@ -258,11 +258,9 @@ h4.modal-title {
 /* NEW ACCOUNT PAGE */
 #new-account-wrapper {
 	position: fixed;
-	width: 400px;
-	height: 100%;
 	padding: 10px;
-	margin-left: 700px;
-	margin-right: 700px;
+	margin-left: 33%;
+	margin-right: 50%;
 }
 
 #new-account-content h4 {
