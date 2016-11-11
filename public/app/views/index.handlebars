@@ -204,6 +204,16 @@
     new FastClick(document.body);
   }, false);
 
+
+$(document).bind("ajaxSend", function () {
+    console.log("waiting for all requests to complete...");
+    // ajaxStop (Global Event)
+    // This global event is triggered if there are no more Ajax requests being processed.
+}).bind("ajaxStop", function () {
+    console.log("completed now!");
+    location.reload();
+});
+
   function addGroup(UserName){
     var groupName = document.getElementById('group-name').value;
     var groupDescription = document.getElementById('group-description').value;
@@ -222,6 +232,7 @@
       data: newGroup,
       type: "POST",
       dataType: "json",
+ 
     });
     location.reload();
   } 
@@ -241,7 +252,6 @@
       "body" : postText,
       "pinned" : ($('#pin-check').is(":checked"))?"no":"on",
     };
-    console.log(teamName);
     var postData = {
       "post" : newPost,
       "group": teamName,
@@ -253,9 +263,19 @@
       data: postData,
       type: "POST",
       dataType: "json",
+           success: function(){
+        console.log("success");
+      },
+
+      complete: function(){ 
+        console.log("complete");
+      }
     });
-    location.reload();
+        location.reload();
+
   }
+
+
 
   function clearForm() 
   {

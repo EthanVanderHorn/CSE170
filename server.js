@@ -128,27 +128,28 @@ app.get('/user/:username/:group', function(req, res){
 
 app.post("/changeJson", function(req, res){
 	obj.groups.push(req.body);
-	console.log(req.body);
 });
 
 app.post("/newPost", function(req, res){
 	var groupName = req.body.group;
 	var postData = req.body.post;
-	console.log(req.body);
-	console.log(req.body.group);
+	var groupData;
+	var username = postData.author;
 
 	for (var i = obj.groups.length - 1; i >= 0; i--) {
 		currentElement = obj.groups[i];
-		console.log(currentElement);
 		if(currentElement.TeamName ==  groupName){
+			groupData = currentElement;
 			if(postData.pinned == "no")
 				currentElement.Pinned.unshift(postData);
 			else
 				currentElement.Posts.unshift(postData);
-			console.log(currentElement);
 			break;
 		}
 	};
+
+	//res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
+
 
 });
 
