@@ -123,6 +123,7 @@ app.get('/user/:username/:group', function(req, res){
 			break;
 		}
 	};
+	console.log(groupData);
 	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
 });
 
@@ -140,10 +141,17 @@ app.post("/newPost", function(req, res){
 		currentElement = obj.groups[i];
 		if(currentElement.TeamName ==  groupName){
 			groupData = currentElement;
-			if(postData.pinned == "no")
-				currentElement.Pinned.unshift(postData);
-			else
+			if(postData.pinned == "no"){
+				if (currentElement.Posts == undefined){
+					currentElement.Posts = [];
+				}
 				currentElement.Posts.unshift(postData);
+			} else{
+				if (currentElement.Pinned == undefined){
+					currentElement.Pinned = [];
+				}
+				currentElement.Pinned.unshift(postData);
+			}
 			break;
 		}
 	};

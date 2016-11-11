@@ -204,15 +204,14 @@
     new FastClick(document.body);
   }, false);
 
-
-$(document).bind("ajaxSend", function () {
+  $(document).bind("ajaxSend", function () {
     console.log("waiting for all requests to complete...");
     // ajaxStop (Global Event)
     // This global event is triggered if there are no more Ajax requests being processed.
-}).bind("ajaxStop", function () {
+  }).bind("ajaxStop", function () {
     console.log("completed now!");
     location.reload();
-});
+  });
 
   function addGroup(UserName){
     var groupName = document.getElementById('group-name').value;
@@ -225,6 +224,7 @@ $(document).bind("ajaxSend", function () {
       "Members": [
       {"membername": UserName}
       ],
+      "Pinned": [],
       "Posts": []
     };
     $.ajax({
@@ -232,7 +232,7 @@ $(document).bind("ajaxSend", function () {
       data: newGroup,
       type: "POST",
       dataType: "json",
- 
+
     });
     location.reload();
   } 
@@ -250,20 +250,21 @@ $(document).bind("ajaxSend", function () {
       "author": UserName,
       "title": "Practice on Thursday!",
       "body" : postText,
-      "pinned" : ($('#pin-check').is(":checked"))?"no":"on",
+      "pinned" : ($('#pin-check').is(":checked"))?"on":"no",
     };
     var postData = {
       "post" : newPost,
       "group": teamName,
-    }
+    };
 
+    console.log(postData);
 
     $.ajax({
       url: "/newPost",
       data: postData,
       type: "POST",
       dataType: "json",
-           success: function(){
+      success: function(){
         console.log("success");
       },
 
@@ -271,7 +272,7 @@ $(document).bind("ajaxSend", function () {
         console.log("complete");
       }
     });
-        location.reload();
+    location.reload();
 
   }
 
