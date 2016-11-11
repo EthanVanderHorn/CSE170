@@ -75,7 +75,7 @@
       <form>
         <div class="form-group">
           <label>Name</label>
-          <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="{{ UserName }}">
+          <input id="new-username" type="email" class="form-control" aria-describedby="emailHelp" placeholder="{{ UserName }}">
 
           <label>Change email</label>
           <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="{{ Email }}">
@@ -86,8 +86,8 @@
           <input type="password" class="pw-form form-control" aria-describedby="emailHelp" placeholder="Confirm New Password">
         </div>
       </form>
-      <button type="button" class="btn-lg" data-toggle="modal" data-target="#share">Cancel</button>
-      <button type="button" class="btn-lg" data-toggle="modal" data-target="#share">Confirm</button>
+      <button type="button" class="btn-lg" onClick="settings('cancel', '{{UserName}}')">Cancel</button>
+      <button type="button" class="btn-lg" onClick="settings('confirm', '{{UserName}}')">Confirm</button>
     </div>
   </div>
 </div>
@@ -95,6 +95,17 @@
 <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="/assets/js/sidemenu.js"></script>
 <script type="application/javascript" src="/assets/js/fastclick.js"></script>
+<script>
+  function settings(option, username){
+    if (option == "cancel"){
+      location.href = "/user/" + username;
+    } else {
+      var newUserName = document.getElementById('new-username').value; 
+      console.log("balls" + newUserName);
+      location.href = "/user/" + newUserName;
+    }
+  }
+</script>
 </body>
 
 </html>

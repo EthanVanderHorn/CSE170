@@ -255,41 +255,6 @@
     });
   }
 
-  function editPost(UserName){
-
-    //var username = UserName;
-    var title = document.createElement('h5');
-    var titleText = UserName;//document.getElementById('title-text').value;
-    title.append(titleText);
-
-    var date = document.createElement('p');
-    dateText = Date();
-    date.append(dateText);
-    date.className += 'date';
-
-    var post = document.createElement('p');
-    post.style["white-space"] = "pre";
-    var postText = document.getElementById('post-text').value;
-    post.append(postText);
-
-    if (postText.length <= 0){ return;}
-
-    var card = document.createElement('div');
-    if($('#pin-check').is(":checked")) {
-      card.className += 'pin-card';
-    }
-    else {
-      card.className +='card';
-    }
-    
-    card.append(title);
-    card.append(date);
-    card.append(post);
-
-    var cardStack = ($('#pin-check').is(":checked")) ? $("#pin-stack") : $("#card-stack");
-    cardStack.prepend(card);
-  }
-
   function clearForm() 
   {
     document.getElementById("post-text").value = "";
