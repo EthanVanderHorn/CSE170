@@ -285,7 +285,7 @@ h4.modal-title {
 }
 
 .pw-form{
-	margin: 10px;
+	margin-top: 10px;
 }
 
 #new-account-content h4,
@@ -302,13 +302,14 @@ h4.modal-title {
 	margin-top: 15px;
 }
 
-#new-account-content button {
+#new-account-content button,
+#settings-content button {
 	position:relative;
 	background-color: #1abc9c;
 	border: none;
 	color: white;
 	margin-top: 20px;
-	margin-left: 125px;
+	margin-left: 40px;
 	width: 125px;
 }
 
