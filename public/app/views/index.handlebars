@@ -13,6 +13,7 @@
 
 <body>
 
+
   <!--  Navbar -->
   <div id="navbar-wrapper">
     <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
@@ -101,7 +102,7 @@
           <div class="pin-card">
             <div style="display: block;">
               <span>{{ this.author }}</span>
-
+              {{#ifCond author '==' ../UserName}}
               <div class="dropdown post-options" style="display:inline; float: right;">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-option-vertical"></span>
@@ -111,6 +112,7 @@
                   <li><a href="#">Delete Post</a></li>
                 </ul>
               </div>
+              {{/ifCond}}
             </div>
 
             <p id="date"> {{this.date}} </p>
@@ -123,7 +125,7 @@
           <div class="card">
             <div style="display: block;">
               <span>{{ this.author }}</span>
-
+              {{#ifCond author '==' ../UserName}}
               <div class="dropdown post-options" style="display:inline; float: right;">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-option-vertical"></span>
@@ -133,6 +135,7 @@
                   <li><a href="#">Delete Post</a></li>
                 </ul>
               </div>
+              {{/ifCond}}
             </div>
 
             <p id="date"> {{this.date}} </p>
@@ -240,7 +243,8 @@
     date.className += 'date';
 
     var post = document.createElement('p');
-    var postText = document.getElementById('post-text').value.replace(/\r?\n/g,'<br/>');
+    post.style["white-space"] = "pre";
+    var postText = document.getElementById('post-text').value;
     post.append(postText);
 
     if (postText.length <= 0){ return;}
@@ -269,6 +273,8 @@
 
   }
   </script>
+
+
 
   <script src="/assets/js/post.js"></script>
 

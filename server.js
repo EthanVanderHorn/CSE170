@@ -12,7 +12,36 @@ var path 	   = require('path');
 var http	   = require('http');
 var handlebars = require('express-handlebars');
 
-
+var hbs = handlebars.create({
+	helpers : {
+		ifCond :  function (v1, operator, v2, options) {
+			switch (operator) {
+				case '==':
+				return (v1 == v2) ? options.fn(this) : options.inverse(this);
+				case '===':
+				return (v1 === v2) ? options.fn(this) : options.inverse(this);
+				case '!=':
+				return (v1 != v2) ? options.fn(this) : options.inverse(this);
+				case '!==':
+				return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+				case '<':
+				return (v1 < v2) ? options.fn(this) : options.inverse(this);
+				case '<=':
+				return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+				case '>':
+				return (v1 > v2) ? options.fn(this) : options.inverse(this);
+				case '>=':
+				return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+				case '&&':
+				return (v1 && v2) ? options.fn(this) : options.inverse(this);
+				case '||':
+				return (v1 || v2) ? options.fn(this) : options.inverse(this);
+				default:
+				return options.inverse(this);
+			}
+		}
+	}
+});
 // Example route
 // var user = require('./routes/user');
 
@@ -21,7 +50,7 @@ var handlebars = require('express-handlebars');
 // ====================================
 
 app.set('views', path.join(__dirname, 'public/app/views'));
-app.engine('handlebars', handlebars());
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 

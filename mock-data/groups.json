@@ -6,13 +6,13 @@
 		"TeamDescription": "Group to collaborate for our cogs 120 project.",
 		"Members": [
 		{"membername": "Connie Guan"},
-		{"membername": "Jacqui Bontigao"},
+		{"membername": "JBon"},
 		{"membername": "Ethan Vander Horn"},
 		{"membername": "Jacqueline Bontigao"}
 		],
 		"Pinned": [		
 		{
-			"author": "Jacqui Bontigao",
+			"author": "JBon",
 			"title": "A5 is Due Tonight",
 			"body" : "Lets bring all of our Story Boards to tomorrows meeting. We can review them, make edits if needed, and then work on the Paper Prototypes together. Fill out this strawpull to figure out what time we can meet: http://www.strawpoll.me/"
 		},
@@ -44,7 +44,7 @@
 		"TeamName": "Sleepless Collective",
 		"TeamDescription": "This is a group to plan dance events!",
 		"Members": [
-		{"membername": "Jacqueline Bontigao"},
+		{"membername": "JBon"},
 		{"membername": "Franny de Leon"},
 		{"membername": "Dom Nguyen"},
 		{"membername": "Sheng Poon"},
@@ -53,7 +53,7 @@
 		],
 		"Pinned": [
 		{
-			"author": "Jacqui Bontigao",
+			"author": "JBon",
 			"title": "Practice on Thursday!",
 			"body" : "Don't forget that we have practice this Thursday!"
 		}
