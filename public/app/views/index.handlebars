@@ -210,6 +210,7 @@
     var date = document.createElement('p');
     dateText = Date();
     date.append(dateText);
+    date.className += 'date';
 
     var post = document.createElement('p');
     var postText = document.getElementById('post-text').value.replace(/\r?\n/g,'<br/>');
