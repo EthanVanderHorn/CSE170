@@ -62,6 +62,12 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/splash.html'));
 });
 
+// app.post('/user', function(req, res) {
+
+// 	var firstName = req.body.userName;
+	
+// });
+
 app.get('/user/:username/', function(req, res){
 	var username = req.params.username;
 	var obj;
