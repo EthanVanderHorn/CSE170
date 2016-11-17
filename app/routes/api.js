@@ -102,6 +102,22 @@ module.exports = function(app, express) {
 			});
 		});
 
+	apiRouter.route('/newPost')
+
+		.post(function(req, res){
+			var post = new Post();
+
+			post.author = req.body.author;
+			post.date = "0/0/0";
+			post.text = req.body.text;
+			post.pinned = req.body.pinned;
+
+			post.save();
+
+			res.send(post);
+		});
+
+
 	// api endpoint to get user information
 	apiRouter.get('/me', function(req, res) {
 		res.send(req.decoded);

@@ -98,7 +98,8 @@
 
         </div>
         <div id="pin-stack">
-          {{#each groupData.Pinned}}
+          {{#each groupData.Posts}}
+          {{#ifCond this.pinned '==' "on"}}
           <div class="card">
             <div style="display: block;">
               <span>{{ this.author }}</span>
@@ -116,12 +117,14 @@
             </div>
 
             <p id="date"> {{this.date}} </p>
-            <p>{{ this.body }}</p>
+            <p>{{ this.text }}</p>
           </div>
+          {{/ifCond}}
           {{/each}}
         </div>
         <div id="card-stack">
           {{#each groupData.Posts}}
+          {{#ifCond this.pinned '==' "no"}}
           <div class="card">
             <div style="display: block;">
               <span>{{ this.author }}</span>
@@ -139,8 +142,9 @@
             </div>
 
             <p id="date"> {{this.date}} </p>
-            <p>{{ this.body }}</p>
+            <p>{{ this.text }}</p>
           </div>
+          {{/ifCond}}
           {{/each}}
         </div>
       </div>
@@ -237,13 +241,12 @@
 
 
   function addPost(UserName, TeamName){
-    console.log(TeamName);
     var postText = document.getElementById('post-text').value;
     if (!postText) return;
     var newPost = {
       "author": UserName,
       "title": "Practice on Thursday!",
-      "body" : postText,
+      "text" : postText,
       "pinned" : ($('#pin-check').is(":checked"))?"on":"no",
     };
 
@@ -252,19 +255,23 @@
       groupName: TeamName,
     }
 
-    $.post("/user/" + UserName + "/" + TeamName.toLowerCase().replace(/ /g,"_") + "/newPost", postData);
-        var fullPost;
-    if (newPost.pinned == "no"){
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ UserName +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+postText+'</p></div>';
+    $.post("/user/" + UserName + "/" + TeamName.toLowerCase().replace(/ /g,"_") + "/newPost", postData, displayPost);
+
+  }
+
+  function displayPost(result){
+      var fullPost;
+      console.log(result);
+      if (result.pinned == "no"){
+      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+result.text+'</p></div>';
 
       $('#card-stack').prepend(fullPost);
     } else {
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ UserName +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+postText+'</p></div>';
+      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+result.text+'</p></div>';
 
       $('#pin-stack').prepend(fullPost);
     }
   }
-
 
 
   function clearForm() 

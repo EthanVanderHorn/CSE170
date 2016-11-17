@@ -95,7 +95,7 @@ var obj;
 
 app.get('/user/:username/', function(req, res){
 	var username = req.params.username;
-	if(obj == undefined){
+	if(obj === undefined){
 		fs = require('fs');
 		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
 	}
@@ -112,7 +112,8 @@ app.get('/user/:username/:group', function(req, res){
 	var username = req.params.username;
 	var group = (req.params.group).toLowerCase();
 	var groupData;
-	if(obj == undefined){
+	var currentElement;
+	if(obj === undefined){
 		fs = require('fs');
 		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
 	}
@@ -122,7 +123,7 @@ app.get('/user/:username/:group', function(req, res){
 			groupData = currentElement;
 			break;
 		}
-	};
+	}
 	console.log(groupData);
 	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
 });
@@ -135,30 +136,25 @@ app.post("/changeJson", function(req, res){
 app.post("/user/:userName/:groupName/newPost", function(req, res){
 	var postData = req.body.postBody;
 	var group = req.body.groupName;
+	console.log(group);
+	console.log (postData);
 	var groupData;
-
-
+	var currentElement;
 	for (var i = obj.groups.length - 1; i >= 0; i--) {
 		currentElement = obj.groups[i];
 		console.log("TeamName: " + currentElement.TeamName + ", GroupName: " + group);
 		if(currentElement.TeamName ==  group){
 			console.log("match!");
 			groupData = currentElement;
-			if(postData.pinned == "no"){
-				if (currentElement.Posts == undefined){
-					currentElement.Posts = [];
-				}
-				currentElement.Posts.unshift(postData);
-			} else{
-				if (currentElement.Pinned == undefined){
-					currentElement.Pinned = [];
-				}
-				currentElement.Pinned.unshift(postData);
+			if (currentElement.Posts === undefined){
+				currentElement.Posts = [];
 			}
+			currentElement.Posts.unshift(postData);
+
 			break;
 		}
-	};
-	res.send(200);
+	}
+	res.send(postData);
 });
 
 app.get('/getStarted', function(req, res){
