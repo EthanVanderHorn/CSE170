@@ -45,7 +45,7 @@
              <div class="dropdown">
               <button id="groups-dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Groups
                 <span class="caret"></span></button>
-                <ul class="dropdown-menu">
+                <ul id="groups-list" class="dropdown-menu">
                   {{#each groups}}
                   <li><a href="/user/{{ ../UserName }}/{{ this.TeamURL }}"> {{ this.TeamName }} </a></li>
                   {{/each}}
@@ -99,7 +99,7 @@
         </div>
         <div id="pin-stack">
           {{#each groupData.Pinned}}
-          <div class="pin-card">
+          <div class="card">
             <div style="display: block;">
               <span>{{ this.author }}</span>
               {{#ifCond author '==' ../UserName}}
@@ -204,15 +204,6 @@
     new FastClick(document.body);
   }, false);
 
-  $(document).bind("ajaxSend", function () {
-    console.log("waiting for all requests to complete...");
-    // ajaxStop (Global Event)
-    // This global event is triggered if there are no more Ajax requests being processed.
-  }).bind("ajaxStop", function () {
-    console.log("completed now!");
-    location.reload();
-  });
-
   function addGroup(UserName){
     var groupName = document.getElementById('group-name').value;
     var groupDescription = document.getElementById('group-description').value;
@@ -234,7 +225,10 @@
       dataType: "json",
 
     });
-    location.reload();
+
+    groupOption = '<li><a href="/user/' + UserName + '/' + groupName.toLowerCase().replace(/ /g,"_") + '">' + groupName + '</a></li>';
+    $('#groups-list').append(groupOption);
+
   } 
 
   $(document).ready(function(){
@@ -243,37 +237,32 @@
 
 
   function addPost(UserName, TeamName){
+    console.log(TeamName);
     var postText = document.getElementById('post-text').value;
     if (!postText) return;
-    var teamName = TeamName;
     var newPost = {
       "author": UserName,
       "title": "Practice on Thursday!",
       "body" : postText,
       "pinned" : ($('#pin-check').is(":checked"))?"on":"no",
     };
+
     var postData = {
-      "post" : newPost,
-      "group": teamName,
-    };
+      postBody: newPost,
+      groupName: TeamName,
+    }
 
-    console.log(postData);
+    $.post("/user/" + UserName + "/" + TeamName.toLowerCase().replace(/ /g,"_") + "/newPost", postData);
+        var fullPost;
+    if (newPost.pinned == "no"){
+      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ UserName +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+postText+'</p></div>';
 
-    $.ajax({
-      url: "/newPost",
-      data: postData,
-      type: "POST",
-      dataType: "json",
-      success: function(){
-        console.log("success");
-      },
+      $('#card-stack').prepend(fullPost);
+    } else {
+      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ UserName +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+postText+'</p></div>';
 
-      complete: function(){ 
-        console.log("complete");
-      }
-    });
-    location.reload();
-
+      $('#pin-stack').prepend(fullPost);
+    }
   }
 
 

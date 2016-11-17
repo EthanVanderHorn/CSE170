@@ -131,15 +131,18 @@ app.post("/changeJson", function(req, res){
 	obj.groups.push(req.body);
 });
 
-app.post("/newPost", function(req, res){
-	var groupName = req.body.group;
-	var postData = req.body.post;
+
+app.post("/user/:userName/:groupName/newPost", function(req, res){
+	var postData = req.body.postBody;
+	var group = req.body.groupName;
 	var groupData;
-	var username = postData.author;
+
 
 	for (var i = obj.groups.length - 1; i >= 0; i--) {
 		currentElement = obj.groups[i];
-		if(currentElement.TeamName ==  groupName){
+		console.log("TeamName: " + currentElement.TeamName + ", GroupName: " + group);
+		if(currentElement.TeamName ==  group){
+			console.log("match!");
 			groupData = currentElement;
 			if(postData.pinned == "no"){
 				if (currentElement.Posts == undefined){
@@ -155,10 +158,7 @@ app.post("/newPost", function(req, res){
 			break;
 		}
 	};
-
-	//res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
-
-
+	res.send(200);
 });
 
 app.get('/getStarted', function(req, res){
