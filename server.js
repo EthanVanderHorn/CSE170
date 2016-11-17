@@ -104,7 +104,6 @@ app.get('/user/:username/', function(req, res){
 
 app.get('/user/:username/account-settings', function(req, res){
 	var username = req.params.username;
-	console.log("settings");
 	res.render('settings', {'UserName': username});
 });
 
@@ -124,8 +123,13 @@ app.get('/user/:username/:group', function(req, res){
 			break;
 		}
 	}
-	console.log(groupData);
 	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
+});
+
+app.get('/beta/user/:username/:group', function(req, res){
+	var postList = Post.find();
+	console.log(postList);
+
 });
 
 app.post("/changeJson", function(req, res){
@@ -136,15 +140,11 @@ app.post("/changeJson", function(req, res){
 app.post("/user/:userName/:groupName/newPost", function(req, res){
 	var postData = req.body.postBody;
 	var group = req.body.groupName;
-	console.log(group);
-	console.log (postData);
 	var groupData;
 	var currentElement;
 	for (var i = obj.groups.length - 1; i >= 0; i--) {
 		currentElement = obj.groups[i];
-		console.log("TeamName: " + currentElement.TeamName + ", GroupName: " + group);
 		if(currentElement.TeamName ==  group){
-			console.log("match!");
 			groupData = currentElement;
 			if (currentElement.Posts === undefined){
 				currentElement.Posts = [];

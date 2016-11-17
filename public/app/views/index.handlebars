@@ -244,9 +244,9 @@
     var postText = document.getElementById('post-text').value;
     if (!postText) return;
     var newPost = {
+      "groupid": TeamName.toLowerCase().replace(/ /g,"_"),
       "author": UserName,
-      "title": "Practice on Thursday!",
-      "text" : postText,
+      "postText" : postText,
       "pinned" : ($('#pin-check').is(":checked"))?"on":"no",
     };
 
@@ -256,18 +256,18 @@
     }
 
     $.post("/user/" + UserName + "/" + TeamName.toLowerCase().replace(/ /g,"_") + "/newPost", postData, displayPost);
+    $.post("/api/newPost", newPost);
 
   }
 
   function displayPost(result){
       var fullPost;
-      console.log(result);
       if (result.pinned == "no"){
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+result.text+'</p></div>';
+      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+result.postText+'</p></div>';
 
       $('#card-stack').prepend(fullPost);
     } else {
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+result.text+'</p></div>';
+      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+result.postText+'</p></div>';
 
       $('#pin-stack').prepend(fullPost);
     }

@@ -1,5 +1,6 @@
 var bodyParser = require('body-parser');
 var User       = require('../models/user');
+var Post       = require('../models/post');
 var jwt        = require('jsonwebtoken');
 var config     = require('../../config');
 
@@ -106,10 +107,10 @@ module.exports = function(app, express) {
 
 		.post(function(req, res){
 			var post = new Post();
-
+			post.groupid = req.body.groupid;
 			post.author = req.body.author;
 			post.date = "0/0/0";
-			post.text = req.body.text;
+			post.postText = req.body.postText;
 			post.pinned = req.body.pinned;
 
 			post.save();
@@ -117,6 +118,13 @@ module.exports = function(app, express) {
 			res.send(post);
 		});
 
+	apiRouter.route('/user/:username/:group')
+
+		.get(function(req, res){
+			var group = req.params.group;
+			var postList = Post.find({groupid: group});
+			console.log(postList);
+		});
 
 	// api endpoint to get user information
 	apiRouter.get('/me', function(req, res) {

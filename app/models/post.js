@@ -4,6 +4,10 @@ var Schema = mongoose.Schema;
 
 // user schema
 var PostSchema	= new Schema({
+	groupid: {
+		type: String,
+		required: true
+	},
 	author: {
 		type: String,
 		required: true
@@ -11,13 +15,13 @@ var PostSchema	= new Schema({
 	date: {
 		type: String,
 		required: true
-	}
-	text: {
+	},
+	postText: {
 		type: String,
 		required: true
 	},
 	pinned: {
-		type String,
+		type: String,
 		required: true
 	}
 });
