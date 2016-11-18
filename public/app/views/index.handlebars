@@ -92,6 +92,18 @@
           <textarea id="post-text" class="form-control" rows="3" placeholder="What's up?" required ></textarea>
           <button onClick="addPost('{{ UserName }}', '{{ groupData.TeamName }}'); clearForm()" id="post-btn" type="button" class="btn">Post</button>
 
+    <!--
+          <div id="check-box">
+            {{#if isOriginal}}
+                <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
+                <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
+            {{else}}
+                <label><input id="pin-check" type="checkbox" value="">Pin a post to sticky it to the top</label>
+                <label><input id="urgent-check" type="checkbox" value ="">Urgent posts will alert your group mates of an important message</label>
+            {{/if}}
+          </div> -->
+
+
           <div id="check-box">
             <div><input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin"></span>Pin your post to the top </div>
             <div><input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign"></span>Urgent post</div>
@@ -101,6 +113,7 @@
             <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
             <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
           </div>-->
+>>>>>>> 1c596aff2c0f8b9c95218b72163033414ba94a61
 
         </div>
         <div id="pin-stack">
