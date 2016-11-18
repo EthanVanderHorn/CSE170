@@ -31,7 +31,7 @@
 
           <!-- App Name -->
 
-          <p id="navbar-brand" class="navbar-text"><img id="group-logo" class="navbar-logo" src="/assets/logo.png" >Green</p>
+          <a href="/user/{{UserName}}"><p id="navbar-brand" class="navbar-text"><img id="group-logo" class="navbar-logo" src="/assets/logo.png" >Green</p></a>
         </div>
 
         <!-- Navbar options -->
@@ -98,11 +98,14 @@
 
         </div>
         <div id="pin-stack">
-          {{#each groupData.Posts}}
+          <!--{{#each groupData.Posts}}
           {{#ifCond this.pinned '==' "on"}}
           <div class="card">
             <div style="display: block;">
               <span>{{ this.author }}</span>
+              <div class="dropdown post-options" style="display:inline; float: left;">
+                <a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a>
+              </div>
               {{#ifCond author '==' ../UserName}}
               <div class="dropdown post-options" style="display:inline; float: right;">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -117,12 +120,12 @@
             </div>
 
             <p id="date"> {{this.date}} </p>
-            <p>{{ this.text }}</p>
+            <p>{{ this.postText }}</p>
           </div>
           {{/ifCond}}
-          {{/each}}
+          {{/each}}-->
         </div>
-        <div id="card-stack">
+        <div id="card-stack"><!--
           {{#each groupData.Posts}}
           {{#ifCond this.pinned '==' "no"}}
           <div class="card">
@@ -142,10 +145,10 @@
             </div>
 
             <p id="date"> {{this.date}} </p>
-            <p>{{ this.text }}</p>
+            <p>{{ this.postText }}</p>
           </div>
           {{/ifCond}}
-          {{/each}}
+          {{/each}}-->
         </div>
       </div>
 
@@ -208,6 +211,10 @@
     new FastClick(document.body);
   }, false);
 
+
+  setInterval("getUpdates()", 500);  // call function every half a second
+
+
   function addGroup(UserName){
     var groupName = document.getElementById('group-name').value;
     var groupDescription = document.getElementById('group-description').value;
@@ -239,15 +246,36 @@
     $('[data-toggle="tooltip"]').tooltip();
   });
 
+  var lastPost = 0;
+
+  function getUpdates(){
+    var TeamName = document.getElementById('team-name').innerText;
+    console.log(TeamName);
+    TeamName = TeamName.toLowerCase().replace(/ /g,"_") ;
+    var URL = "/" + TeamName + "/" + lastPost;
+    console.log("hitting that server up at " + URL);
+    $.get(URL, updatePosts);
+  }
+
+  function updatePosts(result){
+    console.log(result);
+    if(result === undefined) return;
+    for (var i=result.length -1; i>=0; i--){
+      displayPost(result[i]);
+      lastPost = (lastPost > result[i].timeStamp) ? lastPost : result[i].timeStamp;
+    }
+  }
 
   function addPost(UserName, TeamName){
     var postText = document.getElementById('post-text').value;
-    if (!postText) return;
+    if (postText === undefined) return;
     var newPost = {
       "groupid": TeamName.toLowerCase().replace(/ /g,"_"),
       "author": UserName,
+      "date": timeConverter(Date.now()/1000 | 0),
+      "timeStamp": Date.now(),
       "postText" : postText,
-      "pinned" : ($('#pin-check').is(":checked"))?"on":"no",
+      "pinned" : ($('#pin-check').is(":checked"))?"on":"no"
     };
 
     var postData = {
@@ -255,20 +283,22 @@
       groupName: TeamName,
     }
 
-    $.post("/user/" + UserName + "/" + TeamName.toLowerCase().replace(/ /g,"_") + "/newPost", postData, displayPost);
+    $.post("/user/" + UserName + "/" + TeamName.toLowerCase().replace(/ /g,"_") + "/newPost", postData);
     $.post("/api/newPost", newPost);
 
   }
 
   function displayPost(result){
-      var fullPost;
-      if (result.pinned == "no"){
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+result.postText+'</p></div>';
+    var fullPost;
+    if (result.pinned == "no"){
+      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+ result.date +'</p><p>'+result.postText+'</p></div>';
+
+
 
       $('#card-stack').prepend(fullPost);
     } else {
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+'</p><p>'+result.postText+'</p></div>';
 
+      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span><div class="dropdown post-options" style="display:inline; float: left;"><a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a></div> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+ result.date + '</p><p>'+result.postText+'</p></div>';
       $('#pin-stack').prepend(fullPost);
     }
   }
@@ -279,6 +309,30 @@
     document.getElementById("post-text").value = "";
 
   }
+
+
+  function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var AmPm = "am";
+    if (hour > 12) {
+      AmPm = "pm";
+      hour = hour -12;
+    }
+    if (hour < 10) hour = hour;
+    if (min < 10) min = "0" + min;
+    if (sec < 10) sec = "0" + sec;
+
+    var time = month + ' ' + date + ' ' + year + ' at ' + hour + ':' + min + "" + AmPm;
+    return time;
+  }
+
   </script>
 
 

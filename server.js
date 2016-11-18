@@ -126,11 +126,7 @@ app.get('/user/:username/:group', function(req, res){
 	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
 });
 
-app.get('/beta/user/:username/:group', function(req, res){
-	var postList = Post.find();
-	console.log(postList);
 
-});
 
 app.post("/changeJson", function(req, res){
 	obj.groups.push(req.body);
@@ -159,6 +155,42 @@ app.post("/user/:userName/:groupName/newPost", function(req, res){
 
 app.get('/getStarted', function(req, res){
 	res.render('sign_up');
+});
+
+app.get('/:groupName/:lastUpdate', function(req, res){
+	var groupName = req.params.groupName;
+	console.log(groupName);
+	var lastUpdate = req.params.lastUpdate;
+	console.log(lastUpdate);
+	var newPosts = [];
+
+	var groupData;
+	if(obj === undefined) return;
+	for (var i = obj.groups.length - 1; i >= 0; i--) {
+		currentElement = obj.groups[i];
+		console.log("comparing " + groupName + " and " + currentElement.TeamURL);
+		if(currentElement.TeamURL ==  groupName){
+			console.log("match");
+			groupData = currentElement;
+			break;
+		}
+	}
+
+	console.log(groupData.Posts.length);
+
+	for (var i = 0; i <= groupData.Posts.length - 1; i++) {
+		currentElement = groupData.Posts[i];
+		//console.log(i);
+		console.log("latestpost: " + lastUpdate + " thispost: " + currentElement);
+		if(currentElement.timeStamp > lastUpdate){
+			newPosts.push(currentElement);
+		}
+		else{
+			console.log("old post found after " + i + "iterations");
+			break;
+		}
+	}
+	res.send(newPosts);
 });
 
 

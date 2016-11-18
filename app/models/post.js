@@ -16,6 +16,10 @@ var PostSchema	= new Schema({
 		type: String,
 		required: true
 	},
+	timeStamp: {
+		type: Number,
+		required: true
+	},
 	postText: {
 		type: String,
 		required: true

@@ -1,7 +1,7 @@
 {
 	"groups": [
 	{
-		"TeamURL" : "cogs120",
+		"TeamURL" : "cogs_120",
 		"TeamName": "Cogs 120",
 		"TeamDescription": "Group to collaborate for our cogs 120 project.",
 		"Members": [
@@ -17,25 +17,33 @@
 		{
 			"author": "Connie Guan",
 			"title": "A5 is Due Tonight",
-			"text" : "Somebody review my Story Board, I added it to the drive.",			
+			"date": "Oct 12 2016 at 6:20pm",
+			"timeStamp": 1,
+			"postText" : "Somebody review my Story Board, I added it to the drive.",			
 			"pinned" : "no"
 		},
 		{
 			"author": "Ethan Vander Horn",
 			"title": "A5 is Due Tonight",
-			"text" : "Hey guys I created a Green group so that we can have an easy way to plan for group assignments.",
+			"date": "Oct 18 2016 at 4:20pm",
+			"timeStamp": 1,
+			"postText" : "Hey guys I created a Green group so that we can have an easy way to plan for group assignments.",
 			"pinned" : "no"
 		},
 		{
 			"author": "JBon",
 			"title": "A5 is Due Tonight",
-			"text" : "Lets bring all of our Story Boards to tomorrows meeting. We can review them, make edits if needed, and then work on the Paper Prototypes together. Fill out this strawpull to figure out what time we can meet: http://www.strawpoll.me/",
+			"date": "Sept 18 2016 at 4:61pm",
+			"timeStamp": 1,
+			"postText" : "Lets bring all of our Story Boards to tomorrows meeting. We can review them, make edits if needed, and then work on the Paper Prototypes together. Fill out this strawpull to figure out what time we can meet: http://www.strawpoll.me/",
 			"pinned" : "on"
 		},
 		{
 			"author": "Miguel Vargas",
 			"title": "Practice on Thursday!",
-			"text" : "Link to google doc for convenience: https://drive.google.com/drive/folders/0B6N7VlbbnDg5fnRuV",
+			"date": "Dec 25 2015 at 12:01am",
+			"timeStamp": 1,
+			"postText" : "Link to google doc for convenience: https://drive.google.com/drive/folders/0B6N7VlbbnDg5fnRuV",
 			"pinned" : "on"
 		}
 		]
@@ -57,33 +65,38 @@
 		{
 			"author": "Sheng Poon",
 			"title": "Guest Instructor",
-			"text" : "I'm going to see if I can get a guest chreographer from another team. I am talking to people from cookies and 220.",
+			"date": "Nov 12 2016 at 12:01am",
+			"postText" : "I'm going to see if I can get a guest chreographer from another team. I am talking to people from cookies and 220.",
 			"pinned" : "no"
 		},
 		{
 			"author": "Dom Nguyen",
 			"title": "Guest Instructor",
-			"text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet nibh at augue tristique tincidunt. Nam elit ipsum, varius id velit ut, ultrices placerat nibh. Pellentesque fermentum quam leo, et cursus felis blandit in. Vestibulum laoreet ac metus ut interdum. Quisque vitae ligula egestas ligula cursus imperdiet. Mauris vitae finibus diam. Mauris at eros nibh. Curabitur faucibus pharetra turpis, ac feugiat dolor ultricies quis. Donec at elementum nisl. ",
+			"date": "Nov 10 2016 at 12:01am",
+			"postText" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet nibh at augue tristique tincidunt. Nam elit ipsum, varius id velit ut, ultrices placerat nibh. Pellentesque fermentum quam leo, et cursus felis blandit in. Vestibulum laoreet ac metus ut interdum. Quisque vitae ligula egestas ligula cursus imperdiet. Mauris vitae finibus diam. Mauris at eros nibh. Curabitur faucibus pharetra turpis, ac feugiat dolor ultricies quis. Donec at elementum nisl. ",
 			"pinned" : "no"
 		},
 
 		{
 			"author": "Franny de Leon",
 			"title": "Guest Instructor",
-			"text" : "Sed non nisi ac lacus ultricies pretium in ut purus. Fusce vulputate ut nisi non pellentesque. Sed in risus urna. Aliquam porta, tortor sed imperdiet laoreet, mi ex bibendum augue, lobortis bibendum magna nunc et arcu. In hac habitasse platea dictumst.",
+			"date": "Nov 3 2016 at 12:45pm",
+			"postText" : "Sed non nisi ac lacus ultricies pretium in ut purus. Fusce vulputate ut nisi non pellentesque. Sed in risus urna. Aliquam porta, tortor sed imperdiet laoreet, mi ex bibendum augue, lobortis bibendum magna nunc et arcu. In hac habitasse platea dictumst.",
 			"pinned" : "on"
 		},
 
 		{
 			"author": "Jacquelie Bontigao",
 			"title": "Guest Instructor",
-			"text" : "Vivamus in ligula lorem. Integer ultricies gravida odio, sit amet tincidunt elit sodales ac. Duis nec orci pellentesque, semper urna id, suscipit justo. Praesent vel sem lacus. Maecenas lacinia gravida risus vitae maximus. Nunc suscipit turpis mi, sed imperdiet purus mattis eget.",
+			"date": "Oct 3 2016 at 12:45pm",
+			"postText" : "Vivamus in ligula lorem. Integer ultricies gravida odio, sit amet tincidunt elit sodales ac. Duis nec orci pellentesque, semper urna id, suscipit justo. Praesent vel sem lacus. Maecenas lacinia gravida risus vitae maximus. Nunc suscipit turpis mi, sed imperdiet purus mattis eget.",
 			"pinned" : "on"
 		},
 		{
 			"author": "JBon",
 			"title": "Practice on Thursday!",
-			"text" : "Don't forget that we have practice this Thursday!",
+			"date": "Oct 1 2016 at 12:45pm",
+			"postText" : "Don't forget that we have practice this Thursday!",
 			"pinned" : "on"
 		}
 		]
