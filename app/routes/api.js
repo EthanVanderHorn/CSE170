@@ -118,14 +118,6 @@ module.exports = function(app, express) {
 			res.send(post);
 		});
 
-	apiRouter.route('/user/:username/:group')
-
-		.get(function(req, res){
-			var group = req.params.group;
-			var postList = Post.find({groupid: group});
-			console.log(postList);
-		});
-
 	// api endpoint to get user information
 	apiRouter.get('/me', function(req, res) {
 		res.send(req.decoded);
