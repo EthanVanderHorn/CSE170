@@ -131,5 +131,7 @@ module.exports = function(app, express) {
 		res.send(req.decoded);
 	});
 
+	apiRouter.get('/user/:username/:group/home2')
+
 	return apiRouter;
 };
