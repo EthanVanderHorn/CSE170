@@ -91,69 +91,54 @@
           <p id="date"></p>
           <textarea id="post-text" class="form-control" rows="3" placeholder="What's up?" required ></textarea>
           <button onClick="addPost('{{ UserName }}', '{{ groupData.TeamName }}'); clearForm()" id="post-btn" type="button" class="btn">Post</button>
+
+          <div id="check-box">
+            <div><input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin"></span>Pin your post to the top </div>
+            <div><input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign"></span>Urgent post</div>
+          </div>
+          <!--
           <div id="check-box">
             <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
             <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
-          </div>
+          </div>-->
 
         </div>
         <div id="pin-stack">
-          <!--{{#each groupData.Posts}}
-          {{#ifCond this.pinned '==' "on"}}
-          <div class="card">
-            <div style="display: block;">
-              <span>{{ this.author }}</span>
-              <div class="dropdown post-options" style="display:inline; float: left;">
-                <a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a>
-              </div>
-              {{#ifCond author '==' ../UserName}}
-              <div class="dropdown post-options" style="display:inline; float: right;">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  <span class="glyphicon glyphicon-option-vertical"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                  <li><a href="#">Edit Post</a></li>
-                  <li><a href="#">Delete Post</a></li>
-                </ul>
-              </div>
-              {{/ifCond}}
-            </div>
-
-            <p id="date"> {{this.date}} </p>
-            <p>{{ this.postText }}</p>
-          </div>
-          {{/ifCond}}
-          {{/each}}-->
         </div>
-        <div id="card-stack"><!--
-          {{#each groupData.Posts}}
-          {{#ifCond this.pinned '==' "no"}}
-          <div class="card">
-            <div style="display: block;">
-              <span>{{ this.author }}</span>
-              {{#ifCond author '==' ../UserName}}
-              <div class="dropdown post-options" style="display:inline; float: right;">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  <span class="glyphicon glyphicon-option-vertical"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                  <li><a href="#">Edit Post</a></li>
-                  <li><a href="#">Delete Post</a></li>
-                </ul>
-              </div>
-              {{/ifCond}}
-            </div>
-
-            <p id="date"> {{this.date}} </p>
-            <p>{{ this.postText }}</p>
-          </div>
-          {{/ifCond}}
-          {{/each}}-->
+        <div id="card-stack">
         </div>
       </div>
 
     </div>
-    <!-- Modal -->
+
+    <!-- Urgent Message Modal -->
+    <div class="modal" id="urgent-message" role="dialog" data-backdrop="false" >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Urgent Message</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <ul>
+                  <li><h4>Name your group:</h4></li>
+                  <li class="col-xs-2" ><input id="group-name" type="text" class="form-control" placeholder="Group Name"></li>
+                  <li><h4>Describe your group:</h4><textarea id="group-description" class="form-control" rows="3" placeholder="Description" required></textarea></li>
+                </ul>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button onClick="addGroup('{{ UserName }}')" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- New Group Modal -->
     <div class="modal fade" id="new-group" role="dialog">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -250,20 +235,28 @@
 
   function getUpdates(){
     var TeamName = document.getElementById('team-name').innerText;
-    console.log(TeamName);
     TeamName = TeamName.toLowerCase().replace(/ /g,"_") ;
-    var URL = "/" + TeamName + "/" + lastPost;
-    console.log("hitting that server up at " + URL);
+    URL = "/" + TeamName + "/" + lastPost;
+    //console.log("hitting up the server at " + URL);
     $.get(URL, updatePosts);
   }
 
   function updatePosts(result){
-    console.log(result);
+    //console.log(result);
     if(result === undefined) return;
     for (var i=result.length -1; i>=0; i--){
       displayPost(result[i]);
       lastPost = (lastPost > result[i].timeStamp) ? lastPost : result[i].timeStamp;
+      if(result[i].urgent = "on"){
+        console.log("urgentMessage Received");
+        displayUrgent(result[i]);
+      }
     }
+  }
+
+  function displayUrgent(urgentPost){
+    var modal = $('#urgent-modal');
+    modal.modal("show");
   }
 
   function addPost(UserName, TeamName){
@@ -275,7 +268,8 @@
       "date": timeConverter(Date.now()/1000 | 0),
       "timeStamp": Date.now(),
       "postText" : postText,
-      "pinned" : ($('#pin-check').is(":checked"))?"on":"no"
+      "pinned" : ($('#pin-check').is(":checked"))?"on":"no",
+      "urgent" : ($('urgent-check').is(":checked"))?"on":"no"
     };
 
     var postData = {

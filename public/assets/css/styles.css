@@ -21,8 +21,10 @@ body {
 	margin: 0px;
 }
 
-.glyphicon-pushpin { 
-	margin-right: 10px;
+.glyphicon-pushpin,
+.glyphicon-exclamation-sign { 
+	margin-right: 7px;
+	margin-left: 3px;
 }
 
 #new-group li h4 {

@@ -27,6 +27,10 @@ var PostSchema	= new Schema({
 	pinned: {
 		type: String,
 		required: true
+	},
+	urgent: {
+		type: String,
+		required: true
 	}
 });
 
