@@ -11,6 +11,7 @@ var config 	   = require('./config');
 var path 	   = require('path');
 var http	   = require('http');
 var handlebars = require('express-handlebars');
+var data = require('./mock-data/groups.json');
 
 var hbs = handlebars.create({
 	helpers : {
@@ -112,6 +113,8 @@ app.get('/user/:username/:group/home2', function(req, res){
 	var group = (req.params.group).toLowerCase();
 	var groupData;
 	var currentElement;
+
+	data['isOriginal'] = false;
 	if(obj === undefined){
 		fs = require('fs');
 		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
@@ -131,6 +134,8 @@ app.get('/user/:username/:group', function(req, res){
 	var group = (req.params.group).toLowerCase();
 	var groupData;
 	var currentElement;
+
+	data['isOriginal'] = true;
 	if(obj === undefined){
 		fs = require('fs');
 		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
