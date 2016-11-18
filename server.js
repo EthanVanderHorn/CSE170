@@ -107,25 +107,6 @@ app.get('/user/:username/account-settings', function(req, res){
 	res.render('settings', {'UserName': username});
 });
 
-app.get('/user/:username/:group/home2', function(req, res){
-	var username = req.params.username;
-	var group = (req.params.group).toLowerCase();
-	var groupData;
-	var currentElement;
-	if(obj === undefined){
-		fs = require('fs');
-		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
-	}
-	for (var i = obj.groups.length - 1; i >= 0; i--) {
-		currentElement = obj.groups[i];
-		if(currentElement.TeamURL ==  group){
-			groupData = currentElement;
-			break;
-		}
-	}
-	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
-});
-
 app.get('/user/:username/:group', function(req, res){
 	var username = req.params.username;
 	var group = (req.params.group).toLowerCase();
