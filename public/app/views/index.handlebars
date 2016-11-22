@@ -124,7 +124,7 @@
               <div class="form-group">
                 <ul>
                   <li><h4>Name your group:</h4></li>
-                  <li class="col-xs-2" ><input id="group-name" type="text" class="form-control" placeholder="Group Name"></li>
+                  <li class="col-xs-2" ><input id="g-name" type="text" class="form-control" placeholder="Group Name"></li>
                   <li><h4>Describe your group:</h4><textarea id="group-description" class="form-control" rows="3" placeholder="Description" required></textarea></li>
                 </ul>
               </div>
@@ -202,6 +202,7 @@
 
   function addGroup(UserName){
     var groupName = document.getElementById('group-name').value;
+    console.log(groupName);
     var groupDescription = document.getElementById('group-description').value;
     var newGroup =  
     {
