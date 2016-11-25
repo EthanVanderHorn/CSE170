@@ -14,17 +14,21 @@ body {
 	color: #ecf0f1;
 }
 
+.glyphicon-pushpin,
+.glyphicon-exclamation-sign { 
+	margin-right: 7px;
+	margin-left: 3px;
+}
+
+#new-group .col-xs-2{
+	width: 120px;
+}
+
 #new-group li {
 	float: none;
 	list-style: none;
 	padding: 0px;
 	margin: 0px;
-}
-
-.glyphicon-pushpin,
-.glyphicon-exclamation-sign { 
-	margin-right: 7px;
-	margin-left: 3px;
 }
 
 #new-group li h4 {
@@ -320,15 +324,20 @@ h4.modal-title {
 /* NEW ACCOUNT PAGE */
 #new-account-wrapper,
 #settings-wrapper {
-	position: fixed;
-	width: 400px;
-	height: 100%;
+	width: 100%;
+	height: 5000px;
 	padding: 10px;
-	margin-left: 35%;
+	margin-left: 50%;
 }
 
 .pw-form{
 	margin-top: 10px;
+}
+
+#new-account-content,
+#settings-content {
+	width: 400px;
+	margin-left: -200px; 
 }
 
 #new-account-content h4,
@@ -358,9 +367,23 @@ h4.modal-title {
 
 /* FOR TESTING PURPOSES ONLY */
 
+#mobile-login-wrapper {
+	display: fixed;
+	width:200px !important;
+	margin: 100% !important;
+}
+
+#mobile-login {
+	display: fixed;
+	width:200px !important;
+	margin-left: -250px !important;
+}
+
+
 /* MEDIA QUERIES */
 
 @media (max-width:768px) {
+
 
 	#hidden-navbar-option {
 		display: none;
