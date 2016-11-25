@@ -78,7 +78,7 @@
         <h2 id="team-members">Team Members</h2>
         <ul class="sidebar-nav">
           {{#each groupData.members}}
-          <li>{{ this.membername }}</li>
+          <li>{{ this }}</li>
           {{/each}}
         </ul>
       </div>
@@ -197,7 +197,11 @@
   }, false);
 
   UserName = $("#UserName").text();
-
+  GroupName = $("#team-name").text();
+  console.log(GroupName);
+  console.log(urlify(GroupName));
+  console.log("/user/" + UserName + "/" + urlify(GroupName) + "/addMember");
+  $.get("/user/" + UserName + "/" + urlify(GroupName) + "/addMember");
 
 
   setInterval("getUpdates()", 500);  // call function every half a second
@@ -219,11 +223,11 @@
     var groupDescription = document.getElementById('group-description').value;
     var newGroup =  
     {
-      "TeamURL": groupName.toLowerCase().replace(/ /g,"_"),
+      "TeamURL": urlify(groupName),
       "name": groupName,
       "description": groupDescription,
       "members": [
-      {"membername": UserName}
+      UserName
       ],
       "posts": []
     };
@@ -246,9 +250,8 @@
   var lastPost = 0;
 
   function getUpdates(){
-    var TeamName = document.getElementById('team-name').innerText;
-    TeamName = TeamName.toLowerCase().replace(/ /g,"_") ;
-    URL = "/" + TeamName + "/" + lastPost;
+    var TeamURL = urlify(GroupName);
+    URL = "/" + TeamURL + "/" + lastPost;
     //console.log("hitting up the server at " + URL);
     $.get(URL, updatePosts);
   }
@@ -271,12 +274,12 @@
     modal.modal("show");
   }
 
-  function addPost(TeamName){
+  function addPost(){
     var postText = document.getElementById('post-text').value;
     if (postText === undefined) return;
     if (postText === "") return;
     var newPost = {
-      "groupid": TeamName.toLowerCase().replace(/ /g,"_"),
+      "groupid": urlify(GroupName),
       "author": UserName,
       "date": timeConverter(Date.now()/1000 | 0),
       "timeStamp": Date.now(),
@@ -285,12 +288,8 @@
       "urgent" : ($('urgent-check').is(":checked"))?"on":"no"
     };
 
-    var postData = {
-      postBody: newPost,
-      groupName: TeamName,
-    }
 
-    $.post("/user/" + UserName + "/" + TeamName.toLowerCase().replace(/ /g,"_") + "/newPost", postData);
+    $.post("/user/" + UserName + "/" + urlify(GroupName) + "/newPost", newPost);
     $.post("/api/newPost", newPost);
 
   }
@@ -338,6 +337,10 @@
 
     var time = month + ' ' + date + ' ' + year + ' at ' + hour + ':' + min + "" + AmPm;
     return time;
+  }
+
+  function urlify(Phrase){
+    return Phrase.toLowerCase().replace(/ /g,"_");
   }
 
   </script>

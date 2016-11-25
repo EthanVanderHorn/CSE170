@@ -5,10 +5,10 @@
 		"name": "Cogs 120",
 		"description": "Group to collaborate for our cogs 120 project.",
 		"members": [
-		{"membername": "Connie Guan"},
-		{"membername": "JBon"},
-		{"membername": "Ethan Vander Horn"},
-		{"membername": "Jacqueline Bontigao"}
+		"Connie Guan",
+		"JBon",
+		"Ethan Vander Horn",
+		"Jacqueline Bontigao"
 		],
 
 
@@ -57,12 +57,12 @@
 		"name": "Sleepless Collective",
 		"description": "This is a group to plan dance events!",
 		"members": [
-		{"membername": "JBon"},
-		{"membername": "Franny de Leon"},
-		{"membername": "Dom Nguyen"},
-		{"membername": "Sheng Poon"},
-		{"membername": "Jomar Batac"},
-		{"membername": "Desiree Santos"}
+		"JBon",
+		"Franny de Leon",
+		"Dom Nguyen",
+		"Sheng Poon",
+		"Jomar Batac",
+		"Desiree Santos"
 		],
 
 		"posts": [
