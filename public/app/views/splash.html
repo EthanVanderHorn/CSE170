@@ -13,32 +13,48 @@
 </head>
 
 <body id="splash-wrapper">
+  <div id="actual-wrapper">
 
-  <div id="splash-navbar-wrapper">
-    <nav id="splash-navbar" class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a id="splash-navbar-logo" class="navbar-brand"><img class="navbar-logo" src="assets/logo.png" /></a>
-          <p id="splash-navbar-brand" class="navbar-text">Green</p>
+    <div id="splash-navbar-wrapper">
+      <nav id="splash-navbar" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+
+            <a id="splash-navbar-logo" class="navbar-brand"><img class="navbar-logo" src="assets/logo.png" /></a>
+            <p id="splash-navbar-brand" class="navbar-text">Green</p>
+          </div>
+
+          <form id="splash-navbar-options" class="navbar-form navbar-right">
+            <div  id="splash-navbar-form" class="form-group">
+              <input type="text" class="form-control" placeholder="Username">
+              <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <button onClick="login()" id="splash-login-btn" type="button" class="btn">Login</button>
+          </form>
         </div>
+      </nav>
+    </div>
+    <div id="mobile-login-wrapper">
 
-        <form id="splash-navbar-options" class="navbar-form navbar-right">
-          <div  id="splash-navbar-form" class="form-group">
+      <div id="mobile-login">
+        <form class="form" style="">
+          <div  id="" class="form-group">
             <input type="text" class="form-control" placeholder="Username">
             <input type="password" class="form-control" placeholder="Password">
           </div>
-          <button onClick="login()" id="splash-login-btn" type="button" class="btn">Login</button>
+          <button onClick="login()" id="" type="button" class="btn">Login</button>
         </form>
       </div>
-    </nav>
-  </div>
+    </div>
 
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div id="splash-main-content" class="centering text-center">
-        <h1>Work better. Efficiently. Easy.</h1>
-        <h2>A collaboration platform for easy information sharing and group coordination.</h2>
-        <a id="splash-signup-btn" class="btn" href="/getStarted">Get Started</a>
+    <div class="container-fluid">
+
+      <div class="row-fluid">
+        <div id="splash-main-content" class="centering text-center">
+          <h1>Work better. Efficiently. Easy.</h1>
+          <h2>A collaboration platform for easy information sharing and group coordination.</h2>
+          <a id="splash-signup-btn" class="btn" href="/getStarted">Get Started</a>
+        </div>
       </div>
     </div>
   </div>

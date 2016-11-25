@@ -92,20 +92,18 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/app/views/splash.html'));
 });
 
-var obj;
+fs = require('fs');
+var obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
 
 app.get('/user/:username/', function(req, res){
 	var username = req.params.username;
-	if(obj === undefined){
-		fs = require('fs');
-		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
-	}
+	if(obj === undefined) return;
 	res.redirect("/user/" + username + "/" + obj.groups[0].TeamURL);
 });
 
 app.get('/user/:username/account-settings', function(req, res){
 	var username = req.params.username;
-	res.render('settings', {'UserName': username});
+	res.render('settings', {'UserName': username, "groups": obj.groups});
 });
 
 
@@ -123,14 +121,9 @@ app.get('/user/:username/:group', function(req, res){
 		fs = require('fs');
 		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
 	}
-	for (var i = obj.groups.length - 1; i >= 0; i--) {
-		currentElement = obj.groups[i];
-		if(currentElement.TeamURL ==  group){
-			groupData = currentElement;
-			break;
-		}
-	}
+	groupData = obj.groups[findGroup(group)];
 	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal": data["isOriginal"]});
+
 });
 
 app.get('/user/:username/:group/b', function(req, res){
@@ -148,14 +141,8 @@ app.get('/user/:username/:group/b', function(req, res){
 		fs = require('fs');
 		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
 	}
-	for (var i = obj.groups.length - 1; i >= 0; i--) {
-		currentElement = obj.groups[i];
-		if(currentElement.TeamURL ==  group){
-			groupData = currentElement;
-			break;
-		}
-	}
-	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal":data["isOriginal"]});
+	groupData = obj.groups[findGroup(group)];
+	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal": data["isOriginal"]});
 });
 
 
@@ -166,23 +153,29 @@ app.post("/addGroup", function(req, res){
 	res.send(group.TeamURL);
 });
 
-app.post("/user/:userName/:groupName/newPost", function(req, res){
-	var postData = req.body.postBody;
-	var group = req.body.groupName;
-	var groupData;
-	var currentElement;
-	for (var i = obj.groups.length - 1; i >= 0; i--) {
-		currentElement = obj.groups[i];
-		if(currentElement.name ==  group){
-			groupData = currentElement;
-			if (currentElement.posts === undefined){
-				currentElement.posts = [];
-			}
-			currentElement.posts.unshift(postData);
-
-			break;
+app.get("/user/:userName/:groupName/addMember", function(req, res){
+	if(obj === undefined) return;
+	var grouploc = findGroup(req.params.groupName);
+	var group = obj.groups[grouploc];
+	var user = req.params.userName;
+	for (var i = 0; i <= group.members.length - 1; i++) {
+		if(group.members[i] === user){
+			console.log("already member");
+			return;
 		}
 	}
+	console.log("adding member");
+	obj.groups[grouploc].members.push(user);
+	console.log(obj.groups[grouploc].members);
+});
+
+app.post("/user/:userName/:groupName/newPost", function(req, res){
+	var postData = req.body;
+	var group = req.params.groupName;
+	console.log("adding post to " + group);
+	var groupIndex = findGroup(group);
+	console.log(groupIndex);
+	obj.groups[groupIndex].posts.unshift(postData);
 	res.send(postData);
 });
 
@@ -195,16 +188,9 @@ app.get('/:groupName/:lastUpdate', function(req, res){
 	var groupName = req.params.groupName;
 	var lastUpdate = req.params.lastUpdate;
 	var newPosts = [];
-
-	var groupData;
 	if(obj === undefined) return;
-	for (var i = obj.groups.length - 1; i >= 0; i--) {
-		currentElement = obj.groups[i];
-		if(currentElement.TeamURL ==  groupName){
-			groupData = currentElement;
-			break;
-		}
-	}
+	var groupData = obj.groups[findGroup(groupName)];
+	if(groupData === undefined) return;
 	if(groupData.posts === undefined) return;
 	for (var i = 0; i <= groupData.posts.length - 1; i++) {
 		currentElement = groupData.posts[i];
@@ -219,6 +205,19 @@ app.get('/:groupName/:lastUpdate', function(req, res){
 	res.send(newPosts);
 });
 
+function findGroup(groupName){
+	//console.log("finding location of " + groupName);
+	if(obj === undefined) return;
+	var currentElement;
+	for (var i = obj.groups.length - 1; i >= 0; i--) {
+		currentElement = obj.groups[i];
+		if(currentElement.TeamURL ==  groupName){
+			break;
+		}
+	}
+	//console.log("found: " + i);
+	return i;
+}
 
 
 // START THE SERVER

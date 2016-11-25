@@ -78,7 +78,7 @@
         <h2 id="team-members">Team Members</h2>
         <ul class="sidebar-nav">
           {{#each groupData.members}}
-          <li>{{ this.membername }}</li>
+          <li>{{ this }}</li>
           {{/each}}
         </ul>
       </div>
@@ -121,27 +121,23 @@
     </div>
 
     <!-- Urgent Message Modal -->
-    <div class="modal" id="urgent-message" role="dialog" data-backdrop="false" >
+    <div class="modal" style="display: none" id="urgent-modal" role="dialog" data-backdrop="false" >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Urgent Message</h4>
+            <span><h4 class="modal-title">Urgent Message</h4></span>
           </div>
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <ul>
-                  <li><h4>Name your group:</h4></li>
-                  <li class="col-xs-2" ><input id="g-name" type="text" class="form-control" placeholder="Group Name"></li>
-                  <li><h4>Describe your group:</h4><textarea id="grescription" class="form-control" rows="3" placeholder="Description" required></textarea></li>
-                </ul>
+                <h4 id="urgent-header"></h4>
+                <h4></h4>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button onClick="addGroup()" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
           </div>
         </div>
       </div>
@@ -183,8 +179,8 @@
             <h4 class="modal-title"> Share Group </h4>
           </div>
           <div class="link-share">
-            <h4> Link Sharing! </h4>
-            <p> https://thebears-turnin.herokuapp.com/ </p>
+            <h4> Share this link with your team! </h4>
+            <p>https://thebears-turnin.herokuapp.com</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -206,7 +202,11 @@
   }, false);
 
   UserName = $("#UserName").text();
-
+  GroupName = $("#team-name").text();
+  console.log(GroupName);
+  console.log(urlify(GroupName));
+  console.log("/user/" + UserName + "/" + urlify(GroupName) + "/addMember");
+  $.get("/user/" + UserName + "/" + urlify(GroupName) + "/addMember");
 
 
   setInterval("getUpdates()", 500);  // call function every half a second
@@ -228,11 +228,11 @@
     var groupDescription = document.getElementById('group-description').value;
     var newGroup =  
     {
-      "TeamURL": groupName.toLowerCase().replace(/ /g,"_"),
+      "TeamURL": urlify(groupName),
       "name": groupName,
       "description": groupDescription,
       "members": [
-      {"membername": UserName}
+      UserName
       ],
       "posts": []
     };
@@ -255,68 +255,63 @@
   var lastPost = 0;
 
   function getUpdates(){
-    var TeamName = document.getElementById('team-name').innerText;
-    TeamName = TeamName.toLowerCase().replace(/ /g,"_") ;
-    URL = "/" + TeamName + "/" + lastPost;
+    var TeamURL = urlify(GroupName);
+    URL = "/" + TeamURL + "/" + lastPost;
     //console.log("hitting up the server at " + URL);
     $.get(URL, updatePosts);
   }
 
   function updatePosts(result){
-    //console.log(result);
     if(result === undefined) return;
     for (var i=result.length -1; i>=0; i--){
       displayPost(result[i]);
       lastPost = (lastPost > result[i].timeStamp) ? lastPost : result[i].timeStamp;
       if(result[i].urgent == "on"){
-        console.log("urgentMessage Received");
         displayUrgent(result[i]);
       }
     }
   }
 
   function displayUrgent(urgentPost){
-    var modal = $('#urgent-modal');
-    modal.modal("show");
+    if(UserName === urgentPost.author) return; //console.log("message won't normall display.");
+    var urgentModal = $('#urgent-modal');
+    console.log(urgentModal);
+    var urgentModalHeader = $("#urgent-header");
+    urgentModalHeader.text(urgentPost.author + " has sent made an important post.");
+    urgentModal.modal();
   }
 
-  function addPost(TeamName){
+  function addPost(){
     var postText = document.getElementById('post-text').value;
     if (postText === undefined) return;
     if (postText === "") return;
     var newPost = {
-      "groupid": TeamName.toLowerCase().replace(/ /g,"_"),
+      "groupid": urlify(GroupName),
       "author": UserName,
       "date": timeConverter(Date.now()/1000 | 0),
       "timeStamp": Date.now(),
       "postText" : postText,
       "pinned" : ($('#pin-check').is(":checked"))?"on":"no",
-      "urgent" : ($('urgent-check').is(":checked"))?"on":"no"
+      "urgent" : ($('#urgent-check').is(":checked"))?"on":"no"
     };
 
-    var postData = {
-      postBody: newPost,
-      groupName: TeamName,
-    }
 
-    $.post("/user/" + UserName + "/" + TeamName.toLowerCase().replace(/ /g,"_") + "/newPost", postData);
+    $.post("/user/" + UserName + "/" + urlify(GroupName) + "/newPost", newPost);
     $.post("/api/newPost", newPost);
 
   }
 
   function displayPost(result){
     var fullPost;
-    if (result.pinned == "no"){
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+ result.date +'</p><p>'+result.postText+'</p></div>';
 
+    fullPost = '<div class="card"> <div style="display: block;">' + ((result.urgent === "on")?'<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span> ' : '')+' <span>'+ result.author +'</span><div class="dropdown post-options" style="display:inline; float:'+ ((result.pinned === "on")?' left;">': 'right;">') + ((result.pinned === "on")?'<a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a> ':'') + '</div><div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+ result.date + '</p><p>'+result.postText+'</p></div>';
 
-
-      $('#card-stack').prepend(fullPost);
-    } else {
-
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span><div class="dropdown post-options" style="display:inline; float: left;"><a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a></div> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+ result.date + '</p><p>'+result.postText+'</p></div>';
+    if(result.pinned === "on") {
       $('#pin-stack').prepend(fullPost);
+    } else {
+      $('#card-stack').prepend(fullPost);
     }
+
   }
 
 
@@ -347,6 +342,10 @@
 
     var time = month + ' ' + date + ' ' + year + ' at ' + hour + ':' + min + "" + AmPm;
     return time;
+  }
+
+  function urlify(Phrase){
+    return Phrase.toLowerCase().replace(/ /g,"_");
   }
 
   </script>
