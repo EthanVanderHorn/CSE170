@@ -116,6 +116,9 @@ app.get('/user/:username/:group', function(req, res){
 	var currentElement;
 
 	data['isOriginal'] = true;
+	console.log("a");
+	console.log(data['isOriginal']);
+
 	if(obj === undefined){
 		fs = require('fs');
 		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
@@ -127,9 +130,33 @@ app.get('/user/:username/:group', function(req, res){
 			break;
 		}
 	}
-	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
+	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal": data["isOriginal"]});
 });
 
+app.get('/user/:username/:group/b', function(req, res){
+	var username = req.params.username;
+	var group = (req.params.group).toLowerCase();
+	var groupData;
+	var currentElement;
+
+	data['isOriginal'] = false;
+	console.log("B");
+	console.log(data['isOriginal']);
+
+
+	if(obj === undefined){
+		fs = require('fs');
+		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
+	}
+	for (var i = obj.groups.length - 1; i >= 0; i--) {
+		currentElement = obj.groups[i];
+		if(currentElement.TeamURL ==  group){
+			groupData = currentElement;
+			break;
+		}
+	}
+	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal":data["isOriginal"]});
+});
 
 
 app.post("/addGroup", function(req, res){
@@ -138,7 +165,6 @@ app.post("/addGroup", function(req, res){
 	obj.groups.push(group);
 	res.send(group.TeamURL);
 });
-
 
 app.post("/user/:userName/:groupName/newPost", function(req, res){
 	var postData = req.body.postBody;

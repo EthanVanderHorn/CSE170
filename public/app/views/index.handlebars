@@ -93,14 +93,23 @@
           <button onClick="addPost('{{ groupData.name }}'); clearForm()" id="post-btn" type="button" class="btn">Post</button>
           <!--
           <div id="check-box">
-            <div><input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin"></span>Pin your post to the top </div>
-            <div><input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign"></span>Urgent post</div>
+            
           </div>-->
-          <!-- THIS FOR BUILD B -->
+
           <div id="check-box">
-            <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
-            <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
-          </div><!--END OF BUILD B-->
+            {{#if isOriginal}}
+              <!-- THIS FOR BUILD A -->
+              <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
+              <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
+              <!--END OF BUILD A-->
+            {{else}}
+              <!-- this is build b -->
+              <div><input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin"></span>Pin your post to the top </div>
+              <div><input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign"></span>Urgent post</div>
+              <!-- end build b -->
+            {{/if}}
+
+          </div>
 
         </div>
         <div id="pin-stack">
