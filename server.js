@@ -153,6 +153,7 @@ app.post("/user/:userName/:groupName/newPost", function(req, res){
 	console.log("adding post to " + group);
 	var groupIndex = findGroup(group);
 	console.log(groupIndex);
+	if (obj.groups[groupIndex].posts === undefined) obj.groups[groupIndex].posts = [];
 	obj.groups[groupIndex].posts.unshift(postData);
 	res.send(postData);
 });
