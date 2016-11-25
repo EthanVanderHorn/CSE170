@@ -266,7 +266,7 @@
   }
 
   function displayUrgent(urgentPost){
-    if(UserName === urgentPost.author) console.log("message won't normall display.");
+    if(UserName === urgentPost.author) return; //console.log("message won't normall display.");
     var urgentModal = $('#urgent-modal');
     console.log(urgentModal);
     var urgentModalHeader = $("#urgent-header");
