@@ -2,6 +2,20 @@
 <html>
 
 <head>
+  <!-- Google Analytics Content Experiment code -->
+<script>function utmx_section(){}function utmx(){}(function(){var
+k='134576284-1',d=document,l=d.location,c=d.cookie;
+if(l.search.indexOf('utm_expid='+k)>0)return;
+function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+</script><script>utmx('url','A/B');</script>
+<!-- End of Google Analytics Content Experiment code -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>THE GREEN APP</title>
@@ -93,14 +107,23 @@
           <button onClick="addPost('{{ groupData.name }}'); clearForm()" id="post-btn" type="button" class="btn">Post</button>
           <!--
           <div id="check-box">
-            <div><input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin"></span>Pin your post to the top </div>
-            <div><input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign"></span>Urgent post</div>
+            
           </div>-->
-          <!-- THIS FOR BUILD B -->
+
           <div id="check-box">
-            <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
-            <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
-          </div><!--END OF BUILD B-->
+            {{#if isOriginal}}
+              <!-- THIS FOR BUILD A -->
+              <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
+              <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
+              <!--END OF BUILD A-->
+            {{else}}
+              <!-- this is build b -->
+              <div><input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin"></span>Pin your post to the top </div>
+              <div><input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign"></span>Urgent post</div>
+              <!-- end build b -->
+            {{/if}}
+
+          </div>
 
         </div>
         <div id="pin-stack">
@@ -185,7 +208,13 @@
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="/assets/js/sidemenu.js"></script>
-  <script type="application/javascript" src="/assets/js/fastclick.js"></script>
+  <script type="application/javascript" src="/assets/js/fastclick.js"></script>nod
+
+  <script>
+    $("#check-box").click(function () {
+      ga('send', 'event', 'checkbox', 'click');
+    });
+  </script>
 
   <script>
   window.addEventListener('load', function() {
@@ -344,6 +373,19 @@
 
 
   <script src="/assets/js/post.js"></script>
+
+  <!-- analytics tracking script -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88017639-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- end analytics tracking -->
 
 </body>
 

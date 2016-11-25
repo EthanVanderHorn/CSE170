@@ -114,14 +114,31 @@ app.get('/user/:username/:group', function(req, res){
 	var currentElement;
 
 	data['isOriginal'] = true;
+
 	if(obj === undefined){
 		fs = require('fs');
 		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
 	}
 	groupData = obj.groups[findGroup(group)];
-	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
+	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal": data["isOriginal"]});
+
 });
 
+app.get('/user/:username/:group/b', function(req, res){
+	var username = req.params.username;
+	var group = (req.params.group).toLowerCase();
+	var groupData;
+	var currentElement;
+
+	data['isOriginal'] = false;
+
+	if(obj === undefined){
+		fs = require('fs');
+		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
+	}
+	groupData = obj.groups[findGroup(group)];
+	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal": data["isOriginal"]});
+});
 
 
 app.post("/addGroup", function(req, res){
