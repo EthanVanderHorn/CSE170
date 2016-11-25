@@ -122,10 +122,8 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <ul>
-                  <h4 id="urgent-header"></h4>
-                  <h4></h4>
-                </ul>
+                <h4 id="urgent-header"></h4>
+                <h4></h4>
               </div>
             </form>
           </div>
@@ -270,7 +268,7 @@
     var urgentModal = $('#urgent-modal');
     console.log(urgentModal);
     var urgentModalHeader = $("#urgent-header");
-    urgentModalHeader.text(urgentPost.author + " has sent made an urgent post.");
+    urgentModalHeader.text(urgentPost.author + " has sent made an important post.");
     urgentModal.modal();
   }
 
@@ -296,17 +294,15 @@
 
   function displayPost(result){
     var fullPost;
-    if (result.pinned == "no"){
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+ result.date +'</p><p>'+result.postText+'</p></div>';
 
+    fullPost = '<div class="card"> <div style="display: block;">' + ((result.urgent === "on")?'<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span> ' : '')+' <span>'+ result.author +'</span><div class="dropdown post-options" style="display:inline; float:'+ ((result.pinned === "on")?' left;">': 'right;">') + ((result.pinned === "on")?'<a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a> ':'') + '</div><div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+ result.date + '</p><p>'+result.postText+'</p></div>';
 
-
-      $('#card-stack').prepend(fullPost);
-    } else {
-
-      fullPost = '<div class="card"> <div style="display: block;"> <span>'+ result.author +'</span><div class="dropdown post-options" style="display:inline; float: left;"><a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a></div> <div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+ result.date + '</p><p>'+result.postText+'</p></div>';
+    if(result.pinned === "on") {
       $('#pin-stack').prepend(fullPost);
+    } else {
+      $('#card-stack').prepend(fullPost);
     }
+
   }
 
 
