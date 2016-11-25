@@ -18,10 +18,6 @@
       <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <!-- Sidebar button -->
-            <button id="navbar-button-sidemenu" type="button" class="toggle-nav navbar-toggle" data-toggle="collapse">
-              <span class="glyphicon glyphicon-list"></span>
-            </button>
 
             <!-- Settings button -->
             <button id="navbar-button-settings" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-settings">
@@ -45,7 +41,7 @@
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     {{#each groups}}
-                    <li><a href="/user/{{ ../UserName }}/{{ this.TeamURL }}"> {{ this.TeamName }} </a></li>
+                    <li><a href="/user/{{ ../UserName }}/{{ this.TeamURL }}"> {{ this.name }} </a></li>
                     {{/each}}
                   </ul>
                 </div>
@@ -53,8 +49,8 @@
               <li>
                 <a href="/user/{{ UserName }}/account-settings" >
                   <span class="glyphicon glyphicon-user"></span>
-                  {{ UserName }}
-                </a>
+                  <element id="UserName">{{ UserName }}</element>
+               </a>
               </li>
               <li><a href="/"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
             </ul>
@@ -89,12 +85,42 @@
       <button type="button" class="btn-lg" onClick="settings('confirm', '{{UserName}}')">Confirm</button>
     </div>
   </div>
+
+      <!-- New Group Modal -->
+    <div class="modal fade" id="new-group" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">New Group</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <ul>
+                  <li><h4>Name your group:</h4></li>
+                  <li class="col-xs-2" ><input id="group-name" type="text" class="form-control" placeholder="Group Name"></li>
+                  <li><h4>Describe your group:</h4><textarea id="group-description" class="form-control" rows="3" placeholder="Description" required></textarea></li>
+                </ul>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="submit-new-group" onClick="addGroup()" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="/assets/js/sidemenu.js"></script>
 <script type="application/javascript" src="/assets/js/fastclick.js"></script>
 <script>
+
+  UserName = $("#UserName").text();
+
   function settings(option, username){
     if (option == "cancel"){
       location.href = "/user/" + username;
@@ -104,6 +130,26 @@
       location.href = "/user/" + newUserName;
     }
   }
+
+
+  function addGroup(){
+    var groupName = document.getElementById('group-name').value;
+    console.log(groupName);
+    var groupDescription = document.getElementById('group-description').value;
+    var newGroup =  
+    {
+      "TeamURL": urlify(groupName),
+      "name": groupName,
+      "description": groupDescription,
+      "members": [
+      UserName
+      ],
+      "posts": []
+    };
+
+    $.post("/addGroup", newGroup, changeGroup);
+  } 
+
 </script>
 </body>
 

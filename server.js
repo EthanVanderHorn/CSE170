@@ -103,7 +103,7 @@ app.get('/user/:username/', function(req, res){
 
 app.get('/user/:username/account-settings', function(req, res){
 	var username = req.params.username;
-	res.render('settings', {'UserName': username});
+	res.render('settings', {'UserName': username, "groups": obj.groups});
 });
 
 

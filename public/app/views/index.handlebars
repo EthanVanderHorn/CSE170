@@ -112,27 +112,25 @@
     </div>
 
     <!-- Urgent Message Modal -->
-    <div class="modal" id="urgent-message" role="dialog" data-backdrop="false" >
+    <div class="modal" style="display: none" id="urgent-modal" role="dialog" data-backdrop="false" >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Urgent Message</h4>
+            <span><h4 class="modal-title">Urgent Message</h4></span>
           </div>
           <div class="modal-body">
             <form>
               <div class="form-group">
                 <ul>
-                  <li><h4>Name your group:</h4></li>
-                  <li class="col-xs-2" ><input id="g-name" type="text" class="form-control" placeholder="Group Name"></li>
-                  <li><h4>Describe your group:</h4><textarea id="grescription" class="form-control" rows="3" placeholder="Description" required></textarea></li>
+                  <h4 id="urgent-header"></h4>
+                  <h4></h4>
                 </ul>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button onClick="addGroup()" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
           </div>
         </div>
       </div>
@@ -174,8 +172,8 @@
             <h4 class="modal-title"> Share Group </h4>
           </div>
           <div class="link-share">
-            <h4> Link Sharing! </h4>
-            <p> https://thebears-turnin.herokuapp.com/ </p>
+            <h4> Share this link with your team! </h4>
+            <p>https://thebears-turnin.herokuapp.com</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -257,21 +255,23 @@
   }
 
   function updatePosts(result){
-    //console.log(result);
     if(result === undefined) return;
     for (var i=result.length -1; i>=0; i--){
       displayPost(result[i]);
       lastPost = (lastPost > result[i].timeStamp) ? lastPost : result[i].timeStamp;
       if(result[i].urgent == "on"){
-        console.log("urgentMessage Received");
         displayUrgent(result[i]);
       }
     }
   }
 
   function displayUrgent(urgentPost){
-    var modal = $('#urgent-modal');
-    modal.modal("show");
+    if(UserName === urgentPost.author) console.log("message won't normall display.");
+    var urgentModal = $('#urgent-modal');
+    console.log(urgentModal);
+    var urgentModalHeader = $("#urgent-header");
+    urgentModalHeader.text(urgentPost.author + " has sent made an urgent post.");
+    urgentModal.modal();
   }
 
   function addPost(){
@@ -285,7 +285,7 @@
       "timeStamp": Date.now(),
       "postText" : postText,
       "pinned" : ($('#pin-check').is(":checked"))?"on":"no",
-      "urgent" : ($('urgent-check').is(":checked"))?"on":"no"
+      "urgent" : ($('#urgent-check').is(":checked"))?"on":"no"
     };
 
 

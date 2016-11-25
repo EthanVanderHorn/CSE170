@@ -49,6 +49,31 @@ h4.modal-title {
 	background:#eee;
 }
 
+#urgent-modal {
+	float: left;
+	position: fixed;
+	left: 75%;
+	top: 8%;
+	margin-left: -400px;
+    display: inline-block; 
+    box-shadow: none;
+}
+
+#urgent-modal .modal-content {
+	box-shadow: none;
+	border: 0px;
+	width: 600px;   
+
+}
+
+#urgent-modal h4 {
+	float: none;
+	display: block;
+}
+#urgent-modal .btn {
+	float:left;
+}
+
 #navbar a, #navbar p {
 	color: #ecf0f1;
 	text-transform: uppercase;
