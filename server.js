@@ -114,8 +114,6 @@ app.get('/user/:username/:group', function(req, res){
 	var currentElement;
 
 	data['isOriginal'] = true;
-	console.log("a");
-	console.log(data['isOriginal']);
 
 	if(obj === undefined){
 		fs = require('fs');
@@ -133,9 +131,6 @@ app.get('/user/:username/:group/b', function(req, res){
 	var currentElement;
 
 	data['isOriginal'] = false;
-	console.log("B");
-	console.log(data['isOriginal']);
-
 
 	if(obj === undefined){
 		fs = require('fs');
