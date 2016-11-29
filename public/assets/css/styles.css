@@ -467,4 +467,8 @@ h4.modal-title {
 		margin: 0px;
 		width: 100%;
 	}
+
+	#pin-stack {
+		max-height: 200px;
+	}
 }
