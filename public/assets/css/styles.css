@@ -436,7 +436,8 @@ padding-right: 3em;*/
 
 	#new-account-wrapper,
 	#settings-wrapper {
-		padding: 0px;
+		padding-left: 30px;
+		padding-right: 30px;
 		margin: 0px;
 		width: 100%;
 		height: 5000px;
