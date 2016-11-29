@@ -38,46 +38,52 @@
 
       <div id="mobile-login">
         <form class="form" style="">
-          <div  id="" class="form-group">
-            <input type="text" class="form-control" placeholder="Username">
-            <input type="password" class="form-control" placeholder="Password">
+          <div  id="login-form" class="form-group">
+            <div>
+              <input type="text" class="form-control" placeholder="Username" >
+            </div>
+            <div>            
+              <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <div>            
+              <button onClick="login()" id="" type="button" class="btn">Login</button>
+            </div>
           </div>
-          <button onClick="login()" id="" type="button" class="btn">Login</button>
-        </form>
+        </form>      
       </div>
     </div>
 
-    <div class="container-fluid">
+      <div class="container-fluid">
 
-      <div class="row-fluid">
-        <div id="splash-main-content" class="centering text-center">
-          <h1>Work better. Efficiently. Easy.</h1>
-          <h2>A collaboration platform for easy information sharing and group coordination.</h2>
-          <a id="splash-signup-btn" class="btn" href="/getStarted">Get Started</a>
+        <div class="row-fluid">
+          <div id="splash-main-content" class="centering text-center">
+            <h1>Work better. Efficiently. Easy.</h1>
+            <h2>A collaboration platform for easy information sharing and group coordination.</h2>
+            <a id="splash-signup-btn" class="btn" href="/getStarted">Get Started</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/sidemenu.js"></script>
-<script type="application/javascript" src="assets/js/fastclick.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/sidemenu.js"></script>
+  <script type="application/javascript" src="assets/js/fastclick.js"></script>
 
-<script>
-window.addEventListener('load', function() {
-  new FastClick(document.body);
-}, false);
+  <script>
+  window.addEventListener('load', function() {
+    new FastClick(document.body);
+  }, false);
 
-function login() {
-  var log = document.getElementById('splash-navbar-options');
-  var accountName = log.elements[0].value;
-  if (accountName.length != 0) {
-    location.href = "/user/" + accountName;
+  function login() {
+    var log = document.getElementById('splash-navbar-options');
+    var accountName = log.elements[0].value;
+    if (accountName.length != 0) {
+      location.href = "/user/" + accountName;
+    }
   }
-}
-</script>
+  </script>
 
 </body>
 

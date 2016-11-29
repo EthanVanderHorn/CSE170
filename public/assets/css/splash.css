@@ -15,7 +15,8 @@ body, html{
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
-	background: rgba(0, 0, 0, 0);
+	background: rgba(0, 0, 0, .5);
+
 }
 
 #splash-navbar {
@@ -117,7 +118,6 @@ body, html{
 	display: table;
 	width: 100%;
 	padding: 0;
-	background: rgba(0,0,0,0.5);
 }
 
 .row-fluid {
@@ -132,7 +132,6 @@ body, html{
 }
 
 #mobile-login-wrapper {
-	background: rgba(0,0,0,0.5);
 }
 
 
@@ -144,7 +143,6 @@ body, html{
 
 #login-modal-wrapper {	
 
-	background: rgba(0,0,0,0.5);
 	width:100%;
 	height: 100%;
 	padding-left: 50%;
@@ -233,16 +231,17 @@ body, html{
 
 	#mobile-login-wrapper {
 
-		background: rgba(0,0,0,0.5);
 		display: fixed;
 		width:100% !important;
 	}
 
 	#mobile-login {
+		margin-top:4%;	
+		margin-left:17%;
 		visibility: visible;
 		display: fixed;
 
-		width: 100%;
+		width: 40%;
 	}
 
 	#splash-navbar{
