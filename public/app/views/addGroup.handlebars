@@ -30,11 +30,11 @@
 
     <div id="login-modal-wrapper">
       <div id="login-modal" class="centering text-center">
-        <h1>login to join {{groupName}}</h1>
+        <h1>login to join <element id="groupName">{{groupName}}</element></h1>
         <form class="form" style="">
           <div  id="login-form" class="form-group">
             <div>
-            <input type="text" class="form-control" placeholder="Username" >
+            <input id="UserName" type="text" class="form-control" placeholder="Username" >
             </div>
             <div>            
             <input type="password" class="form-control" placeholder="Password">
@@ -51,21 +51,23 @@
   </div>
 </div>
 
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/sidemenu.js"></script>
-<script type="application/javascript" src="assets/js/fastclick.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/js/sidemenu.js"></script>
+<script type="application/javascript" src="/assets/js/fastclick.js"></script>
 
 <script>
 window.addEventListener('load', function() {
   new FastClick(document.body);
 }, false);
 
+var groupName = $('#groupName').text();
+
 function login() {
-  var log = document.getElementById('splash-navbar-options');
-  var accountName = log.elements[0].value;
-  if (accountName.length != 0) {
-    location.href = "/user/" + accountName;
+  var log = document.getElementById('UserName').value;
+  console.log(log);
+  if (log.length != 0) {
+    location.href = "/user/" + log + '/' + groupName;
   }
 }
 </script>
