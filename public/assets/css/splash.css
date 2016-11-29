@@ -145,6 +145,11 @@ body, html{
 
 @media (max-width:768px) {
 
+	#splash-wrapper {
+		width:100%;
+		height:100%;
+	}
+
 	#mobile-login-wrapper {
 
 		background: rgba(0,0,0,0.5);

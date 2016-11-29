@@ -56,8 +56,8 @@ h4.modal-title {
 	top: 8%;
 	margin-left: -375px;
 	width: 400px;   
-    display: inline-block; 
-    box-shadow: none;
+	display: inline-block; 
+	box-shadow: none;
 }
 
 #urgent-modal .modal-content {
@@ -148,7 +148,7 @@ h4.modal-title {
 
 #main-content {
 	margin-left:  250px;
-/*	margin-right: 250px;*/
+	/*	margin-right: 250px;*/
 	padding-top: .5em;
 	max-width: 768px;
 	padding-left: 42px;
@@ -158,6 +158,7 @@ h4.modal-title {
 
 /* POSTS */
 #card-stack .card {
+	overflow-wrap: break-word;
 	position: static;
 	border-radius: 5px;
 	/*border-color: #2AEB3E;*/
@@ -167,7 +168,7 @@ h4.modal-title {
 	border-style: solid;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	padding: 14px 28px;
-/*	margin: 3em; */
+	/*	margin: 3em; */
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
@@ -179,6 +180,7 @@ h4.modal-title {
 }
 
 #pin-stack .card {
+	overflow-wrap: break-word;
 	border-radius: 5px;
 	border-style: solid;
 	/*border-color: #2AEB3E;*/
@@ -187,7 +189,7 @@ h4.modal-title {
 	border-width: 3px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	padding: 14px 28px;
-/*	margin: 3em; */
+	/*	margin: 3em; */
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
@@ -225,7 +227,7 @@ h4.modal-title {
 
 #make-post-bar {
 /*	padding-left: 3em;
-	padding-right: 3em;*/
+padding-right: 3em;*/
 }
 
 #check-box {
@@ -255,36 +257,36 @@ h4.modal-title {
 	width: 250px;
 	height: 100%;
 	padding: 10px;
-  	background:#eee;
+	background:#eee;
 }
 
 #sidebar-wrapper h2 {
-  position: relative;
-  padding-left: 15px;
-  color:#666;
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+	position: relative;
+	padding-left: 15px;
+	color:#666;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 } 
 
 #sidebar-wrapper h1 {
-  position: relative;
-  padding-left: 15px;
-  color:#666;
-  font-size: 25px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+	position: relative;
+	padding-left: 15px;
+	color:#666;
+	font-size: 25px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 #sidebar-wrapper p {
-  position:relative;
-  padding-left:20px;
-  color:#666;
-  font-size:14px;
-  font-weight:300;
-  margin-bottom:30px;
+	position:relative;
+	padding-left:20px;
+	color:#666;
+	font-size:14px;
+	font-weight:300;
+	margin-bottom:30px;
 }
 
 #team-name {
@@ -301,24 +303,24 @@ h4.modal-title {
 }
 
 .sidebar-nav {
-  position:relative;
-  width:250px;
-  margin:0;
-  padding:0;
-  list-style:none;
+	position:relative;
+	width:250px;
+	margin:0;
+	padding:0;
+	list-style:none;
 }
 
 .sidebar-nav li {
-  text-indent:30px;
-  line-height:30px;
-  color:#666;
-  text-transform:uppercase;
-  font-weight:400;
+	text-indent:30px;
+	line-height:30px;
+	color:#666;
+	text-transform:uppercase;
+	font-weight:400;
 }
 
 .sidebar-nav li a {
-  display:block;
-  text-decoration:none;
+	display:block;
+	text-decoration:none;
 }
 
 #share-btn {
@@ -327,7 +329,7 @@ h4.modal-title {
 	margin-left:50px;
 	margin-top: -20px;
 }
-	
+
 .link-share {
 	text-align: center;
 }
@@ -395,22 +397,22 @@ h4.modal-title {
 		position: relative;
 		
 		-moz-transform: translate3d(0, 0, 0);
-			-ms-transfrom: translate3d(0, 0, 0);
-				-o-transform: translate3d(0, 0, 0);
-					-webkit-transform: translate3d(0, 0, 0);
-						transform: translate3d(0, 0, 0);
+		-ms-transfrom: translate3d(0, 0, 0);
+		-o-transform: translate3d(0, 0, 0);
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
 
 		-moz-transition: 300ms ease all;
-			-ms-transition: 300ms ease all;
-				-o-transition: 300ms ease all;
-					-webkit-transition: 300ms ease all;
-						transition: 300ms ease all;
+		-ms-transition: 300ms ease all;
+		-o-transition: 300ms ease all;
+		-webkit-transition: 300ms ease all;
+		transition: 300ms ease all;
 		
 		-moz-backface-visibility: hidden;
-			-ms-backface-visibility: hidden;
-				-o-backface-visibility: hidden;
-					-webkit-backface-visibility: hidden;
-						backface-visibility: hidden;
+		-ms-backface-visibility: hidden;
+		-o-backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
 	}
 
 	#main-content {
@@ -425,10 +427,25 @@ h4.modal-title {
 	#site-wrapper.show-nav #site-canvas {
 
 		-moz-transform: translate3d(250px, 0, 0);
-			-ms-transfrom: translate3d(250px, 0, 0);
-				-o-transform: translate3d(250px, 0, 0);
-					-webkit-transform: translate3d(250px, 0, 0);
-						transform: translate3d(250px, 0, 0);
+		-ms-transfrom: translate3d(250px, 0, 0);
+		-o-transform: translate3d(250px, 0, 0);
+		-webkit-transform: translate3d(250px, 0, 0);
+		transform: translate3d(250px, 0, 0);
 
+	}
+
+	#new-account-wrapper,
+	#settings-wrapper {
+		width: 100%;
+		height: 5000px;
+	}
+
+	.pw-form{
+		margin-top: 10px;
+	}
+
+	#new-account-content,
+	#settings-content {
+		width: 100%;
 	}
 }
