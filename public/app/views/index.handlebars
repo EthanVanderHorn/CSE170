@@ -111,11 +111,12 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
           </div>-->
 
           <div id="check-box">
-            <!--{{#if isOriginal}} -->
-              <div><input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin"></span>Pin your post to the top </div>
-              <div><input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign"></span>Urgent post</div>
-            <!--{{/if}}-->
-
+              <div><input id="pin-check" type="checkbox"> 
+                <span class="glyphicon glyphicon-pushpin"></span>Pin your post to the top 
+              </div>
+              <div>
+                <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign"></span>Urgent post
+              </div>
           </div>
 
         </div>
@@ -203,10 +204,10 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
   <script src="/assets/js/sidemenu.js"></script>
   <script type="application/javascript" src="/assets/js/fastclick.js"></script>nod
 
-  <script>
+  <script>/*
     $("#check-box").click(function () {
       ga('send', 'event', 'checkbox', 'click');
-    });
+    });*/
   </script>
 
   <script>
@@ -222,7 +223,10 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
   $.get("/user/" + UserName + "/" + urlify(GroupName) + "/addMember");
 
 
-  setInterval("getUpdates()", 500);  // call function every half a second
+  var lastPost = 0;
+
+  getUpdates();
+  setInterval("getUpdates()", 750);  // call function every half a second
 
   $('#submit-new-group').attr('disabled', true);
 
@@ -264,16 +268,16 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
     $('[data-toggle="tooltip"]').tooltip();
   });
 
-  var lastPost = 0;
 
   function getUpdates(){
     var TeamURL = urlify(GroupName);
-    URL = "/" + TeamURL + "/" + lastPost;
+    var URL = "/" + TeamURL + "/" + lastPost;
     console.log("hitting up the server at " + URL);
-    $.get(URL, updatePosts);
+    $.get(URL, updatePosts); 
   }
 
   function updatePosts(result){
+    console.log("yo/: "+result.length);
     if(result === undefined) return;
     for (var i=result.length -1; i>=0; i--){
       console.log(result[i].timeStamp);
@@ -314,7 +318,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
 
     $.post("/user/" + UserName + "/" + urlify(GroupName) + "/newPost", newPost);
-    $.post("/api/newPost", newPost);
+    //$.post("/api/newPost", newPost);
 
   }
 
@@ -331,8 +335,10 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
   function displayPost(result){
     console.log("new Post received");
     var fullPost;
+    /* for dropdown button*/
+    /*<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a onclick="deletePost('+ numCards +')" href="#">Delete Post</a></li></ul>*/
 
-    fullPost = '<div class="card" id="card' + numCards + '"> <div style="display: block;">' + ((result.urgent === "on")?'<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span> ' : '')+' <span>'+ result.author +'</span><div class="dropdown post-options" style="display:inline; float:'+ ((result.pinned === "on")?' left;">': 'right;">') + ((result.pinned === "on")?'<a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a> ':'') + '</div>' + ((result.author == UserName)?'<div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a onclick="deletePost('+ numCards +')" href="#">Delete Post</a></li></ul></div>':'') +'</div><p id="date">'+ result.date + '</p><p>'+result.postText+'</p><p class="timeStamp" id="stamp' + numCards + '" style="visibility: hidden">'+result.timeStamp+'</p></div>';
+    fullPost = '<div class="card" id="card' + numCards + '"> <div style="display: block;">' + ((result.urgent === "on")?'<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span> ' : '')+' <span>'+ result.author +'</span><div class="dropdown post-options" style="display:inline; float:'+ ((result.pinned === "on")?' left;">': 'right;">') + ((result.pinned === "on")?'<a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a> ':'') + '</div>' + ((result.author == UserName)?'<div class="dropdown post-options" style="display:inline; float: right;"><button type="button" class="close" onclick="deletePost('+ numCards +')">&times;</button></div>':'') +'</div><p id="date">'+ result.date + '</p><p>'+result.postText+'</p><p class="timeStamp" id="stamp' + numCards + '" style="visibility: hidden">'+result.timeStamp+'</p></div>';
     numCards = numCards + 1;
     if(result.pinned === "on") {
       $('#pin-stack').prepend(fullPost);

@@ -111,19 +111,16 @@ app.get('/user/:username/:group', function(req, res){
 	var username = req.params.username;
 	var group = (req.params.group).toLowerCase();
 	var groupData;
-	var currentElement;
-
-	data['isOriginal'] = true;
 
 	if(obj === undefined){
 		fs = require('fs');
 		obj = JSON.parse(fs.readFileSync('./mock-data/groups.json', 'utf8').toString());
 	}
 	groupData = obj.groups[findGroup(group)];
-	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal": data["isOriginal"]});
+	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups});
 
 });
-
+/*
 app.get('/user/:username/:group/b', function(req, res){
 	var username = req.params.username;
 	var group = (req.params.group).toLowerCase();
@@ -138,7 +135,7 @@ app.get('/user/:username/:group/b', function(req, res){
 	}
 	groupData = obj.groups[findGroup(group)];
 	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal": data["isOriginal"]});
-});
+});*/
 
 
 app.post("/addGroup", function(req, res){
@@ -170,9 +167,13 @@ app.post("/user/:userName/:groupName/newPost", function(req, res){
 	var group = req.params.groupName;
 	console.log("adding post to " + group);
 	var groupIndex = findGroup(group);
-	console.log(groupIndex);
-	if (obj.groups[groupIndex].posts === undefined) obj.groups[groupIndex].posts = [];
+	if (obj.groups[groupIndex].posts === undefined){
+		console.log("Initializing array");
+		obj.groups[groupIndex].posts = [];
+	}
+	console.log("posting||| " + obj.groups[groupIndex].posts.length);
 	obj.groups[groupIndex].posts.unshift(postData);
+	console.log("responding||| "+obj.groups[groupIndex].posts.length);
 	res.send(postData);
 });
 
@@ -213,10 +214,12 @@ app.get('/:groupName/:lastUpdate', function(req, res){
 	if(groupData.posts === undefined) { 
 		return;
 	}
+	console.log("checking for posts....");
+	console.log("num of posts: " + groupData.posts.length);
 	for (var i = 0; i <= groupData.posts.length - 1; i++) {
 		currentElement = groupData.posts[i];
-		console.log(i);
-		if(currentElement.timeStamp > lastUpdate){
+		console.log(currentElement.timeStamp > lastUpdate);
+		if(Number(currentElement.timeStamp) > Number(lastUpdate)){
 			console.log(lastUpdate + " is less than " + currentElement.timeStamp);
 			newPosts.push(currentElement);
 		}
@@ -224,6 +227,7 @@ app.get('/:groupName/:lastUpdate', function(req, res){
 			break;
 		}
 	}
+	console.log("new posts: " + newPosts.length);
 	res.send(newPosts);
 });
 

@@ -40,10 +40,6 @@ h4.modal-title {
 	color: #ecf0f1;
 }
 
-.close {
-	color: rgba(255, 255, 255, 255;)
-}
-
 .modal-header {
 	background: #16a085;
 }
@@ -176,6 +172,12 @@ h4.modal-title {
 	margin-bottom: 40px;
 }
 
+#pin-stack {
+	width: 100%;
+	max-height: 600px;
+	overflow-y: scroll;
+}
+
 #pin-stack .card {
 	border-radius: 5px;
 	border-style: solid;
@@ -241,6 +243,10 @@ h4.modal-title {
 	display: inline;
 }
 
+.close {
+	font-size: 30px;
+
+}
 
 /* SIDEBAR */
 
@@ -282,6 +288,8 @@ h4.modal-title {
 }
 
 #team-name {
+	width:100%;
+	overflow-wrap: break-word;
 	font-size: 25px; 
 	color: #879096;
 }
