@@ -236,6 +236,8 @@ body, html{
 	}
 
 	#login-form {
+		max-width: 100%;
+		width: 200px;
 		margin-left: 0px;
 	}
 
