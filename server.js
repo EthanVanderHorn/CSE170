@@ -137,6 +137,11 @@ app.get('/user/:username/:group/b', function(req, res){
 	res.render('index', {"groupData": groupData, "UserName": username, "groups": obj.groups, "isOriginal": data["isOriginal"]});
 });*/
 
+app.get("/joinGroup/:groupName", function(req, res){
+	var group = req.params.groupName;
+	console.log(__dirname);
+	res.render('addGroup', {'groupName': group});
+});
 
 app.post("/addGroup", function(req, res){
 	var group = req.body;

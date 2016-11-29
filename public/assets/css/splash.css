@@ -123,7 +123,7 @@ body, html{
 .row-fluid {
 	height: 100%;
 	display: table-cell;
-	vertical-align: middle;
+	padding-top: 15%;
 }
 
 .centering {
@@ -140,10 +140,91 @@ body, html{
 	visibility: hidden;
 }
 
+/* JOIN GROUP STUFF */
+
+#login-modal-wrapper {	
+
+	background: rgba(0,0,0,0.5);
+	width:100%;
+	height: 100%;
+	padding-left: 50%;
+	padding-top: 30%;
+}
+
+#login-modal{
+	/*background-color: #fff;*/
+	color: white;
+	margin-left:-300px;
+	margin-top: -200px;
+	width:600px;
+	height:400px;
+	text-transform: uppercase;
+
+	font-family: 'Lato', sans-serif;
+}
+#login-modal h2{
+	font-size: 24px;
+	font-weight: 300;
+	letter-spacing: 1px;
+	font-style: italic;
+	margin-top:45px;
+	margin-bottom: 20px;
+}
+
+#login-modal h1{
+	font-size: 48px;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	margin-bottom: 35px;
+}
+
+#login-form div{
+	display:table-cell;
+	padding-left:20px;
+}
+
+#login-form input{
+	height: 40px;
+
+}
+
+
+#login-form {
+	display:table;
+	margin-left:80px;
+	width:400px;
+
+}
+
+#login-form button{
+	background: rgba(26, 188, 156,1.0);
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 20px;
+	border-radius: 0;
+}
 
 /* MEDIA QUERIES */
 
 @media (max-width:768px) {
+
+	#splash-main-content h1 {
+		font-size: 36px;
+		font-weight: 300;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		margin-bottom: 35px;
+	}
+
+	#splash-main-content h2 {
+		font-size: 16px;
+		font-weight: 300;
+		letter-spacing: 1px;
+		font-style: italic;
+		margin-bottom: 35px;
+	}
 
 	#splash-wrapper {
 		width:100%;

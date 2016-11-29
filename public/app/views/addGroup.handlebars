@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Group</title>
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/splash.css">
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,700" rel="stylesheet">
+
+</head>
+
+<body id="splash-wrapper">
+  <div id="actual-wrapper">
+
+    <div id="splash-navbar-wrapper">
+      <nav id="splash-navbar" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+
+            <a id="splash-navbar-logo" class="navbar-brand"><img class="navbar-logo" src="/assets/logo.png" /></a>
+            <p id="splash-navbar-brand" class="navbar-text">Notificate</p>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+    <div id="login-modal-wrapper">
+      <div id="login-modal" class="centering text-center">
+        <h1>login to join {{groupName}}</h1>
+        <form class="form" style="">
+          <div  id="login-form" class="form-group">
+            <div>
+            <input type="text" class="form-control" placeholder="Username" >
+            </div>
+            <div>            
+            <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <div>            
+            <button onClick="login()" id="" type="button" class="btn">Login</button>
+            </div>
+          </div>
+        </form>
+        <h2>If you do not have an account you can create one here:</h2>
+        <a id="splash-signup-btn" class="btn" href="/getStarted">Get Started</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/sidemenu.js"></script>
+<script type="application/javascript" src="assets/js/fastclick.js"></script>
+
+<script>
+window.addEventListener('load', function() {
+  new FastClick(document.body);
+}, false);
+
+function login() {
+  var log = document.getElementById('splash-navbar-options');
+  var accountName = log.elements[0].value;
+  if (accountName.length != 0) {
+    location.href = "/user/" + accountName;
+  }
+}
+</script>
+
+</body>
+
+</html>
