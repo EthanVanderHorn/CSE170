@@ -209,6 +209,10 @@ h4.modal-title {
 	font-size: 15px;
 }
 
+.timeStamp {
+	font-size: 0;
+}
+
 .post-options button {
 	background: rgba(0, 0, 0, 0);
 	background-color: transparent;
@@ -366,18 +370,6 @@ h4.modal-title {
 }
 
 /* FOR TESTING PURPOSES ONLY */
-
-#mobile-login-wrapper {
-	display: fixed;
-	width:200px !important;
-	margin: 100% !important;
-}
-
-#mobile-login {
-	display: fixed;
-	width:200px !important;
-	margin-left: -250px !important;
-}
 
 
 /* MEDIA QUERIES */

@@ -143,8 +143,9 @@ app.get('/user/:username/:group/b', function(req, res){
 
 app.post("/addGroup", function(req, res){
 	var group = req.body;
-
-	obj.groups.push(group);
+	if(findGroup(group) == -1){
+		obj.groups.push(group);
+	}
 	res.send(group.TeamURL);
 });
 
@@ -175,6 +176,23 @@ app.post("/user/:userName/:groupName/newPost", function(req, res){
 	res.send(postData);
 });
 
+
+app.get("/user/:userName/:groupName/remove/:timeStamp", function(req,res){
+	console.log("DELETING");
+	var groupName = req.params.groupName;
+	var timeStamp = req.params.timeStamp;
+	var groupIndex = findGroup(groupName);
+	var groupData = obj.groups[groupIndex];
+	for (var i = 0; i <= groupData.posts.length - 1; i++) {
+		currentElement = groupData.posts[i];
+		if(currentElement.timeStamp == timeStamp){
+			console.log("found the post");
+			obj.groups[groupIndex].posts.splice(i, 1);
+			return;
+		}
+	}
+});
+
 app.get('/getStarted', function(req, res){
 	res.render('sign_up');
 });
@@ -183,15 +201,23 @@ app.get('/getStarted', function(req, res){
 app.get('/:groupName/:lastUpdate', function(req, res){
 	var groupName = req.params.groupName;
 	var lastUpdate = req.params.lastUpdate;
+	console.log(lastUpdate);
 	var newPosts = [];
-	if(obj === undefined) return;
+	if(obj === undefined){ 
+		return;
+	}
 	var groupData = obj.groups[findGroup(groupName)];
-	if(groupData === undefined) return;
-	if(groupData.posts === undefined) return;
+	if(groupData === undefined) { 
+		return;
+	}
+	if(groupData.posts === undefined) { 
+		return;
+	}
 	for (var i = 0; i <= groupData.posts.length - 1; i++) {
 		currentElement = groupData.posts[i];
-		//console.log(i);
+		console.log(i);
 		if(currentElement.timeStamp > lastUpdate){
+			console.log(lastUpdate + " is less than " + currentElement.timeStamp);
 			newPosts.push(currentElement);
 		}
 		else{
@@ -208,11 +234,11 @@ function findGroup(groupName){
 	for (var i = obj.groups.length - 1; i >= 0; i--) {
 		currentElement = obj.groups[i];
 		if(currentElement.TeamURL ==  groupName){
-			break;
+			return i;
 		}
 	}
+	return -1;
 	//console.log("found: " + i);
-	return i;
 }
 
 

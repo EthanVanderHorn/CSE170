@@ -3,7 +3,7 @@
 
 <head>
   <!-- Google Analytics Content Experiment code -->
-<script>function utmx_section(){}function utmx(){}(function(){var
+<script>/*function utmx_section(){}function utmx(){}(function(){var
 k='134576284-1',d=document,l=d.location,c=d.cookie;
 if(l.search.indexOf('utm_expid='+k)>0)return;
 function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
@@ -13,8 +13,8 @@ length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
 '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
 '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
 valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-</script><script>utmx('url','A/B');</script>
+'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();*/
+</script><script>/*utmx('url','A/B');*/</script>
 <!-- End of Google Analytics Content Experiment code -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +53,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
           <ul class="nav navbar-nav navbar-right">
             <li>
               <!-- Trigger the modal with a button -->
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#new-group">Add Group <span class="glyphicon glyphicon-plus"></span> </button>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#new-group" onClick="clearGroupForm()">Add Group<span class="glyphicon glyphicon-plus"></span> </button>
             </li>
             <li>
              <div class="dropdown">
@@ -111,17 +111,10 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
           </div>-->
 
           <div id="check-box">
-            {{#if isOriginal}}
-              <!-- THIS FOR BUILD A -->
-              <input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin" data-toggle="tooltip" title="Pin a post to sticky it to the top"></span>
-              <input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span>
-              <!--END OF BUILD A-->
-            {{else}}
-              <!-- this is build b -->
+            <!--{{#if isOriginal}} -->
               <div><input id="pin-check" type="checkbox"> <span class="glyphicon glyphicon-pushpin"></span>Pin your post to the top </div>
               <div><input id="urgent-check" type="checkbox"> <span class="glyphicon glyphicon-exclamation-sign"></span>Urgent post</div>
-              <!-- end build b -->
-            {{/if}}
+            <!--{{/if}}-->
 
           </div>
 
@@ -233,7 +226,6 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
   $('#submit-new-group').attr('disabled', true);
 
-
   $('#group-name').keyup(function () {
     console.log("keyup");
     var groupName = $('#group-name').val();
@@ -277,18 +269,23 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
   function getUpdates(){
     var TeamURL = urlify(GroupName);
     URL = "/" + TeamURL + "/" + lastPost;
-    //console.log("hitting up the server at " + URL);
+    console.log("hitting up the server at " + URL);
     $.get(URL, updatePosts);
   }
 
   function updatePosts(result){
     if(result === undefined) return;
     for (var i=result.length -1; i>=0; i--){
-      displayPost(result[i]);
-      lastPost = (lastPost > result[i].timeStamp) ? lastPost : result[i].timeStamp;
-      if(result[i].urgent == "on"){
-        displayUrgent(result[i]);
+      console.log(result[i].timeStamp);
+      if( lastPost < result[i].timeStamp){
+        displayPost(result[i]);
+        lastPost = result[i].timeStamp;
+        //lastPost = (lastPost > result[i].timeStamp) ? lastPost : result[i].timeStamp;
+        if(result[i].urgent == "on"){
+         displayUrgent(result[i]);
+        }
       }
+
     }
   }
 
@@ -321,11 +318,22 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
   }
 
+  function deletePost(cardnum){
+    var card = $("#card" + cardnum);
+    var timeStamp = $("#stamp" + cardnum).text();
+    var URL = "/user/" + UserName + "/" + urlify(GroupName) + "/remove/" + timeStamp;
+    $.get(URL);
+    card.remove();
+  }
+
+  var numCards = 0;
+
   function displayPost(result){
+    console.log("new Post received");
     var fullPost;
 
-    fullPost = '<div class="card"> <div style="display: block;">' + ((result.urgent === "on")?'<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span> ' : '')+' <span>'+ result.author +'</span><div class="dropdown post-options" style="display:inline; float:'+ ((result.pinned === "on")?' left;">': 'right;">') + ((result.pinned === "on")?'<a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a> ':'') + '</div><div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a href="#">Delete Post</a></li></ul></div></div><p id="date">'+ result.date + '</p><p>'+result.postText+'</p></div>';
-
+    fullPost = '<div class="card" id="card' + numCards + '"> <div style="display: block;">' + ((result.urgent === "on")?'<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" title="Urgent posts play a special notification to your group mates"></span> ' : '')+' <span>'+ result.author +'</span><div class="dropdown post-options" style="display:inline; float:'+ ((result.pinned === "on")?' left;">': 'right;">') + ((result.pinned === "on")?'<a href="#" data-toggle="tooltip" title="Pinned"><img id="pin" src="/assets/pinR.png" /></a> ':'') + '</div>' + ((result.author == UserName)?'<div class="dropdown post-options" style="display:inline; float: right;"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-option-vertical"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li><a href="#">Edit Post</a></li><li><a onclick="deletePost('+ numCards +')" href="#">Delete Post</a></li></ul></div>':'') +'</div><p id="date">'+ result.date + '</p><p>'+result.postText+'</p><p class="timeStamp" id="stamp' + numCards + '" style="visibility: hidden">'+result.timeStamp+'</p></div>';
+    numCards = numCards + 1;
     if(result.pinned === "on") {
       $('#pin-stack').prepend(fullPost);
     } else {
@@ -338,9 +346,13 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
   function clearForm() 
   {
     document.getElementById("post-text").value = "";
-
   }
 
+  function clearGroupForm() 
+  {
+    document.getElementById("group-name").value = "";
+    document.getElementById("group-description").value = "";
+  }
 
   function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp * 1000);
@@ -375,7 +387,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
   <script src="/assets/js/post.js"></script>
 
   <!-- analytics tracking script -->
-  <script>
+  <script>/*
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -383,7 +395,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
   ga('create', 'UA-88017639-1', 'auto');
   ga('send', 'pageview');
-
+*/
 </script>
 <!-- end analytics tracking -->
 
