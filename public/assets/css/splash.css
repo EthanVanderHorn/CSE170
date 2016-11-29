@@ -160,6 +160,7 @@ body, html{
 	}
 
 	#splash-navbar{
+		visibility: hidden;
 		padding-left: 20px;
 	}
 
