@@ -210,6 +210,8 @@
   $.get("/user/" + UserName + "/" + urlify(GroupName) + "/addMember");
 
 
+  var numCards = 0;
+
   var lastPost = 0;
 
   getUpdates();
@@ -304,9 +306,17 @@
     };
 
 
-    $.post("/user/" + UserName + "/" + urlify(GroupName) + "/newPost", newPost);
+    $.post("/user/" + UserName + "/" + urlify(GroupName) + "/newPost", newPost, refresh);
     //$.post("/api/newPost", newPost);
 
+  }
+
+  function refresh(results){
+    console.log('hello');
+    console.log(numCards);
+    if(numCards == 0){
+     location.reload(); 
+   }
   }
 
   function deletePost(cardnum){
@@ -316,8 +326,6 @@
     $.get(URL);
     card.remove();
   }
-
-  var numCards = 0;
 
   function displayPost(result){
     console.log("new Post received");

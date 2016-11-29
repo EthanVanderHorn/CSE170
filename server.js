@@ -13,6 +13,8 @@ var http	   = require('http');
 var handlebars = require('express-handlebars');
 var data = require('./mock-data/groups.json');
 
+http.globalAgent.maxSockets = 20;
+
 var hbs = handlebars.create({
 	helpers : {
 		ifCond :  function (v1, operator, v2, options) {
@@ -179,7 +181,7 @@ app.post("/user/:userName/:groupName/newPost", function(req, res){
 	console.log("posting||| " + obj.groups[groupIndex].posts.length);
 	obj.groups[groupIndex].posts.unshift(postData);
 	console.log("responding||| "+obj.groups[groupIndex].posts.length);
-	res.send(postData);
+	res.send(200);
 });
 
 
@@ -205,6 +207,7 @@ app.get('/getStarted', function(req, res){
 
 
 app.get('/:groupName/:lastUpdate', function(req, res){
+	console.log("aaaaa");
 	var groupName = req.params.groupName;
 	var lastUpdate = req.params.lastUpdate;
 	console.log(lastUpdate);
