@@ -235,6 +235,10 @@ body, html{
 		width:100% !important;
 	}
 
+	#login-form {
+		margin-left: 0px;
+	}
+
 	#mobile-login {
 		margin-top:4%;	
 		margin-left:17%;
